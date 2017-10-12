@@ -5,6 +5,8 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using DataEntryDAL.DataAI;
+using DataEntryDAL.DataAccessLogic;
 
 namespace DataEntryWebService
 {
@@ -14,6 +16,8 @@ namespace DataEntryWebService
     {
         public string GetData(int value)
         {
+            UserModel model = new UserModel();
+            User user = model.getUserByCredts("ahmed", "123");
             return string.Format("You entered: {0}", value);
         }
 
@@ -27,6 +31,7 @@ namespace DataEntryWebService
             {
                 composite.StringValue += "Suffix";
             }
+           
             return composite;
         }
     }

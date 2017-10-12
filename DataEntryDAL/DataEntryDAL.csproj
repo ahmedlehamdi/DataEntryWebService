@@ -43,11 +43,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -66,7 +76,24 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DataAccessLogic\DataEntryModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataEntryModel.edmx</DependentUpon>
+      <LastGenOutput>DataEntryModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataAccessLogic\DataEntryModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataEntryModel.edmx</DependentUpon>
+      <LastGenOutput>DataEntryModel.cs</LastGenOutput>
+    </Content>
     <Content Include="packages.config" />
+    <EntityDeploy Include="DataAccessLogic\DataEntryModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DataEntryModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DataAccessLogic\DataEntryModel.edmx.diagram">
+      <DependentUpon>DataEntryModel.edmx</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -75,10 +102,61 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccessLogic\DataEntryModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataEntryModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessLogic\DataEntryModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataEntryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessLogic\DataEntryModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataEntryModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessLogic\LOCATION.cs">
+      <DependentUpon>DataEntryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessLogic\OFFER_TYPES.cs">
+      <DependentUpon>DataEntryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessLogic\PRODUCT.cs">
+      <DependentUpon>DataEntryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessLogic\PRODUCTS_CATEGORIES.cs">
+      <DependentUpon>DataEntryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessLogic\PRODUCT_SPECS.cs">
+      <DependentUpon>DataEntryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessLogic\PRODUCT_TYPES.cs">
+      <DependentUpon>DataEntryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessLogic\PROVIDER.cs">
+      <DependentUpon>DataEntryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessLogic\TIME_FRAMES.cs">
+      <DependentUpon>DataEntryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessLogic\TIME_FRAMES_FIELDS.cs">
+      <DependentUpon>DataEntryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessLogic\User.cs">
+      <DependentUpon>DataEntryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAI\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

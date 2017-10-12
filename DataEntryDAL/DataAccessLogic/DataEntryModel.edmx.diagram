@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="085a04ea3bb345979821a40859955b6c" Name="Diagram1">
+        <EntityTypeShape EntityType="BestOfferDataEntryDBModel.LOCATION" Width="1.5" PointX="1.5" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BestOfferDataEntryDBModel.OFFER_TYPES" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BestOfferDataEntryDBModel.PRODUCT_SPECS" Width="1.5" PointX="0.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BestOfferDataEntryDBModel.PRODUCT_TYPES" Width="1.5" PointX="0.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BestOfferDataEntryDBModel.PRODUCT" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BestOfferDataEntryDBModel.PRODUCTS_CATEGORIES" Width="1.5" PointX="1.5" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BestOfferDataEntryDBModel.PROVIDER" Width="1.5" PointX="0.75" PointY="27.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BestOfferDataEntryDBModel.TIME_FRAMES" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BestOfferDataEntryDBModel.TIME_FRAMES_FIELDS" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BestOfferDataEntryDBModel.User" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="BestOfferDataEntryDBModel.FK_PROVIDERS_LOCATIONS" ManuallyRouted="false" />
+        <AssociationConnector Association="BestOfferDataEntryDBModel.FK_PRODUCTS_OFFER_TYPES" ManuallyRouted="false" />
+        <AssociationConnector Association="BestOfferDataEntryDBModel.FK_PRODUCTS_SPECS" ManuallyRouted="false" />
+        <AssociationConnector Association="BestOfferDataEntryDBModel.FK_PRODUCT_TYPES_CATEGORIES" ManuallyRouted="false" />
+        <AssociationConnector Association="BestOfferDataEntryDBModel.FK_PRODUCTS_TYPES" ManuallyRouted="false" />
+        <AssociationConnector Association="BestOfferDataEntryDBModel.FK_PRODUCTS_PROVIDERS" ManuallyRouted="false" />
+        <AssociationConnector Association="BestOfferDataEntryDBModel.FK_PRODUCTS_TIME_FRAMES" ManuallyRouted="false" />
+        <AssociationConnector Association="BestOfferDataEntryDBModel.FK_TIME_FRAMES_FIELDS_TIME_FRAMES" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
