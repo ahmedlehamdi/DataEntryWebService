@@ -5,8 +5,9 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
-using DataEntryDAL.DataAI;
+using DataEntryDAL.Handlers;
 using DataEntryDAL.DataAccessLogic;
+using Newtonsoft.Json;
 
 namespace DataEntryWebService
 {
@@ -14,25 +15,41 @@ namespace DataEntryWebService
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
     {
-        public string GetData(int value)
-        {
-            UserModel model = new UserModel();
-            User user = model.getUserByCredts("ahmed", "123");
-            return string.Format("You entered: {0}", value);
-        }
+        //public string GetData(int value)
+        //{
+        //    UserModel model = new UserModel();
+        //    User user = model.getUserByCredts("ahmed", "123");
+        //    return string.Format("You entered: {0}", value);
+        //}
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        //public CompositeType GetDataUsingDataContract(CompositeType composite)
+        //{
+        //    if (composite == null)
+        //    {
+        //        throw new ArgumentNullException("composite");
+        //    }
+        //    if (composite.BoolValue)
+        //    {
+        //        composite.StringValue += "Suffix";
+        //    }
+
+        //    return composite;
+        //}
+        public string checkLogin(string userName, string password)
         {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
            
-            return composite;
+            User user = null;
+            try
+            {
+                UserHandler handler = new UserHandler();
+
+                user = handler.doLogin(userName, password);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return JsonConvert.SerializeObject((object) user);
         }
     }
 }

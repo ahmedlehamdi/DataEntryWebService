@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BestOfferDataEntryDB" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-AE7I8D7\SQLEXPRESS;Initial Catalog=BestOfferDataEntryDB;Persist Security Info=True;User ID=sa;MultipleActiveResultSets=True;Application Name=EntityFramework" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="BestOfferDataEntryDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.LOCATIONS" Member="LOCATIONs">
+    <Type Name="LOCATION">
+      <Column Name="LOCATION_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LOCATION_COUNTRY" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LOCATION_REGION" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LOCATION_CITY" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LOCATION_DISTRICT" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LOCATION_STREET" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LOCATION_COORDINATES" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="LOCATION_PROVIDER" Member="PROVIDERs" ThisKey="LOCATION_ID" OtherKey="LOCATION_ID" Type="PROVIDER" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="USER_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="USER_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="USER_PASSWORD" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="USER_TYPE" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="USER_PAGES" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OFFER_FLYERS" Member="OFFER_FLYERs">
+    <Type Name="OFFER_FLYER">
+      <Column Name="FLYER_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FLYER_NAME_EN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FLYER_PRODUCT_COUNT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FLYER_APPROVED" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="FLYER_ATTR_1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FLYER_ATTR_2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FLYER_ATTR_3" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FLYER_ATTR_4" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FLYER_ATTR_5" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="OFFER_FLYER_PRODUCT" Member="PRODUCTs" ThisKey="FLYER_ID" OtherKey="FLYER_ID" Type="PRODUCT" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OFFER_TYPES" Member="OFFER_TYPEs">
+    <Type Name="OFFER_TYPE">
+      <Column Name="OFFER_TYPE_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OFFER_TYPE_NAME_EN" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="OFFER_TYPE_NAME_AR" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="OFFER_TYPE_VALUE" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="OFFER_TYPE_ATTR_1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="OFFER_TYPE_ATTR_2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="OFFER_TYPE_ATTR_3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="OFFER_TYPE_ATTR_4" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="OFFER_TYPE_ATTR_5" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="OFFER_TYPE_PRODUCT" Member="PRODUCTs" ThisKey="OFFER_TYPE_ID" OtherKey="OFFER_TYPE_ID" Type="PRODUCT" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PRODUCT_SPECS" Member="PRODUCT_SPECs">
+    <Type Name="PRODUCT_SPEC">
+      <Column Name="SPECS_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SPECS_ATTR_1" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="SPECS_ATTR_2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SPECS_ATTR_3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SPECS_ATTR_4" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SPECS_ATTR_5" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SPECS_ATTR_6" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SPECS_ATTR_7" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SPECS_ATTR_8" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SPECS_ATTR_9" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SPECS_ATTR_10" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="PRODUCT_SPEC_PRODUCT" Member="PRODUCTs" ThisKey="SPECS_ID" OtherKey="SPECS_ID" Type="PRODUCT" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PRODUCT_TYPES" Member="PRODUCT_TYPEs">
+    <Type Name="PRODUCT_TYPE">
+      <Column Name="TYPE_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TYPE_NAME_EN" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="TYPE_NAME_AR" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="CATEGORY_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TYPE_SPECS" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="TYPE_ATTR_1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TYPE_ATTR_2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TYPE_ATTR_3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TYPE_ATTR_4" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TYPE_ATTR_5" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TYPE_ATTR_6" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TYPE_ATTR_7" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TYPE_ATTR_8" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TYPE_ATTR_9" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TYPE_ATTR_10" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="PRODUCT_TYPE_PRODUCT" Member="PRODUCTs" ThisKey="TYPE_ID" OtherKey="TYPE_ID" Type="PRODUCT" />
+      <Association Name="PRODUCTS_CATEGORy_PRODUCT_TYPE" Member="PRODUCTS_CATEGORy" ThisKey="CATEGORY_ID" OtherKey="CATEGORY_ID" Type="PRODUCTS_CATEGORy" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PRODUCTS" Member="PRODUCTs">
+    <Type Name="PRODUCT">
+      <Column Name="PRODUCT_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FLYER_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PRODUCT_NAME_EN" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="PRODUCT_NAME_AR" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="TYPE_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PRODUCT_IMAGE" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SPECS_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PROVIDER_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OFFER_TYPE_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FRAME_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PRODUCT_TAGS" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PRODUCT_EXPIRED" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PRODUCT_ATTR_1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PRODUCT_ATTR_2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PRODUCT_ATTR_3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PRODUCT_ATTR_4" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PRODUCT_ATTR_5" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PRODUCT_ATTR_6" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PRODUCT_ATTR_7" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PRODUCT_ATTR_8" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PRODUCT_ATTR_9" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PRODUCT_ATTR_10" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="OFFER_FLYER_PRODUCT" Member="OFFER_FLYER" ThisKey="FLYER_ID" OtherKey="FLYER_ID" Type="OFFER_FLYER" IsForeignKey="true" />
+      <Association Name="OFFER_TYPE_PRODUCT" Member="OFFER_TYPE" ThisKey="OFFER_TYPE_ID" OtherKey="OFFER_TYPE_ID" Type="OFFER_TYPE" IsForeignKey="true" />
+      <Association Name="PRODUCT_SPEC_PRODUCT" Member="PRODUCT_SPEC" ThisKey="SPECS_ID" OtherKey="SPECS_ID" Type="PRODUCT_SPEC" IsForeignKey="true" />
+      <Association Name="PRODUCT_TYPE_PRODUCT" Member="PRODUCT_TYPE" ThisKey="TYPE_ID" OtherKey="TYPE_ID" Type="PRODUCT_TYPE" IsForeignKey="true" />
+      <Association Name="PROVIDER_PRODUCT" Member="PROVIDER" ThisKey="PROVIDER_ID" OtherKey="PROVIDER_ID" Type="PROVIDER" IsForeignKey="true" />
+      <Association Name="TIME_FRAME_PRODUCT" Member="TIME_FRAME" ThisKey="FRAME_ID" OtherKey="FRAME_ID" Type="TIME_FRAME" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PRODUCTS_CATEGORIES" Member="PRODUCTS_CATEGORies">
+    <Type Name="PRODUCTS_CATEGORy">
+      <Column Name="CATEGORY_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CATEGORY_NAME_EN" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="CATEGORY_NAME_AR" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="CATEGORY_SPECS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CATEGORY_ATTR_1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CATEGORY_ATTR_2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CATEGORY_ATTR_3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CATEGORY_ATTR_4" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CATEGORY_ATTR_5" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CATEGORY_ATTR_6" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CATEGORY_ATTR_7" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CATEGORY_ATTR_8" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CATEGORY_ATTR_9" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CATEGORY_ATTR_10" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="PRODUCTS_CATEGORy_PRODUCT_TYPE" Member="PRODUCT_TYPEs" ThisKey="CATEGORY_ID" OtherKey="CATEGORY_ID" Type="PRODUCT_TYPE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PROVIDERS" Member="PROVIDERs">
+    <Type Name="PROVIDER">
+      <Column Name="PROVIDER_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PROVIDER_NAME_EN" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="PROVIDER_NAME_AR" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="PROVIDER_BUSINESS_AREA" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="LOCATION_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PROVIDER_CONTACTS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PROVIDER_COORDINATOR" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="PROVIDER_PRODUCT" Member="PRODUCTs" ThisKey="PROVIDER_ID" OtherKey="PROVIDER_ID" Type="PRODUCT" />
+      <Association Name="LOCATION_PROVIDER" Member="LOCATION" ThisKey="LOCATION_ID" OtherKey="LOCATION_ID" Type="LOCATION" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TIME_FRAMES" Member="TIME_FRAMEs">
+    <Type Name="TIME_FRAME">
+      <Column Name="FRAME_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FREAME_FIELDS_COUNT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FRAME_NAME_EN" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="FRAME_NAME_AR" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="TIME_FRAME_PRODUCT" Member="PRODUCTs" ThisKey="FRAME_ID" OtherKey="FRAME_ID" Type="PRODUCT" />
+      <Association Name="TIME_FRAME_TIME_FRAMES_FIELD" Member="TIME_FRAMES_FIELDs" ThisKey="FRAME_ID" OtherKey="FRAME_ID" Type="TIME_FRAMES_FIELD" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TIME_FRAMES_FIELDS" Member="TIME_FRAMES_FIELDs">
+    <Type Name="TIME_FRAMES_FIELD">
+      <Column Name="FIELD_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FRAME_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FIELD_NAME_EN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FIELD_NAME_AR" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FIELD_EQUATION" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="TIME_FRAME_TIME_FRAMES_FIELD" Member="TIME_FRAME" ThisKey="FRAME_ID" OtherKey="FRAME_ID" Type="TIME_FRAME" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

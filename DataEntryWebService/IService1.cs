@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using DataEntryDAL.DataAccessLogic;
 
 namespace DataEntryWebService
 {
@@ -13,11 +14,18 @@ namespace DataEntryWebService
     public interface IService1
     {
 
-        [OperationContract]
-        string GetData(int value);
+        //[OperationContract]
+        //string GetData(int value);
 
         [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
+        [WebInvoke(Method = "GET",
+                   RequestFormat = WebMessageFormat.Json,
+                   ResponseFormat = WebMessageFormat.Json,
+                   UriTemplate = "doLogin")]
+        string checkLogin(string userName, string password);
+
+        //[OperationContract]
+        //CompositeType GetDataUsingDataContract(CompositeType composite);
 
         // TODO: Add your service operations here
     }
