@@ -7,6 +7,7 @@ using System.ServiceModel.Web;
 using System.Text;
 using DataEntryDAL.Handlers;
 using DataEntryDAL.DataAccessLogic;
+using DataEntryWebService.ServiceIntegration;
 using Newtonsoft.Json;
 
 namespace DataEntryWebService
@@ -37,7 +38,6 @@ namespace DataEntryWebService
         //}
         public string checkLogin(string userName, string password)
         {
-           
             User user = null;
             try
             {
@@ -47,9 +47,14 @@ namespace DataEntryWebService
             }
             catch (Exception ex)
             {
-
+                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
             }
-            return JsonConvert.SerializeObject((object) user);
+            if (user != null)
+                return JsonConvert.SerializeObject(new ReturnObject<User>(ErrorConstants.SUCCESS ,user));
+            else
+            {
+                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_LOGIN_FAILED, ErrorConstants.ERROR_LOGIN_FAILED_MSG));
+            }
         }
     }
 }

@@ -75,6 +75,8 @@
     </Compile>
     <Compile Include="IService1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceIntegration\ErrorConstants.cs" />
+    <Compile Include="ServiceIntegration\ReturnObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
