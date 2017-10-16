@@ -24,6 +24,20 @@ namespace DataEntryWebService
                    UriTemplate = "doLogin")]
         string checkLogin(string userName, string password);
 
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+                   RequestFormat = WebMessageFormat.Json,
+                   ResponseFormat = WebMessageFormat.Json,
+                   UriTemplate = "getAllFlyers")]
+        string getAllFlyers(int userID);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+                  RequestFormat = WebMessageFormat.Json,
+                  ResponseFormat = WebMessageFormat.Json,
+                  UriTemplate = "getAllProviders")]
+        string getAllProviders();
+
         //[OperationContract]
         //CompositeType GetDataUsingDataContract(CompositeType composite);
 

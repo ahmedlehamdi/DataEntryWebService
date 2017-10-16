@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BestOfferDataEntryDB" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-AE7I8D7\SQLEXPRESS;Initial Catalog=BestOfferDataEntryDB;Persist Security Info=True;User ID=sa;MultipleActiveResultSets=True;Application Name=EntityFramework" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="BestOfferDataEntryDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="USER_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="USER_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="USER_PASSWORD" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="USER_TYPE" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="USER_PAGES" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Table Name="dbo.LOCATIONS" Member="LOCATIONs">
     <Type Name="LOCATION">
       <Column Name="LOCATION_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -12,27 +21,19 @@
       <Association Name="LOCATION_PROVIDER" Member="PROVIDERs" ThisKey="LOCATION_ID" OtherKey="LOCATION_ID" Type="PROVIDER" />
     </Type>
   </Table>
-  <Table Name="dbo.Users" Member="Users">
-    <Type Name="User">
-      <Column Name="USER_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="USER_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="USER_PASSWORD" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="USER_TYPE" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="USER_PAGES" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
   <Table Name="dbo.OFFER_FLYERS" Member="OFFER_FLYERs">
     <Type Name="OFFER_FLYER">
       <Column Name="FLYER_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="USER_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="FLYER_NAME_EN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="FLYER_PRODUCT_COUNT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="FLYER_APPROVED" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="FLYER_ATTR_1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="FLYER_ATTR_2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="FLYER_ATTR_3" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="FLYER_ATTR_4" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="FLYER_ATTR_5" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="OFFER_FLYER_PRODUCT" Member="PRODUCTs" ThisKey="FLYER_ID" OtherKey="FLYER_ID" Type="PRODUCT" />
+      <Column Name="FLYER_NAME_AR" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PROVIDER_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FRAME_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OFFER_TYPE_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FLYER_IMAGE_URL" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FLYER_APPROVED" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ADMIN_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FLYER_EXPIRED" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.OFFER_TYPES" Member="OFFER_TYPEs">
@@ -46,7 +47,6 @@
       <Column Name="OFFER_TYPE_ATTR_3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="OFFER_TYPE_ATTR_4" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="OFFER_TYPE_ATTR_5" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Association Name="OFFER_TYPE_PRODUCT" Member="PRODUCTs" ThisKey="OFFER_TYPE_ID" OtherKey="OFFER_TYPE_ID" Type="PRODUCT" />
     </Type>
   </Table>
   <Table Name="dbo.PRODUCT_SPECS" Member="PRODUCT_SPECs">
@@ -96,10 +96,7 @@
       <Column Name="PRODUCT_IMAGE" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="SPECS_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="PROVIDER_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="OFFER_TYPE_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="FRAME_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="PRODUCT_TAGS" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="PRODUCT_EXPIRED" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="PRODUCT_ATTR_1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="PRODUCT_ATTR_2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="PRODUCT_ATTR_3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
@@ -110,12 +107,9 @@
       <Column Name="PRODUCT_ATTR_8" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="PRODUCT_ATTR_9" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="PRODUCT_ATTR_10" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Association Name="OFFER_FLYER_PRODUCT" Member="OFFER_FLYER" ThisKey="FLYER_ID" OtherKey="FLYER_ID" Type="OFFER_FLYER" IsForeignKey="true" />
-      <Association Name="OFFER_TYPE_PRODUCT" Member="OFFER_TYPE" ThisKey="OFFER_TYPE_ID" OtherKey="OFFER_TYPE_ID" Type="OFFER_TYPE" IsForeignKey="true" />
       <Association Name="PRODUCT_SPEC_PRODUCT" Member="PRODUCT_SPEC" ThisKey="SPECS_ID" OtherKey="SPECS_ID" Type="PRODUCT_SPEC" IsForeignKey="true" />
       <Association Name="PRODUCT_TYPE_PRODUCT" Member="PRODUCT_TYPE" ThisKey="TYPE_ID" OtherKey="TYPE_ID" Type="PRODUCT_TYPE" IsForeignKey="true" />
       <Association Name="PROVIDER_PRODUCT" Member="PROVIDER" ThisKey="PROVIDER_ID" OtherKey="PROVIDER_ID" Type="PROVIDER" IsForeignKey="true" />
-      <Association Name="TIME_FRAME_PRODUCT" Member="TIME_FRAME" ThisKey="FRAME_ID" OtherKey="FRAME_ID" Type="TIME_FRAME" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.PRODUCTS_CATEGORIES" Member="PRODUCTS_CATEGORies">
@@ -153,21 +147,61 @@
   <Table Name="dbo.TIME_FRAMES" Member="TIME_FRAMEs">
     <Type Name="TIME_FRAME">
       <Column Name="FRAME_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="FREAME_FIELDS_COUNT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FRAME_TYPE_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="FRAME_NAME_EN" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="FRAME_NAME_AR" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Association Name="TIME_FRAME_PRODUCT" Member="PRODUCTs" ThisKey="FRAME_ID" OtherKey="FRAME_ID" Type="PRODUCT" />
-      <Association Name="TIME_FRAME_TIME_FRAMES_FIELD" Member="TIME_FRAMES_FIELDs" ThisKey="FRAME_ID" OtherKey="FRAME_ID" Type="TIME_FRAMES_FIELD" />
+      <Column Name="FRAME_DATE_FROM" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FRAME_DATE_TO" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="TIME_FRAMES_TYPE_TIME_FRAME" Member="TIME_FRAMES_TYPE" ThisKey="FRAME_TYPE_ID" OtherKey="FRAME_TYPE_ID" Type="TIME_FRAMES_TYPE" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.TIME_FRAMES_FIELDS" Member="TIME_FRAMES_FIELDs">
-    <Type Name="TIME_FRAMES_FIELD">
-      <Column Name="FIELD_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="FRAME_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="FIELD_NAME_EN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="FIELD_NAME_AR" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="FIELD_EQUATION" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Association Name="TIME_FRAME_TIME_FRAMES_FIELD" Member="TIME_FRAME" ThisKey="FRAME_ID" OtherKey="FRAME_ID" Type="TIME_FRAME" IsForeignKey="true" />
+  <Table Name="dbo.TIME_FRAMES_TYPES" Member="TIME_FRAMES_TYPEs">
+    <Type Name="TIME_FRAMES_TYPE">
+      <Column Name="FRAME_TYPE_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FRAME_TYPE_NAME_EN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FRAME_TYPE_NAME_AR" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FRAME_TYPE_EQUATION" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="TIME_FRAMES_TYPE_TIME_FRAME" Member="TIME_FRAMEs" ThisKey="FRAME_TYPE_ID" OtherKey="FRAME_TYPE_ID" Type="TIME_FRAME" />
     </Type>
   </Table>
+  <Function Name="dbo.GET_ALL_FLYERS_PROCD" Method="GET_ALL_FLYERS_PROCD">
+    <Parameter Name="USER_ID" Parameter="uSER_ID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GET_ALL_FLYERS_PROCDResult">
+      <Column Name="FLYER_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PROVIDER_NAME_EN" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="PROVIDER_NAME_AR" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="FRAME_NAME_EN" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="FRAME_NAME_AR" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="OFFER_TYPE_NAME_EN" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="OFFER_TYPE_NAME_AR" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="LOCATION_CITY" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LOCATION_DISTRICT" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FLYER_NAME_EN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FLYER_NAME_AR" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FLYER_IMAGE_URL" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FLYER_APPROVED" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="FRAME_DATE_FROM" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FRAME_DATE_TO" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GET_REJECTED_FLYERS" Method="GET_REJECTED_FLYERS">
+    <Parameter Name="USER_ID" Parameter="uSER_ID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GET_REJECTED_FLYERSResult">
+      <Column Name="FLYER_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PROVIDER_NAME_EN" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="PROVIDER_NAME_AR" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="FRAME_NAME_EN" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="FRAME_NAME_AR" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="OFFER_TYPE_NAME_EN" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="OFFER_TYPE_NAME_AR" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="LOCATION_CITY" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LOCATION_DISTRICT" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FLYER_NAME_EN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FLYER_NAME_AR" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FLYER_IMAGE_URL" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FLYER_APPROVED" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="FRAME_DATE_FROM" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FRAME_DATE_TO" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>

@@ -93,6 +93,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataClasses.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Handlers\FlyersHandler.cs" />
+    <Compile Include="Handlers\ProvidersHandler.cs" />
+    <Compile Include="Handlers\TimeFrameHandler.cs" />
     <Compile Include="Handlers\UserHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

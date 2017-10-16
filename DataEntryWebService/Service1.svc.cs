@@ -56,5 +56,47 @@ namespace DataEntryWebService
                 return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_LOGIN_FAILED, ErrorConstants.ERROR_LOGIN_FAILED_MSG));
             }
         }
+
+        public string getAllFlyers(int userID)
+        {
+            List<GET_ALL_FLYERS_PROCDResult> allFlyers = new List<GET_ALL_FLYERS_PROCDResult>();
+            try
+            {
+                FlyersHandler handler = new FlyersHandler();
+
+                allFlyers = handler.getAllFlyers(userID);
+            }
+            catch (Exception ex)
+            {
+                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
+            }
+            if (allFlyers != null && allFlyers.Count > 0)
+                return JsonConvert.SerializeObject(new ReturnObject<List<GET_ALL_FLYERS_PROCDResult>>(ErrorConstants.SUCCESS, allFlyers));
+            else
+            {
+                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_NO_FLYERS_FOUND, ErrorConstants.ERROR_NO_FLYERS_FOUND_MSG));
+            }
+        }
+
+        public string getAllProviders()
+        {
+            List<PROVIDER> providers = null;
+            try
+            {
+                ProvidersHandler handler = new ProvidersHandler();
+
+                providers = handler.getAllProviders();
+            }
+            catch (Exception ex)
+            {
+                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
+            }
+            if (providers != null)
+                return JsonConvert.SerializeObject(new ReturnObject<List<PROVIDER>>(ErrorConstants.SUCCESS, providers));
+            else
+            {
+                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_LOGIN_FAILED, ErrorConstants.ERROR_LOGIN_FAILED_MSG));
+            }
+        }
     }
 }
