@@ -23,5 +23,38 @@ namespace DataEntryDAL.Handlers
             return allFlyers;
         }
 
+        public List<OFFER_TYPE> getAllOfferTypes()
+        {
+            List<OFFER_TYPE> allFlyers = new List<OFFER_TYPE>();
+            using (DataClassesDataContext context = new DataClassesDataContext())
+            {
+                var result = (from a in context.GetTable<OFFER_TYPE>()
+                              select a); ;
+                foreach (OFFER_TYPE f in result)
+                {
+                    allFlyers.Add(f);
+                }
+            }
+            return allFlyers;
+        }
+
+        public int AddNewFlyer(OFFER_FLYER flyer, TIME_FRAME frame)
+        {
+            using (DataClassesDataContext context = new DataClassesDataContext())
+            {
+                context.TIME_FRAMEs.InsertOnSubmit(frame);
+
+                context.SubmitChanges();
+
+                flyer.FRAME_ID = frame.FRAME_ID;
+
+                context.OFFER_FLYERs.InsertOnSubmit(flyer);
+
+                context.SubmitChanges();
+
+                return flyer.FLYER_ID;
+            }
+        }
+
     }
 }

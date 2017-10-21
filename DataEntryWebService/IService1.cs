@@ -38,6 +38,27 @@ namespace DataEntryWebService
                   UriTemplate = "getAllProviders")]
         string getAllProviders();
 
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+                 RequestFormat = WebMessageFormat.Json,
+                 ResponseFormat = WebMessageFormat.Json,
+                 UriTemplate = "getAllOfferTypes")]
+        string getAllOfferTypes();
+
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+                 RequestFormat = WebMessageFormat.Json,
+                 ResponseFormat = WebMessageFormat.Json,
+                 UriTemplate = "getAllTimeFrames")]
+        string getAllTimeFrames();
+
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+                 RequestFormat = WebMessageFormat.Json,
+                 ResponseFormat = WebMessageFormat.Json,
+                 UriTemplate = "getAllTimeFrames")]
+        string addNewFlyerBasicData(OFFER_FLYER flyer, TIME_FRAME frame);
+
         //[OperationContract]
         //CompositeType GetDataUsingDataContract(CompositeType composite);
 

@@ -8,14 +8,14 @@ namespace DataEntryDAL.Handlers
 {
     public class ProvidersHandler
     {
-        public List<PROVIDER> getAllProviders()
+        public List<GET_ALL_PROVIDERSResult> getAllProviders()
         {
-            List<PROVIDER> allProviders = new List<PROVIDER>();
+            List<GET_ALL_PROVIDERSResult> allProviders = new List<GET_ALL_PROVIDERSResult>();
             using (DataClassesDataContext context = new DataClassesDataContext())
             {
-                var result = (from a in context.GetTable<PROVIDER>()
-                              select a);
-                foreach (PROVIDER f in result)
+                var result = context.GET_ALL_PROVIDERS().ToList<GET_ALL_PROVIDERSResult>();
+                              
+                foreach (GET_ALL_PROVIDERSResult f in result)
                 {
                     allProviders.Add(f);
                 }

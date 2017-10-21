@@ -80,7 +80,7 @@ namespace DataEntryWebService
 
         public string getAllProviders()
         {
-            List<PROVIDER> providers = null;
+            List<GET_ALL_PROVIDERSResult> providers = null;
             try
             {
                 ProvidersHandler handler = new ProvidersHandler();
@@ -92,11 +92,77 @@ namespace DataEntryWebService
                 return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
             }
             if (providers != null)
-                return JsonConvert.SerializeObject(new ReturnObject<List<PROVIDER>>(ErrorConstants.SUCCESS, providers));
+                return JsonConvert.SerializeObject(new ReturnObject<List<GET_ALL_PROVIDERSResult>>(ErrorConstants.SUCCESS, providers));
             else
             {
-                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_LOGIN_FAILED, ErrorConstants.ERROR_LOGIN_FAILED_MSG));
+                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_NO_PROVIDERS_FOUND, ErrorConstants.ERROR_NO_PROVIDERS_FOUND_MSG));
             }
+        }
+
+        public string getAllOfferTypes()
+        {
+            List<OFFER_TYPE> types = null;
+            try
+            {
+                FlyersHandler handler = new FlyersHandler();
+
+                types = handler.getAllOfferTypes();
+            }
+            catch (Exception ex)
+            {
+                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
+            }
+            if (types != null)
+                return JsonConvert.SerializeObject(new ReturnObject<List<OFFER_TYPE>>(ErrorConstants.SUCCESS, types));
+            else
+            {
+                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_NO_OFFER_TYPES_FOUND, ErrorConstants.ERROR_NO_OFFER_TYPES_FOUND_MSG));
+            }
+        }
+        
+        public string getAllTimeFrames()
+        {
+            List<TIME_FRAMES_TYPE> frames = null;
+            ReturnObject <List<TIME_FRAMES_TYPE>> framesObj = null;
+            try
+            {
+                TimeFrameHandler handler = new TimeFrameHandler();
+
+                frames = handler.getAllTimeFrames();
+                framesObj = new ReturnObject<List<TIME_FRAMES_TYPE>>(ErrorConstants.SUCCESS, frames);
+
+                if (frames != null)
+                    return JsonConvert.SerializeObject(framesObj);
+                else
+                {
+                    return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_NO_TIME_FRAMES_FOUND, ErrorConstants.ERROR_NO_TIME_FRAMES_FOUND_MSG));
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
+            }
+            
+        }
+
+        public string addNewFlyerBasicData(OFFER_FLYER flyer, TIME_FRAME frame)
+        {
+            
+            ReturnObject<int> flyerObj = null;
+            try
+            {
+                FlyersHandler handler = new FlyersHandler();
+
+                var flyerID = handler.AddNewFlyer(flyer, frame);
+                flyerObj = new ReturnObject<int>(ErrorConstants.SUCCESS, flyerID);
+
+                return JsonConvert.SerializeObject(flyerObj);
+            }
+            catch (Exception ex)
+            {
+                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
+            }
+
         }
     }
 }
