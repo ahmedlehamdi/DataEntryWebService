@@ -210,6 +210,20 @@ namespace DataEntryDAL.DataAccessLogic
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<GET_ALL_TIME_FRAMESResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GET_FLYER_BASIC_DATA")]
+		public ISingleResult<GET_FLYER_BASIC_DATAResult> GET_FLYER_BASIC_DATA([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> flyerID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), flyerID);
+			return ((ISingleResult<GET_FLYER_BASIC_DATAResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GET_FLYER_PRODUCTS_DATA")]
+		public ISingleResult<GET_FLYER_PRODUCTS_DATAResult> GET_FLYER_PRODUCTS_DATA([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> flyerID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), flyerID);
+			return ((ISingleResult<GET_FLYER_PRODUCTS_DATAResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Users")]
@@ -4185,6 +4199,778 @@ namespace DataEntryDAL.DataAccessLogic
 				if ((this._FRAME_TYPE_EQUATION != value))
 				{
 					this._FRAME_TYPE_EQUATION = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GET_FLYER_BASIC_DATAResult
+	{
+		
+		private int _FLYER_ID;
+		
+		private string _FLYER_NAME_EN;
+		
+		private string _FLYER_NAME_AR;
+		
+		private string _PROVIDER_NAME_EN;
+		
+		private string _PROVIDER_NAME_AR;
+		
+		private string _PROVIDER_CONTACTS;
+		
+		private string _PROVIDER_COORDINATOR;
+		
+		private string _PROVIDER_BUSINESS_AREA;
+		
+		private string _LOCATION_COUNTRY;
+		
+		private string _LOCATION_REGION;
+		
+		private string _LOCATION_CITY;
+		
+		private string _FRAME_NAME_EN;
+		
+		private string _FRAME_NAME_AR;
+		
+		private System.Nullable<System.DateTime> _FRAME_DATE_FROM;
+		
+		private System.Nullable<System.DateTime> _FRAME_DATE_TO;
+		
+		private string _OFFER_TYPE_NAME_EN;
+		
+		private string _OFFER_TYPE_NAME_AR;
+		
+		private string _FLYER_IMAGE_URL;
+		
+		public GET_FLYER_BASIC_DATAResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_ID", DbType="Int NOT NULL")]
+		public int FLYER_ID
+		{
+			get
+			{
+				return this._FLYER_ID;
+			}
+			set
+			{
+				if ((this._FLYER_ID != value))
+				{
+					this._FLYER_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_NAME_EN", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string FLYER_NAME_EN
+		{
+			get
+			{
+				return this._FLYER_NAME_EN;
+			}
+			set
+			{
+				if ((this._FLYER_NAME_EN != value))
+				{
+					this._FLYER_NAME_EN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_NAME_AR", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string FLYER_NAME_AR
+		{
+			get
+			{
+				return this._FLYER_NAME_AR;
+			}
+			set
+			{
+				if ((this._FLYER_NAME_AR != value))
+				{
+					this._FLYER_NAME_AR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_NAME_EN", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string PROVIDER_NAME_EN
+		{
+			get
+			{
+				return this._PROVIDER_NAME_EN;
+			}
+			set
+			{
+				if ((this._PROVIDER_NAME_EN != value))
+				{
+					this._PROVIDER_NAME_EN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_NAME_AR", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string PROVIDER_NAME_AR
+		{
+			get
+			{
+				return this._PROVIDER_NAME_AR;
+			}
+			set
+			{
+				if ((this._PROVIDER_NAME_AR != value))
+				{
+					this._PROVIDER_NAME_AR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_CONTACTS", DbType="NVarChar(MAX)")]
+		public string PROVIDER_CONTACTS
+		{
+			get
+			{
+				return this._PROVIDER_CONTACTS;
+			}
+			set
+			{
+				if ((this._PROVIDER_CONTACTS != value))
+				{
+					this._PROVIDER_CONTACTS = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_COORDINATOR", DbType="NVarChar(MAX)")]
+		public string PROVIDER_COORDINATOR
+		{
+			get
+			{
+				return this._PROVIDER_COORDINATOR;
+			}
+			set
+			{
+				if ((this._PROVIDER_COORDINATOR != value))
+				{
+					this._PROVIDER_COORDINATOR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_BUSINESS_AREA", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string PROVIDER_BUSINESS_AREA
+		{
+			get
+			{
+				return this._PROVIDER_BUSINESS_AREA;
+			}
+			set
+			{
+				if ((this._PROVIDER_BUSINESS_AREA != value))
+				{
+					this._PROVIDER_BUSINESS_AREA = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_COUNTRY", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string LOCATION_COUNTRY
+		{
+			get
+			{
+				return this._LOCATION_COUNTRY;
+			}
+			set
+			{
+				if ((this._LOCATION_COUNTRY != value))
+				{
+					this._LOCATION_COUNTRY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_REGION", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string LOCATION_REGION
+		{
+			get
+			{
+				return this._LOCATION_REGION;
+			}
+			set
+			{
+				if ((this._LOCATION_REGION != value))
+				{
+					this._LOCATION_REGION = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_CITY", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string LOCATION_CITY
+		{
+			get
+			{
+				return this._LOCATION_CITY;
+			}
+			set
+			{
+				if ((this._LOCATION_CITY != value))
+				{
+					this._LOCATION_CITY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_NAME_EN", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string FRAME_NAME_EN
+		{
+			get
+			{
+				return this._FRAME_NAME_EN;
+			}
+			set
+			{
+				if ((this._FRAME_NAME_EN != value))
+				{
+					this._FRAME_NAME_EN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_NAME_AR", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string FRAME_NAME_AR
+		{
+			get
+			{
+				return this._FRAME_NAME_AR;
+			}
+			set
+			{
+				if ((this._FRAME_NAME_AR != value))
+				{
+					this._FRAME_NAME_AR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_DATE_FROM", DbType="DateTime")]
+		public System.Nullable<System.DateTime> FRAME_DATE_FROM
+		{
+			get
+			{
+				return this._FRAME_DATE_FROM;
+			}
+			set
+			{
+				if ((this._FRAME_DATE_FROM != value))
+				{
+					this._FRAME_DATE_FROM = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_DATE_TO", DbType="DateTime")]
+		public System.Nullable<System.DateTime> FRAME_DATE_TO
+		{
+			get
+			{
+				return this._FRAME_DATE_TO;
+			}
+			set
+			{
+				if ((this._FRAME_DATE_TO != value))
+				{
+					this._FRAME_DATE_TO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_NAME_EN", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string OFFER_TYPE_NAME_EN
+		{
+			get
+			{
+				return this._OFFER_TYPE_NAME_EN;
+			}
+			set
+			{
+				if ((this._OFFER_TYPE_NAME_EN != value))
+				{
+					this._OFFER_TYPE_NAME_EN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_NAME_AR", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string OFFER_TYPE_NAME_AR
+		{
+			get
+			{
+				return this._OFFER_TYPE_NAME_AR;
+			}
+			set
+			{
+				if ((this._OFFER_TYPE_NAME_AR != value))
+				{
+					this._OFFER_TYPE_NAME_AR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_IMAGE_URL", DbType="NVarChar(MAX)")]
+		public string FLYER_IMAGE_URL
+		{
+			get
+			{
+				return this._FLYER_IMAGE_URL;
+			}
+			set
+			{
+				if ((this._FLYER_IMAGE_URL != value))
+				{
+					this._FLYER_IMAGE_URL = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GET_FLYER_PRODUCTS_DATAResult
+	{
+		
+		private string _PRODUCT_NAME_EN;
+		
+		private string _PRODUCT_NAME_AR;
+		
+		private string _TYPE_NAME_EN;
+		
+		private string _TYPE_NAME_AR;
+		
+		private string _CATEGORY_NAME_EN;
+		
+		private string _CATEGORY_NAME_AR;
+		
+		private string _PRODUCT_IMAGE;
+		
+		private string _SPECS_ATTR_1;
+		
+		private string _SPECS_ATTR_2;
+		
+		private string _SPECS_ATTR_3;
+		
+		private string _SPECS_ATTR_4;
+		
+		private string _SPECS_ATTR_5;
+		
+		private string _PROVIDER_NAME_EN;
+		
+		private string _PROVIDER_NAME_AR;
+		
+		private string _PROVIDER_BUSINESS_AREA;
+		
+		private string _PROVIDER_CONTACTS;
+		
+		private string _PROVIDER_COORDINATOR;
+		
+		private string _LOCATION_COUNTRY;
+		
+		private string _LOCATION_REGION;
+		
+		private string _LOCATION_CITY;
+		
+		private string _LOCATION_DISTRICT;
+		
+		private string _LOCATION_STREET;
+		
+		private string _LOCATION_COORDINATES;
+		
+		private string _PRODUCT_TAGS;
+		
+		public GET_FLYER_PRODUCTS_DATAResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_NAME_EN", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string PRODUCT_NAME_EN
+		{
+			get
+			{
+				return this._PRODUCT_NAME_EN;
+			}
+			set
+			{
+				if ((this._PRODUCT_NAME_EN != value))
+				{
+					this._PRODUCT_NAME_EN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_NAME_AR", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string PRODUCT_NAME_AR
+		{
+			get
+			{
+				return this._PRODUCT_NAME_AR;
+			}
+			set
+			{
+				if ((this._PRODUCT_NAME_AR != value))
+				{
+					this._PRODUCT_NAME_AR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TYPE_NAME_EN", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string TYPE_NAME_EN
+		{
+			get
+			{
+				return this._TYPE_NAME_EN;
+			}
+			set
+			{
+				if ((this._TYPE_NAME_EN != value))
+				{
+					this._TYPE_NAME_EN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TYPE_NAME_AR", DbType="NChar(10) NOT NULL", CanBeNull=false)]
+		public string TYPE_NAME_AR
+		{
+			get
+			{
+				return this._TYPE_NAME_AR;
+			}
+			set
+			{
+				if ((this._TYPE_NAME_AR != value))
+				{
+					this._TYPE_NAME_AR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CATEGORY_NAME_EN", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string CATEGORY_NAME_EN
+		{
+			get
+			{
+				return this._CATEGORY_NAME_EN;
+			}
+			set
+			{
+				if ((this._CATEGORY_NAME_EN != value))
+				{
+					this._CATEGORY_NAME_EN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CATEGORY_NAME_AR", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string CATEGORY_NAME_AR
+		{
+			get
+			{
+				return this._CATEGORY_NAME_AR;
+			}
+			set
+			{
+				if ((this._CATEGORY_NAME_AR != value))
+				{
+					this._CATEGORY_NAME_AR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_IMAGE", DbType="NVarChar(MAX)")]
+		public string PRODUCT_IMAGE
+		{
+			get
+			{
+				return this._PRODUCT_IMAGE;
+			}
+			set
+			{
+				if ((this._PRODUCT_IMAGE != value))
+				{
+					this._PRODUCT_IMAGE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPECS_ATTR_1", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string SPECS_ATTR_1
+		{
+			get
+			{
+				return this._SPECS_ATTR_1;
+			}
+			set
+			{
+				if ((this._SPECS_ATTR_1 != value))
+				{
+					this._SPECS_ATTR_1 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPECS_ATTR_2", DbType="NVarChar(MAX)")]
+		public string SPECS_ATTR_2
+		{
+			get
+			{
+				return this._SPECS_ATTR_2;
+			}
+			set
+			{
+				if ((this._SPECS_ATTR_2 != value))
+				{
+					this._SPECS_ATTR_2 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPECS_ATTR_3", DbType="NVarChar(MAX)")]
+		public string SPECS_ATTR_3
+		{
+			get
+			{
+				return this._SPECS_ATTR_3;
+			}
+			set
+			{
+				if ((this._SPECS_ATTR_3 != value))
+				{
+					this._SPECS_ATTR_3 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPECS_ATTR_4", DbType="NVarChar(MAX)")]
+		public string SPECS_ATTR_4
+		{
+			get
+			{
+				return this._SPECS_ATTR_4;
+			}
+			set
+			{
+				if ((this._SPECS_ATTR_4 != value))
+				{
+					this._SPECS_ATTR_4 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPECS_ATTR_5", DbType="NVarChar(MAX)")]
+		public string SPECS_ATTR_5
+		{
+			get
+			{
+				return this._SPECS_ATTR_5;
+			}
+			set
+			{
+				if ((this._SPECS_ATTR_5 != value))
+				{
+					this._SPECS_ATTR_5 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_NAME_EN", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string PROVIDER_NAME_EN
+		{
+			get
+			{
+				return this._PROVIDER_NAME_EN;
+			}
+			set
+			{
+				if ((this._PROVIDER_NAME_EN != value))
+				{
+					this._PROVIDER_NAME_EN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_NAME_AR", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string PROVIDER_NAME_AR
+		{
+			get
+			{
+				return this._PROVIDER_NAME_AR;
+			}
+			set
+			{
+				if ((this._PROVIDER_NAME_AR != value))
+				{
+					this._PROVIDER_NAME_AR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_BUSINESS_AREA", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string PROVIDER_BUSINESS_AREA
+		{
+			get
+			{
+				return this._PROVIDER_BUSINESS_AREA;
+			}
+			set
+			{
+				if ((this._PROVIDER_BUSINESS_AREA != value))
+				{
+					this._PROVIDER_BUSINESS_AREA = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_CONTACTS", DbType="NVarChar(MAX)")]
+		public string PROVIDER_CONTACTS
+		{
+			get
+			{
+				return this._PROVIDER_CONTACTS;
+			}
+			set
+			{
+				if ((this._PROVIDER_CONTACTS != value))
+				{
+					this._PROVIDER_CONTACTS = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_COORDINATOR", DbType="NVarChar(MAX)")]
+		public string PROVIDER_COORDINATOR
+		{
+			get
+			{
+				return this._PROVIDER_COORDINATOR;
+			}
+			set
+			{
+				if ((this._PROVIDER_COORDINATOR != value))
+				{
+					this._PROVIDER_COORDINATOR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_COUNTRY", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string LOCATION_COUNTRY
+		{
+			get
+			{
+				return this._LOCATION_COUNTRY;
+			}
+			set
+			{
+				if ((this._LOCATION_COUNTRY != value))
+				{
+					this._LOCATION_COUNTRY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_REGION", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string LOCATION_REGION
+		{
+			get
+			{
+				return this._LOCATION_REGION;
+			}
+			set
+			{
+				if ((this._LOCATION_REGION != value))
+				{
+					this._LOCATION_REGION = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_CITY", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string LOCATION_CITY
+		{
+			get
+			{
+				return this._LOCATION_CITY;
+			}
+			set
+			{
+				if ((this._LOCATION_CITY != value))
+				{
+					this._LOCATION_CITY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_DISTRICT", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string LOCATION_DISTRICT
+		{
+			get
+			{
+				return this._LOCATION_DISTRICT;
+			}
+			set
+			{
+				if ((this._LOCATION_DISTRICT != value))
+				{
+					this._LOCATION_DISTRICT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_STREET", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string LOCATION_STREET
+		{
+			get
+			{
+				return this._LOCATION_STREET;
+			}
+			set
+			{
+				if ((this._LOCATION_STREET != value))
+				{
+					this._LOCATION_STREET = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_COORDINATES", DbType="NVarChar(50)")]
+		public string LOCATION_COORDINATES
+		{
+			get
+			{
+				return this._LOCATION_COORDINATES;
+			}
+			set
+			{
+				if ((this._LOCATION_COORDINATES != value))
+				{
+					this._LOCATION_COORDINATES = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_TAGS", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string PRODUCT_TAGS
+		{
+			get
+			{
+				return this._PRODUCT_TAGS;
+			}
+			set
+			{
+				if ((this._PRODUCT_TAGS != value))
+				{
+					this._PRODUCT_TAGS = value;
 				}
 			}
 		}

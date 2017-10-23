@@ -258,5 +258,52 @@ namespace DataEntryWebService
                 return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
             }
         }
+
+        public string getFlyerBasicData(int flyerID)
+        {
+            ReturnObject<GET_FLYER_BASIC_DATAResult> output = null;
+            try
+            {
+                FlyersHandler handler = new FlyersHandler();
+
+                GET_FLYER_BASIC_DATAResult flyerData = handler.GET_FLYER_DATA(flyerID);
+                output = new ReturnObject<GET_FLYER_BASIC_DATAResult>(ErrorConstants.SUCCESS, flyerData);
+
+                if (flyerData != null)
+                    return JsonConvert.SerializeObject(output);
+                else
+                {
+                    return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_FAILED_TO_GET_FLYER_DATA, ErrorConstants.ERROR_FAILED_TO_GET_FLYER_DATA_MSG));
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
+            }
+        }
+
+        public string getFlyerProducts(int flyerID)
+        {
+            ReturnObject<List<GET_FLYER_PRODUCTS_DATAResult>> output = null;
+            try
+            {
+                ProductsHandler handler = new ProductsHandler();
+
+                List<GET_FLYER_PRODUCTS_DATAResult> prodData = handler.GET_FLYER_PRODUCTS(flyerID);
+                output = new ReturnObject<List<GET_FLYER_PRODUCTS_DATAResult>>(ErrorConstants.SUCCESS, prodData);
+
+                if (prodData.Count > 0)
+                    return JsonConvert.SerializeObject(output);
+                else
+                {
+                    return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_FAILED_TO_GET_FLYER_PRODUCTS, ErrorConstants.ERROR_FAILED_TO_GET_FLYER_PRODUCTS_MSG));
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
+            }
+        }
+
     }
 }

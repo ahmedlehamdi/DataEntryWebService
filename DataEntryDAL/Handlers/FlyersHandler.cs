@@ -48,6 +48,8 @@ namespace DataEntryDAL.Handlers
 
                 flyer.FRAME_ID = frame.FRAME_ID;
 
+                flyer.FLYER_APPROVED = null;
+
                 context.OFFER_FLYERs.InsertOnSubmit(flyer);
 
                 context.SubmitChanges();
@@ -56,5 +58,15 @@ namespace DataEntryDAL.Handlers
             }
         }
 
+
+        public GET_FLYER_BASIC_DATAResult GET_FLYER_DATA(int fID)
+        {
+            
+            using (DataClassesDataContext context = new DataClassesDataContext())
+            {
+                var result = context.GET_FLYER_BASIC_DATA(fID).FirstOrDefault();
+                return result;
+            }
+        }
     }
 }

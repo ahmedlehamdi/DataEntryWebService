@@ -222,4 +222,56 @@
       <Column Name="FRAME_TYPE_EQUATION" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.GET_FLYER_BASIC_DATA" Method="GET_FLYER_BASIC_DATA">
+    <Parameter Name="flyerID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GET_FLYER_BASIC_DATAResult">
+      <Column Name="FLYER_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FLYER_NAME_EN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FLYER_NAME_AR" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PROVIDER_NAME_EN" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="PROVIDER_NAME_AR" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="PROVIDER_CONTACTS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PROVIDER_COORDINATOR" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PROVIDER_BUSINESS_AREA" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="LOCATION_COUNTRY" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LOCATION_REGION" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LOCATION_CITY" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FRAME_NAME_EN" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="FRAME_NAME_AR" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="FRAME_DATE_FROM" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FRAME_DATE_TO" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="OFFER_TYPE_NAME_EN" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="OFFER_TYPE_NAME_AR" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="FLYER_IMAGE_URL" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GET_FLYER_PRODUCTS_DATA" Method="GET_FLYER_PRODUCTS_DATA">
+    <Parameter Name="flyerID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GET_FLYER_PRODUCTS_DATAResult">
+      <Column Name="PRODUCT_NAME_EN" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="PRODUCT_NAME_AR" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="TYPE_NAME_EN" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="TYPE_NAME_AR" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="CATEGORY_NAME_EN" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="CATEGORY_NAME_AR" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="PRODUCT_IMAGE" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SPECS_ATTR_1" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="SPECS_ATTR_2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SPECS_ATTR_3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SPECS_ATTR_4" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SPECS_ATTR_5" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PROVIDER_NAME_EN" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="PROVIDER_NAME_AR" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="PROVIDER_BUSINESS_AREA" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="PROVIDER_CONTACTS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PROVIDER_COORDINATOR" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LOCATION_COUNTRY" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LOCATION_REGION" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LOCATION_CITY" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LOCATION_DISTRICT" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LOCATION_STREET" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LOCATION_COORDINATES" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PRODUCT_TAGS" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+    </ElementType>
+  </Function>
 </Database>

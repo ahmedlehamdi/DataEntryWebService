@@ -36,5 +36,11 @@ namespace DataEntryWebService.ServiceIntegration
 
         public readonly static int ERROR_FAILED_TO_ADD_FLYER_PRODUCTS = 9999;
         public readonly static string ERROR_FAILED_TO_ADD_FLYER_PRODUCTS_MSG = "Failed to Add Flyer Products";
+
+        public readonly static int ERROR_FAILED_TO_GET_FLYER_DATA = 121212;
+        public readonly static string ERROR_FAILED_TO_GET_FLYER_DATA_MSG = "Failed to retrieve Flyer Basic Data";
+
+        public readonly static int ERROR_FAILED_TO_GET_FLYER_PRODUCTS = 131313;
+        public readonly static string ERROR_FAILED_TO_GET_FLYER_PRODUCTS_MSG = "Failed to retrieve Flyer Products";
     }
 }

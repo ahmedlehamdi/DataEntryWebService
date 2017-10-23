@@ -77,5 +77,15 @@ namespace DataEntryDAL.Handlers
                 return -1;
             }
         }
+
+        public List<GET_FLYER_PRODUCTS_DATAResult> GET_FLYER_PRODUCTS(int fID)
+        {
+
+            using (DataClassesDataContext context = new DataClassesDataContext())
+            {
+                var result = context.GET_FLYER_PRODUCTS_DATA(fID).ToList<GET_FLYER_PRODUCTS_DATAResult>();
+                return result;
+            }
+        }
     }
 }
