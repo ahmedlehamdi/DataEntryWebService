@@ -390,8 +390,6 @@ namespace DataEntryDAL.DataAccessLogic
 		
 		private string _LOCATION_COORDINATES;
 		
-		private EntitySet<PROVIDER> _PROVIDERs;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -414,7 +412,6 @@ namespace DataEntryDAL.DataAccessLogic
 		
 		public LOCATION()
 		{
-			this._PROVIDERs = new EntitySet<PROVIDER>(new Action<PROVIDER>(this.attach_PROVIDERs), new Action<PROVIDER>(this.detach_PROVIDERs));
 			OnCreated();
 		}
 		
@@ -558,19 +555,6 @@ namespace DataEntryDAL.DataAccessLogic
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LOCATION_PROVIDER", Storage="_PROVIDERs", ThisKey="LOCATION_ID", OtherKey="LOCATION_ID")]
-		public EntitySet<PROVIDER> PROVIDERs
-		{
-			get
-			{
-				return this._PROVIDERs;
-			}
-			set
-			{
-				this._PROVIDERs.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -589,18 +573,6 @@ namespace DataEntryDAL.DataAccessLogic
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_PROVIDERs(PROVIDER entity)
-		{
-			this.SendPropertyChanging();
-			entity.LOCATION = this;
-		}
-		
-		private void detach_PROVIDERs(PROVIDER entity)
-		{
-			this.SendPropertyChanging();
-			entity.LOCATION = null;
 		}
 	}
 	
@@ -934,8 +906,6 @@ namespace DataEntryDAL.DataAccessLogic
 		
 		private string _SPECS_ATTR_10;
 		
-		private EntitySet<PRODUCT> _PRODUCTs;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -966,7 +936,6 @@ namespace DataEntryDAL.DataAccessLogic
 		
 		public PRODUCT_SPEC()
 		{
-			this._PRODUCTs = new EntitySet<PRODUCT>(new Action<PRODUCT>(this.attach_PRODUCTs), new Action<PRODUCT>(this.detach_PRODUCTs));
 			OnCreated();
 		}
 		
@@ -1190,19 +1159,6 @@ namespace DataEntryDAL.DataAccessLogic
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PRODUCT_SPEC_PRODUCT", Storage="_PRODUCTs", ThisKey="SPECS_ID", OtherKey="SPECS_ID")]
-		public EntitySet<PRODUCT> PRODUCTs
-		{
-			get
-			{
-				return this._PRODUCTs;
-			}
-			set
-			{
-				this._PRODUCTs.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1221,18 +1177,6 @@ namespace DataEntryDAL.DataAccessLogic
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_PRODUCTs(PRODUCT entity)
-		{
-			this.SendPropertyChanging();
-			entity.PRODUCT_SPEC = this;
-		}
-		
-		private void detach_PRODUCTs(PRODUCT entity)
-		{
-			this.SendPropertyChanging();
-			entity.PRODUCT_SPEC = null;
 		}
 	}
 	
@@ -1272,10 +1216,6 @@ namespace DataEntryDAL.DataAccessLogic
 		
 		private string _TYPE_ATTR_10;
 		
-		private EntitySet<PRODUCT> _PRODUCTs;
-		
-		private EntityRef<PRODUCTS_CATEGORy> _PRODUCTS_CATEGORy;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1314,8 +1254,6 @@ namespace DataEntryDAL.DataAccessLogic
 		
 		public PRODUCT_TYPE()
 		{
-			this._PRODUCTs = new EntitySet<PRODUCT>(new Action<PRODUCT>(this.attach_PRODUCTs), new Action<PRODUCT>(this.detach_PRODUCTs));
-			this._PRODUCTS_CATEGORy = default(EntityRef<PRODUCTS_CATEGORy>);
 			OnCreated();
 		}
 		
@@ -1390,10 +1328,6 @@ namespace DataEntryDAL.DataAccessLogic
 			{
 				if ((this._CATEGORY_ID != value))
 				{
-					if (this._PRODUCTS_CATEGORy.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnCATEGORY_IDChanging(value);
 					this.SendPropertyChanging();
 					this._CATEGORY_ID = value;
@@ -1623,53 +1557,6 @@ namespace DataEntryDAL.DataAccessLogic
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PRODUCT_TYPE_PRODUCT", Storage="_PRODUCTs", ThisKey="TYPE_ID", OtherKey="TYPE_ID")]
-		public EntitySet<PRODUCT> PRODUCTs
-		{
-			get
-			{
-				return this._PRODUCTs;
-			}
-			set
-			{
-				this._PRODUCTs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PRODUCTS_CATEGORy_PRODUCT_TYPE", Storage="_PRODUCTS_CATEGORy", ThisKey="CATEGORY_ID", OtherKey="CATEGORY_ID", IsForeignKey=true)]
-		public PRODUCTS_CATEGORy PRODUCTS_CATEGORy
-		{
-			get
-			{
-				return this._PRODUCTS_CATEGORy.Entity;
-			}
-			set
-			{
-				PRODUCTS_CATEGORy previousValue = this._PRODUCTS_CATEGORy.Entity;
-				if (((previousValue != value) 
-							|| (this._PRODUCTS_CATEGORy.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PRODUCTS_CATEGORy.Entity = null;
-						previousValue.PRODUCT_TYPEs.Remove(this);
-					}
-					this._PRODUCTS_CATEGORy.Entity = value;
-					if ((value != null))
-					{
-						value.PRODUCT_TYPEs.Add(this);
-						this._CATEGORY_ID = value.CATEGORY_ID;
-					}
-					else
-					{
-						this._CATEGORY_ID = default(int);
-					}
-					this.SendPropertyChanged("PRODUCTS_CATEGORy");
-				}
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1688,18 +1575,6 @@ namespace DataEntryDAL.DataAccessLogic
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_PRODUCTs(PRODUCT entity)
-		{
-			this.SendPropertyChanging();
-			entity.PRODUCT_TYPE = this;
-		}
-		
-		private void detach_PRODUCTs(PRODUCT entity)
-		{
-			this.SendPropertyChanging();
-			entity.PRODUCT_TYPE = null;
 		}
 	}
 	
@@ -1747,12 +1622,6 @@ namespace DataEntryDAL.DataAccessLogic
 		
 		private string _PRODUCT_ATTR_10;
 		
-		private EntityRef<PRODUCT_SPEC> _PRODUCT_SPEC;
-		
-		private EntityRef<PRODUCT_TYPE> _PRODUCT_TYPE;
-		
-		private EntityRef<PROVIDER> _PROVIDER;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1799,9 +1668,6 @@ namespace DataEntryDAL.DataAccessLogic
 		
 		public PRODUCT()
 		{
-			this._PRODUCT_SPEC = default(EntityRef<PRODUCT_SPEC>);
-			this._PRODUCT_TYPE = default(EntityRef<PRODUCT_TYPE>);
-			this._PROVIDER = default(EntityRef<PROVIDER>);
 			OnCreated();
 		}
 		
@@ -1896,10 +1762,6 @@ namespace DataEntryDAL.DataAccessLogic
 			{
 				if ((this._TYPE_ID != value))
 				{
-					if (this._PRODUCT_TYPE.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnTYPE_IDChanging(value);
 					this.SendPropertyChanging();
 					this._TYPE_ID = value;
@@ -1940,10 +1802,6 @@ namespace DataEntryDAL.DataAccessLogic
 			{
 				if ((this._SPECS_ID != value))
 				{
-					if (this._PRODUCT_SPEC.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnSPECS_IDChanging(value);
 					this.SendPropertyChanging();
 					this._SPECS_ID = value;
@@ -1964,10 +1822,6 @@ namespace DataEntryDAL.DataAccessLogic
 			{
 				if ((this._PROVIDER_ID != value))
 				{
-					if (this._PROVIDER.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnPROVIDER_IDChanging(value);
 					this.SendPropertyChanging();
 					this._PROVIDER_ID = value;
@@ -2197,108 +2051,6 @@ namespace DataEntryDAL.DataAccessLogic
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PRODUCT_SPEC_PRODUCT", Storage="_PRODUCT_SPEC", ThisKey="SPECS_ID", OtherKey="SPECS_ID", IsForeignKey=true)]
-		public PRODUCT_SPEC PRODUCT_SPEC
-		{
-			get
-			{
-				return this._PRODUCT_SPEC.Entity;
-			}
-			set
-			{
-				PRODUCT_SPEC previousValue = this._PRODUCT_SPEC.Entity;
-				if (((previousValue != value) 
-							|| (this._PRODUCT_SPEC.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PRODUCT_SPEC.Entity = null;
-						previousValue.PRODUCTs.Remove(this);
-					}
-					this._PRODUCT_SPEC.Entity = value;
-					if ((value != null))
-					{
-						value.PRODUCTs.Add(this);
-						this._SPECS_ID = value.SPECS_ID;
-					}
-					else
-					{
-						this._SPECS_ID = default(int);
-					}
-					this.SendPropertyChanged("PRODUCT_SPEC");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PRODUCT_TYPE_PRODUCT", Storage="_PRODUCT_TYPE", ThisKey="TYPE_ID", OtherKey="TYPE_ID", IsForeignKey=true)]
-		public PRODUCT_TYPE PRODUCT_TYPE
-		{
-			get
-			{
-				return this._PRODUCT_TYPE.Entity;
-			}
-			set
-			{
-				PRODUCT_TYPE previousValue = this._PRODUCT_TYPE.Entity;
-				if (((previousValue != value) 
-							|| (this._PRODUCT_TYPE.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PRODUCT_TYPE.Entity = null;
-						previousValue.PRODUCTs.Remove(this);
-					}
-					this._PRODUCT_TYPE.Entity = value;
-					if ((value != null))
-					{
-						value.PRODUCTs.Add(this);
-						this._TYPE_ID = value.TYPE_ID;
-					}
-					else
-					{
-						this._TYPE_ID = default(int);
-					}
-					this.SendPropertyChanged("PRODUCT_TYPE");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PROVIDER_PRODUCT", Storage="_PROVIDER", ThisKey="PROVIDER_ID", OtherKey="PROVIDER_ID", IsForeignKey=true)]
-		public PROVIDER PROVIDER
-		{
-			get
-			{
-				return this._PROVIDER.Entity;
-			}
-			set
-			{
-				PROVIDER previousValue = this._PROVIDER.Entity;
-				if (((previousValue != value) 
-							|| (this._PROVIDER.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PROVIDER.Entity = null;
-						previousValue.PRODUCTs.Remove(this);
-					}
-					this._PROVIDER.Entity = value;
-					if ((value != null))
-					{
-						value.PRODUCTs.Add(this);
-						this._PROVIDER_ID = value.PROVIDER_ID;
-					}
-					else
-					{
-						this._PROVIDER_ID = default(int);
-					}
-					this.SendPropertyChanged("PROVIDER");
-				}
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2354,8 +2106,6 @@ namespace DataEntryDAL.DataAccessLogic
 		
 		private string _CATEGORY_ATTR_10;
 		
-		private EntitySet<PRODUCT_TYPE> _PRODUCT_TYPEs;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -2392,7 +2142,6 @@ namespace DataEntryDAL.DataAccessLogic
 		
 		public PRODUCTS_CATEGORy()
 		{
-			this._PRODUCT_TYPEs = new EntitySet<PRODUCT_TYPE>(new Action<PRODUCT_TYPE>(this.attach_PRODUCT_TYPEs), new Action<PRODUCT_TYPE>(this.detach_PRODUCT_TYPEs));
 			OnCreated();
 		}
 		
@@ -2676,19 +2425,6 @@ namespace DataEntryDAL.DataAccessLogic
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PRODUCTS_CATEGORy_PRODUCT_TYPE", Storage="_PRODUCT_TYPEs", ThisKey="CATEGORY_ID", OtherKey="CATEGORY_ID")]
-		public EntitySet<PRODUCT_TYPE> PRODUCT_TYPEs
-		{
-			get
-			{
-				return this._PRODUCT_TYPEs;
-			}
-			set
-			{
-				this._PRODUCT_TYPEs.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2707,18 +2443,6 @@ namespace DataEntryDAL.DataAccessLogic
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_PRODUCT_TYPEs(PRODUCT_TYPE entity)
-		{
-			this.SendPropertyChanging();
-			entity.PRODUCTS_CATEGORy = this;
-		}
-		
-		private void detach_PRODUCT_TYPEs(PRODUCT_TYPE entity)
-		{
-			this.SendPropertyChanging();
-			entity.PRODUCTS_CATEGORy = null;
 		}
 	}
 	
@@ -2742,10 +2466,6 @@ namespace DataEntryDAL.DataAccessLogic
 		
 		private string _PROVIDER_COORDINATOR;
 		
-		private EntitySet<PRODUCT> _PRODUCTs;
-		
-		private EntityRef<LOCATION> _LOCATION;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -2768,8 +2488,6 @@ namespace DataEntryDAL.DataAccessLogic
 		
 		public PROVIDER()
 		{
-			this._PRODUCTs = new EntitySet<PRODUCT>(new Action<PRODUCT>(this.attach_PRODUCTs), new Action<PRODUCT>(this.detach_PRODUCTs));
-			this._LOCATION = default(EntityRef<LOCATION>);
 			OnCreated();
 		}
 		
@@ -2864,10 +2582,6 @@ namespace DataEntryDAL.DataAccessLogic
 			{
 				if ((this._LOCATION_ID != value))
 				{
-					if (this._LOCATION.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnLOCATION_IDChanging(value);
 					this.SendPropertyChanging();
 					this._LOCATION_ID = value;
@@ -2917,53 +2631,6 @@ namespace DataEntryDAL.DataAccessLogic
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PROVIDER_PRODUCT", Storage="_PRODUCTs", ThisKey="PROVIDER_ID", OtherKey="PROVIDER_ID")]
-		public EntitySet<PRODUCT> PRODUCTs
-		{
-			get
-			{
-				return this._PRODUCTs;
-			}
-			set
-			{
-				this._PRODUCTs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LOCATION_PROVIDER", Storage="_LOCATION", ThisKey="LOCATION_ID", OtherKey="LOCATION_ID", IsForeignKey=true)]
-		public LOCATION LOCATION
-		{
-			get
-			{
-				return this._LOCATION.Entity;
-			}
-			set
-			{
-				LOCATION previousValue = this._LOCATION.Entity;
-				if (((previousValue != value) 
-							|| (this._LOCATION.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._LOCATION.Entity = null;
-						previousValue.PROVIDERs.Remove(this);
-					}
-					this._LOCATION.Entity = value;
-					if ((value != null))
-					{
-						value.PROVIDERs.Add(this);
-						this._LOCATION_ID = value.LOCATION_ID;
-					}
-					else
-					{
-						this._LOCATION_ID = default(int);
-					}
-					this.SendPropertyChanged("LOCATION");
-				}
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2982,18 +2649,6 @@ namespace DataEntryDAL.DataAccessLogic
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_PRODUCTs(PRODUCT entity)
-		{
-			this.SendPropertyChanging();
-			entity.PROVIDER = this;
-		}
-		
-		private void detach_PRODUCTs(PRODUCT entity)
-		{
-			this.SendPropertyChanging();
-			entity.PROVIDER = null;
 		}
 	}
 	

@@ -24,5 +24,17 @@ namespace DataEntryWebService.ServiceIntegration
 
         public readonly static int ERROR_NO_TIME_FRAMES_FOUND = 5555;
         public readonly static string ERROR_NO_TIME_FRAMES_FOUND_MSG = "No Time Frames Found";
+
+        public readonly static int ERROR_NO_PRODUCT_CATEGORIES_FOUND = 6666;
+        public readonly static string ERROR_NO_PRODUCT_CATEGORIES_FOUND_MSG = "No Product Categories Found";
+
+        public readonly static int ERROR_NO_PRODUCT_TYPES_FOUND = 7777;
+        public readonly static string ERROR_NO_PRODUCT_TYPES_FOUND_MSG = "No Categories Types Found";
+
+        public readonly static int ERROR_FAILED_TO_ADD_PRODUCT = 8888;
+        public readonly static string ERROR_FAILED_TO_ADD_PRODUCT_MSG = "Failed to Add Product";
+
+        public readonly static int ERROR_FAILED_TO_ADD_FLYER_PRODUCTS = 9999;
+        public readonly static string ERROR_FAILED_TO_ADD_FLYER_PRODUCTS_MSG = "Failed to Add Flyer Products";
     }
 }

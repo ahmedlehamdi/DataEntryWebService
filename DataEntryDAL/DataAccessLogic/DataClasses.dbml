@@ -18,7 +18,6 @@
       <Column Name="LOCATION_DISTRICT" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="LOCATION_STREET" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="LOCATION_COORDINATES" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="LOCATION_PROVIDER" Member="PROVIDERs" ThisKey="LOCATION_ID" OtherKey="LOCATION_ID" Type="PROVIDER" />
     </Type>
   </Table>
   <Table Name="dbo.OFFER_FLYERS" Member="OFFER_FLYERs">
@@ -49,7 +48,6 @@
       <Column Name="SPECS_ATTR_8" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="SPECS_ATTR_9" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="SPECS_ATTR_10" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Association Name="PRODUCT_SPEC_PRODUCT" Member="PRODUCTs" ThisKey="SPECS_ID" OtherKey="SPECS_ID" Type="PRODUCT" />
     </Type>
   </Table>
   <Table Name="dbo.PRODUCT_TYPES" Member="PRODUCT_TYPEs">
@@ -69,8 +67,6 @@
       <Column Name="TYPE_ATTR_8" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="TYPE_ATTR_9" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="TYPE_ATTR_10" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Association Name="PRODUCT_TYPE_PRODUCT" Member="PRODUCTs" ThisKey="TYPE_ID" OtherKey="TYPE_ID" Type="PRODUCT" />
-      <Association Name="PRODUCTS_CATEGORy_PRODUCT_TYPE" Member="PRODUCTS_CATEGORy" ThisKey="CATEGORY_ID" OtherKey="CATEGORY_ID" Type="PRODUCTS_CATEGORy" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.PRODUCTS" Member="PRODUCTs">
@@ -94,9 +90,6 @@
       <Column Name="PRODUCT_ATTR_8" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="PRODUCT_ATTR_9" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="PRODUCT_ATTR_10" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Association Name="PRODUCT_SPEC_PRODUCT" Member="PRODUCT_SPEC" ThisKey="SPECS_ID" OtherKey="SPECS_ID" Type="PRODUCT_SPEC" IsForeignKey="true" />
-      <Association Name="PRODUCT_TYPE_PRODUCT" Member="PRODUCT_TYPE" ThisKey="TYPE_ID" OtherKey="TYPE_ID" Type="PRODUCT_TYPE" IsForeignKey="true" />
-      <Association Name="PROVIDER_PRODUCT" Member="PROVIDER" ThisKey="PROVIDER_ID" OtherKey="PROVIDER_ID" Type="PROVIDER" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.PRODUCTS_CATEGORIES" Member="PRODUCTS_CATEGORies">
@@ -115,7 +108,6 @@
       <Column Name="CATEGORY_ATTR_8" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="CATEGORY_ATTR_9" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="CATEGORY_ATTR_10" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Association Name="PRODUCTS_CATEGORy_PRODUCT_TYPE" Member="PRODUCT_TYPEs" ThisKey="CATEGORY_ID" OtherKey="CATEGORY_ID" Type="PRODUCT_TYPE" />
     </Type>
   </Table>
   <Table Name="dbo.PROVIDERS" Member="PROVIDERs">
@@ -127,8 +119,6 @@
       <Column Name="LOCATION_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="PROVIDER_CONTACTS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="PROVIDER_COORDINATOR" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Association Name="PROVIDER_PRODUCT" Member="PRODUCTs" ThisKey="PROVIDER_ID" OtherKey="PROVIDER_ID" Type="PRODUCT" />
-      <Association Name="LOCATION_PROVIDER" Member="LOCATION" ThisKey="LOCATION_ID" OtherKey="LOCATION_ID" Type="LOCATION" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.OFFER_TYPES" Member="OFFER_TYPEs">

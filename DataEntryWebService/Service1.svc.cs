@@ -164,5 +164,99 @@ namespace DataEntryWebService
             }
 
         }
+
+        public string getAllProductCategories()
+        {
+            List<PRODUCTS_CATEGORy> cats = null;
+            ReturnObject<List<PRODUCTS_CATEGORy>> catsObj = new ReturnObject<List<PRODUCTS_CATEGORy>>();
+            try
+            {
+                ProductsHandler handler = new ProductsHandler();
+
+                cats = handler.getAllProductCategories();
+                catsObj = new ReturnObject<List<PRODUCTS_CATEGORy>>(ErrorConstants.SUCCESS, cats);
+
+                if (cats != null)
+                    return JsonConvert.SerializeObject(catsObj);
+                else
+                {
+                    return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_NO_PRODUCT_CATEGORIES_FOUND, ErrorConstants.ERROR_NO_PRODUCT_CATEGORIES_FOUND_MSG));
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
+            }
+        }
+
+        public string getAllCategoryTypes(int categoryID)
+        {
+            List<PRODUCT_TYPE> types = null;
+            ReturnObject<List<PRODUCT_TYPE>> typesObj = null;
+            try
+            {
+                ProductsHandler handler = new ProductsHandler();
+
+                types = handler.getAllCategoryTypes(categoryID);
+                typesObj = new ReturnObject<List<PRODUCT_TYPE>>(ErrorConstants.SUCCESS, types);
+
+                if (types != null)
+                    return JsonConvert.SerializeObject(typesObj);
+                else
+                {
+                    return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_NO_PRODUCT_TYPES_FOUND, ErrorConstants.ERROR_NO_PRODUCT_TYPES_FOUND_MSG));
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
+            }
+        }
+
+        public string submitFlyerProduct(PRODUCT product, PRODUCT_SPEC specs)
+        {
+            ReturnObject<int> output = null;
+            try
+            {
+                ProductsHandler handler = new ProductsHandler();
+
+                int productID = handler.AddFlyerProduct(product, specs);
+                output = new ReturnObject<int>(ErrorConstants.SUCCESS, productID);
+
+                if (productID != -1)
+                    return JsonConvert.SerializeObject(output);
+                else
+                {
+                    return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_FAILED_TO_ADD_PRODUCT, ErrorConstants.ERROR_FAILED_TO_ADD_PRODUCT_MSG));
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
+            }
+        }
+
+        public string submitFlyerAllProducts(List<PRODUCT> products, List<PRODUCT_SPEC> specs)
+        {
+            ReturnObject<int> output = null;
+            try
+            {
+                ProductsHandler handler = new ProductsHandler();
+
+                int successIndicator = handler.AddFlyerAllProducts(products, specs);
+                output = new ReturnObject<int>(ErrorConstants.SUCCESS, successIndicator);
+
+                if (successIndicator != -1)
+                    return JsonConvert.SerializeObject(output);
+                else
+                {
+                    return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_FAILED_TO_ADD_FLYER_PRODUCTS, ErrorConstants.ERROR_FAILED_TO_ADD_FLYER_PRODUCTS_MSG));
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
+            }
+        }
     }
 }

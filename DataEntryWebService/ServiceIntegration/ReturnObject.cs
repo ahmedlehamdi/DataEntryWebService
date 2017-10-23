@@ -7,6 +7,8 @@ namespace DataEntryWebService.ServiceIntegration
 {
     public class ReturnObject<OBJ>
     {
+
+        public ReturnObject() { }
         public ReturnObject(int statusCode, OBJ obj)
         {
             this.statusCode = statusCode;
