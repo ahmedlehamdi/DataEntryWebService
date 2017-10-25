@@ -69,12 +69,55 @@ namespace DataEntryDAL.Handlers
             {
                 for (int i = 0; i < products.Count; i++)
                 {
+                    deleteProduct(products.ElementAt(i), specs.ElementAt(i));
                     AddFlyerProduct(products.ElementAt(i), specs.ElementAt(i));
                 }
                 return 0;
             }catch(Exception ex)
             {
                 return -1;
+            }
+        }
+
+        public void deleteProduct(PRODUCT prod, PRODUCT_SPEC spec)
+        {
+            try
+            {
+                using (DataClassesDataContext context = new DataClassesDataContext())
+                {
+                    var deleteSpecs =
+                            from specs in context.PRODUCT_SPECs
+                            where specs.SPECS_ATTR_1 == spec.SPECS_ATTR_1
+                            select specs;
+
+                    foreach (var x in deleteSpecs)
+                    {
+                        context.PRODUCT_SPECs.DeleteOnSubmit(x);
+                    }
+
+                    var deleteProduct =
+                            from product in context.PRODUCTs
+                            where product.PRODUCT_NAME_EN == prod.PRODUCT_NAME_EN
+                            select product;
+
+                    foreach (var y in deleteProduct)
+                    {
+                        context.PRODUCTs.DeleteOnSubmit(y);
+                    }
+
+                    try
+                    {
+                        context.SubmitChanges();
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        // Provide for exceptions.
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
             }
         }
 
