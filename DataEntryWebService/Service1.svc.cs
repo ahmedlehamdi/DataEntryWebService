@@ -145,7 +145,7 @@ namespace DataEntryWebService
             
         }
 
-        public string addNewFlyerBasicData(OFFER_FLYER flyer, TIME_FRAME frame)
+        public string addNewFlyerBasicData(OFFER_FLYER flyer, TIME_FRAME frame, string action)
         {
             
             ReturnObject<int> flyerObj = null;
@@ -153,8 +153,15 @@ namespace DataEntryWebService
             {
                 FlyersHandler handler = new FlyersHandler();
 
-                var flyerID = handler.AddNewFlyer(flyer, frame);
-                flyerObj = new ReturnObject<int>(ErrorConstants.SUCCESS, flyerID);
+                var flyerID = handler.AddNewFlyer(flyer, frame, action);
+                if (flyerID != -1)
+                {
+                    flyerObj = new ReturnObject<int>(ErrorConstants.SUCCESS, flyerID);
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_FAILED_TO_ADD_FLYER, ErrorConstants.ERROR_FAILED_TO_ADD_FLYER_MSG));
+                }
 
                 return JsonConvert.SerializeObject(flyerObj);
             }

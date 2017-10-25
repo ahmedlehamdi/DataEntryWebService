@@ -57,7 +57,7 @@ namespace DataEntryWebService
                  RequestFormat = WebMessageFormat.Json,
                  ResponseFormat = WebMessageFormat.Json,
                  UriTemplate = "getAllTimeFrames")]
-        string addNewFlyerBasicData(OFFER_FLYER flyer, TIME_FRAME frame);
+        string addNewFlyerBasicData(OFFER_FLYER flyer, TIME_FRAME frame, string action);
 
         [OperationContract]
         [WebInvoke(Method = "GET",
