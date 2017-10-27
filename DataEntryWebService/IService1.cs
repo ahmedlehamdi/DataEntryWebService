@@ -101,6 +101,21 @@ namespace DataEntryWebService
                 UriTemplate = "getFlyerProducts")]
         string getFlyerProducts(int flyerID);
 
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+                RequestFormat = WebMessageFormat.Json,
+                ResponseFormat = WebMessageFormat.Json,
+                UriTemplate = "deleteFlyerAndProductsByID")]
+        string deleteFlyerAndProductsByID(int flyerID);
+
+
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+               RequestFormat = WebMessageFormat.Json,
+               ResponseFormat = WebMessageFormat.Json,
+               UriTemplate = "updateUserPassword")]
+        string updateUserPassword(int userID, string password);
+
         //[OperationContract]
         //CompositeType GetDataUsingDataContract(CompositeType composite);
 

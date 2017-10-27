@@ -224,6 +224,13 @@ namespace DataEntryDAL.DataAccessLogic
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), flyerID);
 			return ((ISingleResult<GET_FLYER_PRODUCTS_DATAResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GET_ALL_USER_ALL_FLYERS")]
+		public ISingleResult<GET_ALL_USER_ALL_FLYERSResult> GET_ALL_USER_ALL_FLYERS()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<GET_ALL_USER_ALL_FLYERSResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Users")]
@@ -3512,7 +3519,12 @@ namespace DataEntryDAL.DataAccessLogic
 				}
 			}
 		}
-	}
+
+        public static explicit operator GET_ALL_FLYERS_PROCDResult(GET_ALL_USER_ALL_FLYERSResult v)
+        {
+            throw new NotImplementedException();
+        }
+    }
 	
 	public partial class GET_REJECTED_FLYERSResult
 	{
@@ -5097,6 +5109,284 @@ namespace DataEntryDAL.DataAccessLogic
 				if ((this._PRODUCT_TAGS != value))
 				{
 					this._PRODUCT_TAGS = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GET_ALL_USER_ALL_FLYERSResult
+	{
+		
+		private int _FLYER_ID;
+		
+		private string _PROVIDER_NAME_EN;
+		
+		private string _PROVIDER_NAME_AR;
+		
+		private string _FRAME_NAME_EN;
+		
+		private string _FRAME_NAME_AR;
+		
+		private string _OFFER_TYPE_NAME_EN;
+		
+		private string _OFFER_TYPE_NAME_AR;
+		
+		private string _LOCATION_CITY;
+		
+		private string _LOCATION_DISTRICT;
+		
+		private string _FLYER_NAME_EN;
+		
+		private string _FLYER_NAME_AR;
+		
+		private string _FLYER_IMAGE_URL;
+		
+		private System.Nullable<bool> _FLYER_APPROVED;
+		
+		private System.Nullable<System.DateTime> _FRAME_DATE_FROM;
+		
+		private System.Nullable<System.DateTime> _FRAME_DATE_TO;
+		
+		public GET_ALL_USER_ALL_FLYERSResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_ID", DbType="Int NOT NULL")]
+		public int FLYER_ID
+		{
+			get
+			{
+				return this._FLYER_ID;
+			}
+			set
+			{
+				if ((this._FLYER_ID != value))
+				{
+					this._FLYER_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_NAME_EN", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string PROVIDER_NAME_EN
+		{
+			get
+			{
+				return this._PROVIDER_NAME_EN;
+			}
+			set
+			{
+				if ((this._PROVIDER_NAME_EN != value))
+				{
+					this._PROVIDER_NAME_EN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_NAME_AR", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string PROVIDER_NAME_AR
+		{
+			get
+			{
+				return this._PROVIDER_NAME_AR;
+			}
+			set
+			{
+				if ((this._PROVIDER_NAME_AR != value))
+				{
+					this._PROVIDER_NAME_AR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_NAME_EN", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string FRAME_NAME_EN
+		{
+			get
+			{
+				return this._FRAME_NAME_EN;
+			}
+			set
+			{
+				if ((this._FRAME_NAME_EN != value))
+				{
+					this._FRAME_NAME_EN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_NAME_AR", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string FRAME_NAME_AR
+		{
+			get
+			{
+				return this._FRAME_NAME_AR;
+			}
+			set
+			{
+				if ((this._FRAME_NAME_AR != value))
+				{
+					this._FRAME_NAME_AR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_NAME_EN", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string OFFER_TYPE_NAME_EN
+		{
+			get
+			{
+				return this._OFFER_TYPE_NAME_EN;
+			}
+			set
+			{
+				if ((this._OFFER_TYPE_NAME_EN != value))
+				{
+					this._OFFER_TYPE_NAME_EN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_NAME_AR", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string OFFER_TYPE_NAME_AR
+		{
+			get
+			{
+				return this._OFFER_TYPE_NAME_AR;
+			}
+			set
+			{
+				if ((this._OFFER_TYPE_NAME_AR != value))
+				{
+					this._OFFER_TYPE_NAME_AR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_CITY", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string LOCATION_CITY
+		{
+			get
+			{
+				return this._LOCATION_CITY;
+			}
+			set
+			{
+				if ((this._LOCATION_CITY != value))
+				{
+					this._LOCATION_CITY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_DISTRICT", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string LOCATION_DISTRICT
+		{
+			get
+			{
+				return this._LOCATION_DISTRICT;
+			}
+			set
+			{
+				if ((this._LOCATION_DISTRICT != value))
+				{
+					this._LOCATION_DISTRICT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_NAME_EN", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string FLYER_NAME_EN
+		{
+			get
+			{
+				return this._FLYER_NAME_EN;
+			}
+			set
+			{
+				if ((this._FLYER_NAME_EN != value))
+				{
+					this._FLYER_NAME_EN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_NAME_AR", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string FLYER_NAME_AR
+		{
+			get
+			{
+				return this._FLYER_NAME_AR;
+			}
+			set
+			{
+				if ((this._FLYER_NAME_AR != value))
+				{
+					this._FLYER_NAME_AR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_IMAGE_URL", DbType="NVarChar(MAX)")]
+		public string FLYER_IMAGE_URL
+		{
+			get
+			{
+				return this._FLYER_IMAGE_URL;
+			}
+			set
+			{
+				if ((this._FLYER_IMAGE_URL != value))
+				{
+					this._FLYER_IMAGE_URL = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_APPROVED", DbType="Bit")]
+		public System.Nullable<bool> FLYER_APPROVED
+		{
+			get
+			{
+				return this._FLYER_APPROVED;
+			}
+			set
+			{
+				if ((this._FLYER_APPROVED != value))
+				{
+					this._FLYER_APPROVED = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_DATE_FROM", DbType="DateTime")]
+		public System.Nullable<System.DateTime> FRAME_DATE_FROM
+		{
+			get
+			{
+				return this._FRAME_DATE_FROM;
+			}
+			set
+			{
+				if ((this._FRAME_DATE_FROM != value))
+				{
+					this._FRAME_DATE_FROM = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_DATE_TO", DbType="DateTime")]
+		public System.Nullable<System.DateTime> FRAME_DATE_TO
+		{
+			get
+			{
+				return this._FRAME_DATE_TO;
+			}
+			set
+			{
+				if ((this._FRAME_DATE_TO != value))
+				{
+					this._FRAME_DATE_TO = value;
 				}
 			}
 		}

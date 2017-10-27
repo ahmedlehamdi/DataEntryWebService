@@ -14,11 +14,40 @@ namespace DataEntryDAL.Handlers
             List<GET_ALL_FLYERS_PROCDResult> allFlyers = new List<GET_ALL_FLYERS_PROCDResult>();
             using (DataClassesDataContext context = new DataClassesDataContext())
             {
-                var result = context.GET_ALL_FLYERS_PROCD(userID);
-                foreach (GET_ALL_FLYERS_PROCDResult f in result)
+                var user = context.Users.Single(x => x.USER_ID == userID);
+                if(user.USER_TYPE == "DataEntry")
                 {
-                    allFlyers.Add(f);
+                    var result = context.GET_ALL_FLYERS_PROCD(userID);
+                    foreach (GET_ALL_FLYERS_PROCDResult f in result)
+                    {
+                        allFlyers.Add(f);
+                    }
                 }
+                else if (user.USER_TYPE == "Admin" || user.USER_TYPE == "SuperAdmin")
+                {
+                    var result = context.GET_ALL_USER_ALL_FLYERS();
+                    foreach (GET_ALL_USER_ALL_FLYERSResult f in result)
+                    {
+                        GET_ALL_FLYERS_PROCDResult x = new GET_ALL_FLYERS_PROCDResult();
+                        x.FLYER_APPROVED = f.FLYER_APPROVED;
+                        x.FLYER_ID = f.FLYER_ID;
+                        x.FLYER_IMAGE_URL = f.FLYER_IMAGE_URL;
+                        x.FLYER_NAME_AR = f.FLYER_NAME_AR;
+                        x.FLYER_NAME_EN = f.FLYER_NAME_EN;
+                        x.FRAME_DATE_FROM = f.FRAME_DATE_FROM;
+                        x.FRAME_DATE_TO = f.FRAME_DATE_TO;
+                        x.FRAME_NAME_AR = f.FRAME_NAME_AR;
+                        x.FRAME_NAME_EN = f.FRAME_NAME_EN;
+                        x.LOCATION_CITY = f.LOCATION_CITY;
+                        x.LOCATION_DISTRICT = f.LOCATION_DISTRICT;
+                        x.OFFER_TYPE_NAME_AR = f.OFFER_TYPE_NAME_AR;
+                        x.OFFER_TYPE_NAME_EN = f.OFFER_TYPE_NAME_EN;
+                        x.PROVIDER_NAME_AR = f.PROVIDER_NAME_AR;
+                        x.PROVIDER_NAME_EN = f.PROVIDER_NAME_EN;
+                        allFlyers.Add(x);
+                    }
+                }
+                
             }
             return allFlyers;
         }
@@ -98,5 +127,40 @@ namespace DataEntryDAL.Handlers
                 return result;
             }
         }
+
+        public int deleteFlyerByID(int flyerID)
+        {
+            try
+            {
+                using (DataClassesDataContext context = new DataClassesDataContext())
+                {
+                    var deleteFlyer =
+                                from flyers in context.OFFER_FLYERs
+                                where flyers.FLYER_ID == flyerID
+                                select flyers;
+
+                    foreach (var x in deleteFlyer)
+                    {
+                        context.OFFER_FLYERs.DeleteOnSubmit(x);
+                    }
+
+                    var deleteFlyerProducts =
+                                from products in context.PRODUCTs
+                                where products.FLYER_ID == flyerID
+                                select products;
+
+                    foreach (var x in deleteFlyerProducts)
+                    {
+                        context.PRODUCTs.DeleteOnSubmit(x);
+                    }
+                    context.SubmitChanges();
+                    return flyerID;
+                }
+            }catch(Exception e)
+            {
+                return -1;
+            }
+        }
+
     }
 }

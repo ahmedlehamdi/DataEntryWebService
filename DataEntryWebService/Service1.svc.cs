@@ -312,5 +312,51 @@ namespace DataEntryWebService
             }
         }
 
+        public string deleteFlyerAndProductsByID(int flyerID)
+        {
+            ReturnObject<int> output = null;
+            try
+            {
+                FlyersHandler handler = new FlyersHandler();
+
+                int flyer = handler.deleteFlyerByID(flyerID);
+                output = new ReturnObject<int>(ErrorConstants.SUCCESS, flyer);
+
+                if (flyer >  0)
+                    return JsonConvert.SerializeObject(output);
+                else
+                {
+                    return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_FAILED_TO_DELETE_FLYER, ErrorConstants.ERROR_FAILED_TO_DELETE_FLYER_MSG));
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
+            }
+        }
+
+        public string updateUserPassword(int userID, string password)
+        {
+            ReturnObject<int> output = null;
+            try
+            {
+                UserHandler handler = new UserHandler();
+
+                int user = handler.updatePassword(userID, password);
+                output = new ReturnObject<int>(ErrorConstants.SUCCESS, user);
+
+                if (user > 0)
+                    return JsonConvert.SerializeObject(output);
+                else
+                {
+                    return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_FAILED_TO_UPDATE_PASSWORD, ErrorConstants.ERROR_FAILED_TO_UPDATE_PASSWORD_MSG));
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
+            }
+        }
+
     }
 }

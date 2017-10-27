@@ -23,6 +23,28 @@ namespace DataEntryDAL.Handlers
             }
             return validUser;
         }
+        public int updatePassword(int userID, string password)
+        {
+            try
+            {
+                using (DataClassesDataContext context = new DataClassesDataContext())
+                {
+                    var user = (from a in context.GetTable<User>()
+                                where (a.USER_ID == userID)
+                                select a).FirstOrDefault<User>();
+                    if (user != null)
+                    {
+                        user.USER_PASSWORD = password;
+                        context.SubmitChanges();
+                    }
+                }
+                return userID;
+            }
+            catch (Exception e)
+            {
+                return -1;
+            }
+        }
 
     }
   
