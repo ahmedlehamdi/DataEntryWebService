@@ -162,5 +162,28 @@ namespace DataEntryDAL.Handlers
             }
         }
 
+
+        public int approveRejectFlyer(int flyerID, bool flag)
+        {
+            try
+            {
+                using (DataClassesDataContext context = new DataClassesDataContext())
+                {
+                    var flyer = (from a in context.GetTable<OFFER_FLYER>()
+                                where (a.FLYER_ID == flyerID)
+                                select a).FirstOrDefault<OFFER_FLYER>();
+                    if (flyer != null)
+                    {
+                        flyer.FLYER_APPROVED = flag;
+                        context.SubmitChanges();
+                    }
+                }
+                return flyerID;
+            }
+            catch (Exception e)
+            {
+                return -1;
+            }
+        }
     }
 }

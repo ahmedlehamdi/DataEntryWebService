@@ -116,6 +116,13 @@ namespace DataEntryWebService
                UriTemplate = "updateUserPassword")]
         string updateUserPassword(int userID, string password);
 
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+              RequestFormat = WebMessageFormat.Json,
+              ResponseFormat = WebMessageFormat.Json,
+              UriTemplate = "approveRejectFlyer")]
+        string approveRejectFlyer(int flyerID, bool approveRejectFlag);
+
         //[OperationContract]
         //CompositeType GetDataUsingDataContract(CompositeType composite);
 

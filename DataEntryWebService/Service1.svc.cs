@@ -358,5 +358,28 @@ namespace DataEntryWebService
             }
         }
 
+        public string approveRejectFlyer(int flyerID, bool approveRejectFlag)
+        {
+            ReturnObject<int> output = null;
+            try
+            {
+                FlyersHandler handler = new FlyersHandler();
+
+                int flyer = handler.approveRejectFlyer(flyerID, approveRejectFlag);
+                output = new ReturnObject<int>(ErrorConstants.SUCCESS, flyer);
+
+                if (flyer > 0)
+                    return JsonConvert.SerializeObject(output);
+                else
+                {
+                    return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_FAILED_TO_UPDATE_FLYER_STATUS, ErrorConstants.ERROR_FAILED_TO_UPDATE_FLYER_STATUS_MSG));
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
+            }
+        }
+
     }
 }

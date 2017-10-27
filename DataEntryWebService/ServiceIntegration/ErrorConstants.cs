@@ -54,5 +54,8 @@ namespace DataEntryWebService.ServiceIntegration
 
         public readonly static int ERROR_FAILED_TO_UPDATE_PASSWORD = 171717;
         public readonly static string ERROR_FAILED_TO_UPDATE_PASSWORD_MSG = "Failed to Update User";
+
+        public readonly static int ERROR_FAILED_TO_UPDATE_FLYER_STATUS = 181818;
+        public readonly static string ERROR_FAILED_TO_UPDATE_FLYER_STATUS_MSG = "Failed to Update Flyer Status";
     }
 }
