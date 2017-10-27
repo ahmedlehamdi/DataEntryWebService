@@ -381,5 +381,28 @@ namespace DataEntryWebService
             }
         }
 
+        public string getListOfAllUsers()
+        {
+            ReturnObject<List<User>> output = null;
+            try
+            {
+                UserHandler handler = new UserHandler();
+
+                List<User> usersList = handler.getAllUsers();
+                output = new ReturnObject<List<User>>(ErrorConstants.SUCCESS, usersList);
+
+                if (usersList != null)
+                    return JsonConvert.SerializeObject(output);
+                else
+                {
+                    return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_FAILED_TO_GET_USERS_LIST, ErrorConstants.ERROR_FAILED_TO_GET_USERS_LIST_MSG));
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
+            }
+        }
+
     }
 }

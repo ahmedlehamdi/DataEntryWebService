@@ -46,6 +46,23 @@ namespace DataEntryDAL.Handlers
             }
         }
 
+        public List<User> getAllUsers()
+        {
+            try
+            {
+                using (DataClassesDataContext context = new DataClassesDataContext())
+                {
+                    var users = (from a in context.GetTable<User>()
+                                select a).ToList<User>();
+                    return users;
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
     }
   
 }

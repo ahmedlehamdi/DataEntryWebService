@@ -57,5 +57,8 @@ namespace DataEntryWebService.ServiceIntegration
 
         public readonly static int ERROR_FAILED_TO_UPDATE_FLYER_STATUS = 181818;
         public readonly static string ERROR_FAILED_TO_UPDATE_FLYER_STATUS_MSG = "Failed to Update Flyer Status";
+
+        public readonly static int ERROR_FAILED_TO_GET_USERS_LIST = 191919;
+        public readonly static string ERROR_FAILED_TO_GET_USERS_LIST_MSG = "Failed to Get Users List";
     }
 }

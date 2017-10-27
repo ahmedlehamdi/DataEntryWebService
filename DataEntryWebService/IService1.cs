@@ -123,6 +123,13 @@ namespace DataEntryWebService
               UriTemplate = "approveRejectFlyer")]
         string approveRejectFlyer(int flyerID, bool approveRejectFlag);
 
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+              RequestFormat = WebMessageFormat.Json,
+              ResponseFormat = WebMessageFormat.Json,
+              UriTemplate = "getListOfAllUsers")]
+        string getListOfAllUsers();
+
         //[OperationContract]
         //CompositeType GetDataUsingDataContract(CompositeType composite);
 
