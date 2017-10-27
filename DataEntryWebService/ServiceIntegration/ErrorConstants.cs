@@ -60,5 +60,8 @@ namespace DataEntryWebService.ServiceIntegration
 
         public readonly static int ERROR_FAILED_TO_GET_USERS_LIST = 191919;
         public readonly static string ERROR_FAILED_TO_GET_USERS_LIST_MSG = "Failed to Get Users List";
+
+        public readonly static int ERROR_FAILED_TO_ADD_USER = 202020;
+        public readonly static string ERROR_FAILED_TO_ADD_USER_MSG = "Failed to Add New User";
     }
 }

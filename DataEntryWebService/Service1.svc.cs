@@ -404,5 +404,27 @@ namespace DataEntryWebService
             }
         }
 
+        public string addNewUser(User user)
+        {
+            ReturnObject<int> output = null;
+            try
+            {
+                UserHandler handler = new UserHandler();
+
+                int userID = handler.addUser(user);
+                output = new ReturnObject<int>(ErrorConstants.SUCCESS, userID);
+
+                if (userID > 0)
+                    return JsonConvert.SerializeObject(output);
+                else
+                {
+                    return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_FAILED_TO_ADD_USER, ErrorConstants.ERROR_FAILED_TO_ADD_USER_MSG));
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
+            }
+        }
     }
 }

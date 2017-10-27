@@ -130,6 +130,13 @@ namespace DataEntryWebService
               UriTemplate = "getListOfAllUsers")]
         string getListOfAllUsers();
 
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+              RequestFormat = WebMessageFormat.Json,
+              ResponseFormat = WebMessageFormat.Json,
+              UriTemplate = "addNewUser")]
+        string addNewUser(User user);
+
         //[OperationContract]
         //CompositeType GetDataUsingDataContract(CompositeType composite);
 

@@ -63,6 +63,23 @@ namespace DataEntryDAL.Handlers
             }
         }
 
+        public int addUser(User user)
+        {
+            try
+            {
+                using (DataClassesDataContext context = new DataClassesDataContext())
+                {
+                    context.Users.InsertOnSubmit(user);
+                    context.SubmitChanges();
+                    return user.USER_ID;
+                }
+            }
+            catch (Exception e)
+            {
+                return -1;
+            }
+        }
+
     }
   
 }
