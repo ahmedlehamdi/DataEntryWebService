@@ -57,7 +57,7 @@ namespace DataEntryWebService
                  RequestFormat = WebMessageFormat.Json,
                  ResponseFormat = WebMessageFormat.Json,
                  UriTemplate = "getAllTimeFrames")]
-        string addNewFlyerBasicData(OFFER_FLYER flyer, TIME_FRAME frame, string action);
+        string addNewFlyerBasicData(OFFER_FLYER flyer, string action);
 
         [OperationContract]
         [WebInvoke(Method = "GET",
@@ -78,14 +78,14 @@ namespace DataEntryWebService
                 RequestFormat = WebMessageFormat.Json,
                 ResponseFormat = WebMessageFormat.Json,
                 UriTemplate = "submitFlyerProduct")]
-        string submitFlyerProduct(PRODUCT product, PRODUCT_SPEC specs);
+        string submitFlyerProduct(PRODUCT product);
 
         [OperationContract]
         [WebInvoke(Method = "GET",
                 RequestFormat = WebMessageFormat.Json,
                 ResponseFormat = WebMessageFormat.Json,
                 UriTemplate = "submitFlyerAllProducts")]
-        string submitFlyerAllProducts(List<PRODUCT> products, List<PRODUCT_SPEC> specs);
+        string submitFlyerAllProducts(List<PRODUCT> products, List<List<PROD_TYPE_SPEC>> allSpecs, List<PROD_OFF_TYP_ATTR> allOfferTypes);
 
         [OperationContract]
         [WebInvoke(Method = "GET",
@@ -136,6 +136,35 @@ namespace DataEntryWebService
               ResponseFormat = WebMessageFormat.Json,
               UriTemplate = "addNewUser")]
         string addNewUser(User user);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+             RequestFormat = WebMessageFormat.Json,
+             ResponseFormat = WebMessageFormat.Json,
+             UriTemplate = "getAllProductManufactures")]
+        string getAllProductManufactures();
+
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            UriTemplate = "getAllProductBranches")]
+        string getAllProductBranches(int parentID);
+
+
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+           RequestFormat = WebMessageFormat.Json,
+           ResponseFormat = WebMessageFormat.Json,
+           UriTemplate = "getTypeAllSpecs")]
+        string getTypeAllSpecs(int typeID);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+           RequestFormat = WebMessageFormat.Json,
+           ResponseFormat = WebMessageFormat.Json,
+           UriTemplate = "getAllProductOfferTypes")]
+        string getAllProductOfferTypes();
 
         //[OperationContract]
         //CompositeType GetDataUsingDataContract(CompositeType composite);

@@ -94,6 +94,7 @@
       <DependentUpon>DataClasses.dbml</DependentUpon>
     </Compile>
     <Compile Include="Handlers\FlyersHandler.cs" />
+    <Compile Include="Handlers\ManufactuerHandler.cs" />
     <Compile Include="Handlers\ProductsHandler.cs" />
     <Compile Include="Handlers\ProvidersHandler.cs" />
     <Compile Include="Handlers\TimeFrameHandler.cs" />

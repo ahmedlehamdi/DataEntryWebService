@@ -63,5 +63,17 @@ namespace DataEntryWebService.ServiceIntegration
 
         public readonly static int ERROR_FAILED_TO_ADD_USER = 202020;
         public readonly static string ERROR_FAILED_TO_ADD_USER_MSG = "Failed to Add New User";
+
+        public readonly static int ERROR_FAILED_GET_PRODUCT_MANUFACTURES = 212121;
+        public readonly static string ERROR_FAILED_GET_PRODUCT_MANUFACTURES_MSG = "Failed to Get Product Manufactures";
+
+        public readonly static int ERROR_FAILED_GET_PRODUCT_BRANCHES = 222222;
+        public readonly static string ERROR_FAILED_GET_PRODUCT_BRANCHES_MSG = "Failed to Get Product Branches";
+
+        public readonly static int ERROR_FAILED_GET_TYPE_SPECS = 232323;
+        public readonly static string ERROR_FAILED_GET_TYPE_SPECS_MSG = "Failed to Get Product Branches";
+
+        public readonly static int ERROR_FAILED_GET_PRODUCT_OFFER_TYPES = 242424;
+        public readonly static string ERROR_FAILED_GET_PRODUCT_OFFER_TYPES_MSG = "Failed to Get Product Offer Types List";
     }
 }

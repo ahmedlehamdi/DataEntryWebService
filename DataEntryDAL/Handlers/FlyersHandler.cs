@@ -34,10 +34,8 @@ namespace DataEntryDAL.Handlers
                         x.FLYER_IMAGE_URL = f.FLYER_IMAGE_URL;
                         x.FLYER_NAME_AR = f.FLYER_NAME_AR;
                         x.FLYER_NAME_EN = f.FLYER_NAME_EN;
-                        x.FRAME_DATE_FROM = f.FRAME_DATE_FROM;
-                        x.FRAME_DATE_TO = f.FRAME_DATE_TO;
-                        x.FRAME_NAME_AR = f.FRAME_NAME_AR;
-                        x.FRAME_NAME_EN = f.FRAME_NAME_EN;
+                        x.DATE_FROM = f.FRAME_DATE_FROM;
+                        x.DATE_TO = f.FRAME_DATE_TO;
                         x.LOCATION_CITY = f.LOCATION_CITY;
                         x.LOCATION_DISTRICT = f.LOCATION_DISTRICT;
                         x.OFFER_TYPE_NAME_AR = f.OFFER_TYPE_NAME_AR;
@@ -67,17 +65,17 @@ namespace DataEntryDAL.Handlers
             return allFlyers;
         }
 
-        public int AddNewFlyer(OFFER_FLYER flyer, TIME_FRAME frame, string action)
+        public int AddNewFlyer(OFFER_FLYER flyer, string action)
         {
             using (DataClassesDataContext context = new DataClassesDataContext())
             {
                 if(action == "insert")
                 {
-                    context.TIME_FRAMEs.InsertOnSubmit(frame);
+                    //context.TIME_FRAMEs.InsertOnSubmit(frame);
 
-                    context.SubmitChanges();
+                    //context.SubmitChanges();
 
-                    flyer.FRAME_ID = frame.FRAME_ID;
+                    //flyer.FRAME_ID = frame.FRAME_ID;
 
                     flyer.FLYER_APPROVED = null;
 
@@ -89,22 +87,24 @@ namespace DataEntryDAL.Handlers
                 }
                 else if(action == "update")
                 {
-                    TIME_FRAME objFrame = context.TIME_FRAMEs.Single(x => x.FRAME_ID == frame.FRAME_ID);
-                    objFrame.FRAME_NAME_EN = frame.FRAME_NAME_EN;
-                    objFrame.FRAME_NAME_AR = frame.FRAME_NAME_AR;
-                    objFrame.FRAME_TYPE_ID = frame.FRAME_TYPE_ID;
-                    objFrame.FRAME_DATE_TO = frame.FRAME_DATE_TO;
-                    objFrame.FRAME_DATE_FROM = frame.FRAME_DATE_FROM;
+                    //TIME_FRAME objFrame = context.TIME_FRAMEs.Single(x => x.FRAME_ID == frame.FRAME_ID);
+                    //objFrame.FRAME_NAME_EN = frame.FRAME_NAME_EN;
+                    //objFrame.FRAME_NAME_AR = frame.FRAME_NAME_AR;
+                    //objFrame.FRAME_TYPE_ID = frame.FRAME_TYPE_ID;
+                    //objFrame.FRAME_DATE_TO = frame.FRAME_DATE_TO;
+                    //objFrame.FRAME_DATE_FROM = frame.FRAME_DATE_FROM;
 
-                    context.SubmitChanges();
+                    //context.SubmitChanges();
 
                     OFFER_FLYER objFlyer = context.OFFER_FLYERs.Single(x => x.FLYER_ID == flyer.FLYER_ID);
                     objFlyer.FLYER_NAME_AR = flyer.FLYER_NAME_AR;
                     objFlyer.FLYER_NAME_EN = flyer.FLYER_NAME_EN;
                     objFlyer.OFFER_TYPE_ID = flyer.OFFER_TYPE_ID;
-                    objFlyer.FRAME_ID = frame.FRAME_ID;
+                    //objFlyer.FRAME_ID = frame.FRAME_ID;
                     objFlyer.FLYER_IMAGE_URL = flyer.FLYER_IMAGE_URL;
                     objFlyer.PROVIDER_ID = flyer.PROVIDER_ID;
+                    objFlyer.DATE_FROM = flyer.DATE_FROM;
+                    objFlyer.DATE_TO = flyer.DATE_TO;
 
                     context.SubmitChanges();
 

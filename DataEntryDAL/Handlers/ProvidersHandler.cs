@@ -23,6 +23,19 @@ namespace DataEntryDAL.Handlers
             return allProviders;
         }
 
-        
+        public List<GET_ALL_BRANCHESResult> getAllProductBranches(int parentID)
+        {
+            List<GET_ALL_BRANCHESResult> allBranches = new List<GET_ALL_BRANCHESResult>();
+            using (DataClassesDataContext context = new DataClassesDataContext())
+            {
+                var result = (context.GET_ALL_BRANCHES(parentID).ToList());
+                foreach (GET_ALL_BRANCHESResult f in result)
+                {
+                    allBranches.Add(f);
+                }
+            }
+            return allBranches;
+        }
+
     }
 }

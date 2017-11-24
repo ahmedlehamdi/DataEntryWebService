@@ -30,39 +30,51 @@ namespace DataEntryDAL.DataAccessLogic
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertUser(User instance);
-    partial void UpdateUser(User instance);
-    partial void DeleteUser(User instance);
+    partial void InsertTIME_FRAME(TIME_FRAME instance);
+    partial void UpdateTIME_FRAME(TIME_FRAME instance);
+    partial void DeleteTIME_FRAME(TIME_FRAME instance);
     partial void InsertLOCATION(LOCATION instance);
     partial void UpdateLOCATION(LOCATION instance);
     partial void DeleteLOCATION(LOCATION instance);
+    partial void InsertUser(User instance);
+    partial void UpdateUser(User instance);
+    partial void DeleteUser(User instance);
+    partial void InsertMANUFACTURE(MANUFACTURE instance);
+    partial void UpdateMANUFACTURE(MANUFACTURE instance);
+    partial void DeleteMANUFACTURE(MANUFACTURE instance);
     partial void InsertOFFER_FLYER(OFFER_FLYER instance);
     partial void UpdateOFFER_FLYER(OFFER_FLYER instance);
     partial void DeleteOFFER_FLYER(OFFER_FLYER instance);
-    partial void InsertPRODUCT_SPEC(PRODUCT_SPEC instance);
-    partial void UpdatePRODUCT_SPEC(PRODUCT_SPEC instance);
-    partial void DeletePRODUCT_SPEC(PRODUCT_SPEC instance);
+    partial void InsertOFFER_TYPE(OFFER_TYPE instance);
+    partial void UpdateOFFER_TYPE(OFFER_TYPE instance);
+    partial void DeleteOFFER_TYPE(OFFER_TYPE instance);
+    partial void InsertPROD_TYPE_SPEC(PROD_TYPE_SPEC instance);
+    partial void UpdatePROD_TYPE_SPEC(PROD_TYPE_SPEC instance);
+    partial void DeletePROD_TYPE_SPEC(PROD_TYPE_SPEC instance);
+    partial void InsertPROD_TYPE_TEMPLATE(PROD_TYPE_TEMPLATE instance);
+    partial void UpdatePROD_TYPE_TEMPLATE(PROD_TYPE_TEMPLATE instance);
+    partial void DeletePROD_TYPE_TEMPLATE(PROD_TYPE_TEMPLATE instance);
     partial void InsertPRODUCT_TYPE(PRODUCT_TYPE instance);
     partial void UpdatePRODUCT_TYPE(PRODUCT_TYPE instance);
     partial void DeletePRODUCT_TYPE(PRODUCT_TYPE instance);
-    partial void InsertPRODUCT(PRODUCT instance);
-    partial void UpdatePRODUCT(PRODUCT instance);
-    partial void DeletePRODUCT(PRODUCT instance);
     partial void InsertPRODUCTS_CATEGORy(PRODUCTS_CATEGORy instance);
     partial void UpdatePRODUCTS_CATEGORy(PRODUCTS_CATEGORy instance);
     partial void DeletePRODUCTS_CATEGORy(PRODUCTS_CATEGORy instance);
     partial void InsertPROVIDER(PROVIDER instance);
     partial void UpdatePROVIDER(PROVIDER instance);
     partial void DeletePROVIDER(PROVIDER instance);
-    partial void InsertOFFER_TYPE(OFFER_TYPE instance);
-    partial void UpdateOFFER_TYPE(OFFER_TYPE instance);
-    partial void DeleteOFFER_TYPE(OFFER_TYPE instance);
     partial void InsertTIME_FRAMES_TYPE(TIME_FRAMES_TYPE instance);
     partial void UpdateTIME_FRAMES_TYPE(TIME_FRAMES_TYPE instance);
     partial void DeleteTIME_FRAMES_TYPE(TIME_FRAMES_TYPE instance);
-    partial void InsertTIME_FRAME(TIME_FRAME instance);
-    partial void UpdateTIME_FRAME(TIME_FRAME instance);
-    partial void DeleteTIME_FRAME(TIME_FRAME instance);
+    partial void InsertPROD_OFF_TYP(PROD_OFF_TYP instance);
+    partial void UpdatePROD_OFF_TYP(PROD_OFF_TYP instance);
+    partial void DeletePROD_OFF_TYP(PROD_OFF_TYP instance);
+    partial void InsertPROD_OFF_TYP_ATTR(PROD_OFF_TYP_ATTR instance);
+    partial void UpdatePROD_OFF_TYP_ATTR(PROD_OFF_TYP_ATTR instance);
+    partial void DeletePROD_OFF_TYP_ATTR(PROD_OFF_TYP_ATTR instance);
+    partial void InsertPRODUCT(PRODUCT instance);
+    partial void UpdatePRODUCT(PRODUCT instance);
+    partial void DeletePRODUCT(PRODUCT instance);
     #endregion
 		
 		public DataClassesDataContext() : 
@@ -95,11 +107,11 @@ namespace DataEntryDAL.DataAccessLogic
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<User> Users
+		public System.Data.Linq.Table<TIME_FRAME> TIME_FRAMEs
 		{
 			get
 			{
-				return this.GetTable<User>();
+				return this.GetTable<TIME_FRAME>();
 			}
 		}
 		
@@ -111,6 +123,22 @@ namespace DataEntryDAL.DataAccessLogic
 			}
 		}
 		
+		public System.Data.Linq.Table<User> Users
+		{
+			get
+			{
+				return this.GetTable<User>();
+			}
+		}
+		
+		public System.Data.Linq.Table<MANUFACTURE> MANUFACTUREs
+		{
+			get
+			{
+				return this.GetTable<MANUFACTURE>();
+			}
+		}
+		
 		public System.Data.Linq.Table<OFFER_FLYER> OFFER_FLYERs
 		{
 			get
@@ -119,11 +147,27 @@ namespace DataEntryDAL.DataAccessLogic
 			}
 		}
 		
-		public System.Data.Linq.Table<PRODUCT_SPEC> PRODUCT_SPECs
+		public System.Data.Linq.Table<OFFER_TYPE> OFFER_TYPEs
 		{
 			get
 			{
-				return this.GetTable<PRODUCT_SPEC>();
+				return this.GetTable<OFFER_TYPE>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PROD_TYPE_SPEC> PROD_TYPE_SPECs
+		{
+			get
+			{
+				return this.GetTable<PROD_TYPE_SPEC>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PROD_TYPE_TEMPLATE> PROD_TYPE_TEMPLATEs
+		{
+			get
+			{
+				return this.GetTable<PROD_TYPE_TEMPLATE>();
 			}
 		}
 		
@@ -132,14 +176,6 @@ namespace DataEntryDAL.DataAccessLogic
 			get
 			{
 				return this.GetTable<PRODUCT_TYPE>();
-			}
-		}
-		
-		public System.Data.Linq.Table<PRODUCT> PRODUCTs
-		{
-			get
-			{
-				return this.GetTable<PRODUCT>();
 			}
 		}
 		
@@ -159,14 +195,6 @@ namespace DataEntryDAL.DataAccessLogic
 			}
 		}
 		
-		public System.Data.Linq.Table<OFFER_TYPE> OFFER_TYPEs
-		{
-			get
-			{
-				return this.GetTable<OFFER_TYPE>();
-			}
-		}
-		
 		public System.Data.Linq.Table<TIME_FRAMES_TYPE> TIME_FRAMES_TYPEs
 		{
 			get
@@ -175,19 +203,28 @@ namespace DataEntryDAL.DataAccessLogic
 			}
 		}
 		
-		public System.Data.Linq.Table<TIME_FRAME> TIME_FRAMEs
+		public System.Data.Linq.Table<PROD_OFF_TYP> PROD_OFF_TYPs
 		{
 			get
 			{
-				return this.GetTable<TIME_FRAME>();
+				return this.GetTable<PROD_OFF_TYP>();
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GET_ALL_FLYERS_PROCD")]
-		public ISingleResult<GET_ALL_FLYERS_PROCDResult> GET_ALL_FLYERS_PROCD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="USER_ID", DbType="Int")] System.Nullable<int> uSER_ID)
+		public System.Data.Linq.Table<PROD_OFF_TYP_ATTR> PROD_OFF_TYP_ATTRs
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), uSER_ID);
-			return ((ISingleResult<GET_ALL_FLYERS_PROCDResult>)(result.ReturnValue));
+			get
+			{
+				return this.GetTable<PROD_OFF_TYP_ATTR>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PRODUCT> PRODUCTs
+		{
+			get
+			{
+				return this.GetTable<PRODUCT>();
+			}
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GET_REJECTED_FLYERS")]
@@ -195,6 +232,13 @@ namespace DataEntryDAL.DataAccessLogic
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), uSER_ID);
 			return ((ISingleResult<GET_REJECTED_FLYERSResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GET_ALL_FLYERS_PROCD")]
+		public ISingleResult<GET_ALL_FLYERS_PROCDResult> GET_ALL_FLYERS_PROCD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="USER_ID", DbType="Int")] System.Nullable<int> uSER_ID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), uSER_ID);
+			return ((ISingleResult<GET_ALL_FLYERS_PROCDResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GET_ALL_PROVIDERS")]
@@ -211,11 +255,18 @@ namespace DataEntryDAL.DataAccessLogic
 			return ((ISingleResult<GET_ALL_TIME_FRAMESResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GET_FLYER_PRODUCTS_DATA")]
-		public ISingleResult<GET_FLYER_PRODUCTS_DATAResult> GET_FLYER_PRODUCTS_DATA([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> flyerID)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GET_ALL_TYPES_TEMPLATE")]
+		public ISingleResult<GET_ALL_TYPES_TEMPLATEResult> GET_ALL_TYPES_TEMPLATE([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> typeId)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), flyerID);
-			return ((ISingleResult<GET_FLYER_PRODUCTS_DATAResult>)(result.ReturnValue));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), typeId);
+			return ((ISingleResult<GET_ALL_TYPES_TEMPLATEResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GET_ALL_TYPES_WITH_TEMPLATE")]
+		public ISingleResult<GET_ALL_TYPES_WITH_TEMPLATEResult> GET_ALL_TYPES_WITH_TEMPLATE([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> catId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), catId);
+			return ((ISingleResult<GET_ALL_TYPES_WITH_TEMPLATEResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GET_ALL_USER_ALL_FLYERS")]
@@ -231,141 +282,179 @@ namespace DataEntryDAL.DataAccessLogic
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), flyerID);
 			return ((ISingleResult<GET_FLYER_BASIC_DATAResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GET_ALL_BRANCHES")]
+		public ISingleResult<GET_ALL_BRANCHESResult> GET_ALL_BRANCHES([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> parentID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), parentID);
+			return ((ISingleResult<GET_ALL_BRANCHESResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GET_FLYER_PRODUCTS_DATA")]
+		public ISingleResult<GET_FLYER_PRODUCTS_DATAResult> GET_FLYER_PRODUCTS_DATA([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> flyerID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), flyerID);
+			return ((ISingleResult<GET_FLYER_PRODUCTS_DATAResult>)(result.ReturnValue));
+		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Users")]
-	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TIME_FRAMES")]
+	public partial class TIME_FRAME : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _USER_ID;
+		private int _FRAME_ID;
 		
-		private string _USER_NAME;
+		private System.Nullable<int> _FRAME_TYPE_ID;
 		
-		private string _USER_PASSWORD;
+		private string _FRAME_NAME_EN;
 		
-		private string _USER_TYPE;
+		private string _FRAME_NAME_AR;
 		
-		private string _USER_PAGES;
+		private System.Nullable<System.DateTime> _FRAME_DATE_FROM;
+		
+		private System.Nullable<System.DateTime> _FRAME_DATE_TO;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnUSER_IDChanging(int value);
-    partial void OnUSER_IDChanged();
-    partial void OnUSER_NAMEChanging(string value);
-    partial void OnUSER_NAMEChanged();
-    partial void OnUSER_PASSWORDChanging(string value);
-    partial void OnUSER_PASSWORDChanged();
-    partial void OnUSER_TYPEChanging(string value);
-    partial void OnUSER_TYPEChanged();
-    partial void OnUSER_PAGESChanging(string value);
-    partial void OnUSER_PAGESChanged();
+    partial void OnFRAME_IDChanging(int value);
+    partial void OnFRAME_IDChanged();
+    partial void OnFRAME_TYPE_IDChanging(System.Nullable<int> value);
+    partial void OnFRAME_TYPE_IDChanged();
+    partial void OnFRAME_NAME_ENChanging(string value);
+    partial void OnFRAME_NAME_ENChanged();
+    partial void OnFRAME_NAME_ARChanging(string value);
+    partial void OnFRAME_NAME_ARChanged();
+    partial void OnFRAME_DATE_FROMChanging(System.Nullable<System.DateTime> value);
+    partial void OnFRAME_DATE_FROMChanged();
+    partial void OnFRAME_DATE_TOChanging(System.Nullable<System.DateTime> value);
+    partial void OnFRAME_DATE_TOChanged();
     #endregion
 		
-		public User()
+		public TIME_FRAME()
 		{
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USER_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int USER_ID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int FRAME_ID
 		{
 			get
 			{
-				return this._USER_ID;
+				return this._FRAME_ID;
 			}
 			set
 			{
-				if ((this._USER_ID != value))
+				if ((this._FRAME_ID != value))
 				{
-					this.OnUSER_IDChanging(value);
+					this.OnFRAME_IDChanging(value);
 					this.SendPropertyChanging();
-					this._USER_ID = value;
-					this.SendPropertyChanged("USER_ID");
-					this.OnUSER_IDChanged();
+					this._FRAME_ID = value;
+					this.SendPropertyChanged("FRAME_ID");
+					this.OnFRAME_IDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USER_NAME", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string USER_NAME
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_TYPE_ID", DbType="Int")]
+		public System.Nullable<int> FRAME_TYPE_ID
 		{
 			get
 			{
-				return this._USER_NAME;
+				return this._FRAME_TYPE_ID;
 			}
 			set
 			{
-				if ((this._USER_NAME != value))
+				if ((this._FRAME_TYPE_ID != value))
 				{
-					this.OnUSER_NAMEChanging(value);
+					this.OnFRAME_TYPE_IDChanging(value);
 					this.SendPropertyChanging();
-					this._USER_NAME = value;
-					this.SendPropertyChanged("USER_NAME");
-					this.OnUSER_NAMEChanged();
+					this._FRAME_TYPE_ID = value;
+					this.SendPropertyChanged("FRAME_TYPE_ID");
+					this.OnFRAME_TYPE_IDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USER_PASSWORD", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string USER_PASSWORD
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_NAME_EN", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string FRAME_NAME_EN
 		{
 			get
 			{
-				return this._USER_PASSWORD;
+				return this._FRAME_NAME_EN;
 			}
 			set
 			{
-				if ((this._USER_PASSWORD != value))
+				if ((this._FRAME_NAME_EN != value))
 				{
-					this.OnUSER_PASSWORDChanging(value);
+					this.OnFRAME_NAME_ENChanging(value);
 					this.SendPropertyChanging();
-					this._USER_PASSWORD = value;
-					this.SendPropertyChanged("USER_PASSWORD");
-					this.OnUSER_PASSWORDChanged();
+					this._FRAME_NAME_EN = value;
+					this.SendPropertyChanged("FRAME_NAME_EN");
+					this.OnFRAME_NAME_ENChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USER_TYPE", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string USER_TYPE
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_NAME_AR", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string FRAME_NAME_AR
 		{
 			get
 			{
-				return this._USER_TYPE;
+				return this._FRAME_NAME_AR;
 			}
 			set
 			{
-				if ((this._USER_TYPE != value))
+				if ((this._FRAME_NAME_AR != value))
 				{
-					this.OnUSER_TYPEChanging(value);
+					this.OnFRAME_NAME_ARChanging(value);
 					this.SendPropertyChanging();
-					this._USER_TYPE = value;
-					this.SendPropertyChanged("USER_TYPE");
-					this.OnUSER_TYPEChanged();
+					this._FRAME_NAME_AR = value;
+					this.SendPropertyChanged("FRAME_NAME_AR");
+					this.OnFRAME_NAME_ARChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USER_PAGES", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string USER_PAGES
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_DATE_FROM", DbType="DateTime")]
+		public System.Nullable<System.DateTime> FRAME_DATE_FROM
 		{
 			get
 			{
-				return this._USER_PAGES;
+				return this._FRAME_DATE_FROM;
 			}
 			set
 			{
-				if ((this._USER_PAGES != value))
+				if ((this._FRAME_DATE_FROM != value))
 				{
-					this.OnUSER_PAGESChanging(value);
+					this.OnFRAME_DATE_FROMChanging(value);
 					this.SendPropertyChanging();
-					this._USER_PAGES = value;
-					this.SendPropertyChanged("USER_PAGES");
-					this.OnUSER_PAGESChanged();
+					this._FRAME_DATE_FROM = value;
+					this.SendPropertyChanged("FRAME_DATE_FROM");
+					this.OnFRAME_DATE_FROMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_DATE_TO", DbType="DateTime")]
+		public System.Nullable<System.DateTime> FRAME_DATE_TO
+		{
+			get
+			{
+				return this._FRAME_DATE_TO;
+			}
+			set
+			{
+				if ((this._FRAME_DATE_TO != value))
+				{
+					this.OnFRAME_DATE_TOChanging(value);
+					this.SendPropertyChanging();
+					this._FRAME_DATE_TO = value;
+					this.SendPropertyChanged("FRAME_DATE_TO");
+					this.OnFRAME_DATE_TOChanged();
 				}
 			}
 		}
@@ -597,6 +686,298 @@ namespace DataEntryDAL.DataAccessLogic
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Users")]
+	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _USER_ID;
+		
+		private string _USER_NAME;
+		
+		private string _USER_PASSWORD;
+		
+		private string _USER_TYPE;
+		
+		private string _USER_PAGES;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnUSER_IDChanging(int value);
+    partial void OnUSER_IDChanged();
+    partial void OnUSER_NAMEChanging(string value);
+    partial void OnUSER_NAMEChanged();
+    partial void OnUSER_PASSWORDChanging(string value);
+    partial void OnUSER_PASSWORDChanged();
+    partial void OnUSER_TYPEChanging(string value);
+    partial void OnUSER_TYPEChanged();
+    partial void OnUSER_PAGESChanging(string value);
+    partial void OnUSER_PAGESChanged();
+    #endregion
+		
+		public User()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USER_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int USER_ID
+		{
+			get
+			{
+				return this._USER_ID;
+			}
+			set
+			{
+				if ((this._USER_ID != value))
+				{
+					this.OnUSER_IDChanging(value);
+					this.SendPropertyChanging();
+					this._USER_ID = value;
+					this.SendPropertyChanged("USER_ID");
+					this.OnUSER_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USER_NAME", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string USER_NAME
+		{
+			get
+			{
+				return this._USER_NAME;
+			}
+			set
+			{
+				if ((this._USER_NAME != value))
+				{
+					this.OnUSER_NAMEChanging(value);
+					this.SendPropertyChanging();
+					this._USER_NAME = value;
+					this.SendPropertyChanged("USER_NAME");
+					this.OnUSER_NAMEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USER_PASSWORD", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string USER_PASSWORD
+		{
+			get
+			{
+				return this._USER_PASSWORD;
+			}
+			set
+			{
+				if ((this._USER_PASSWORD != value))
+				{
+					this.OnUSER_PASSWORDChanging(value);
+					this.SendPropertyChanging();
+					this._USER_PASSWORD = value;
+					this.SendPropertyChanged("USER_PASSWORD");
+					this.OnUSER_PASSWORDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USER_TYPE", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string USER_TYPE
+		{
+			get
+			{
+				return this._USER_TYPE;
+			}
+			set
+			{
+				if ((this._USER_TYPE != value))
+				{
+					this.OnUSER_TYPEChanging(value);
+					this.SendPropertyChanging();
+					this._USER_TYPE = value;
+					this.SendPropertyChanged("USER_TYPE");
+					this.OnUSER_TYPEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USER_PAGES", DbType="NVarChar(MAX)")]
+		public string USER_PAGES
+		{
+			get
+			{
+				return this._USER_PAGES;
+			}
+			set
+			{
+				if ((this._USER_PAGES != value))
+				{
+					this.OnUSER_PAGESChanging(value);
+					this.SendPropertyChanging();
+					this._USER_PAGES = value;
+					this.SendPropertyChanged("USER_PAGES");
+					this.OnUSER_PAGESChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.MANUFACTURES")]
+	public partial class MANUFACTURE : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _MANUFACTURE_ID;
+		
+		private string _MANUFACTURE_NAME_EN;
+		
+		private string _MANUFACTURE_NAME_AR;
+		
+		private string _MANUFACTURE_BUSINESS_AREA;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMANUFACTURE_IDChanging(int value);
+    partial void OnMANUFACTURE_IDChanged();
+    partial void OnMANUFACTURE_NAME_ENChanging(string value);
+    partial void OnMANUFACTURE_NAME_ENChanged();
+    partial void OnMANUFACTURE_NAME_ARChanging(string value);
+    partial void OnMANUFACTURE_NAME_ARChanged();
+    partial void OnMANUFACTURE_BUSINESS_AREAChanging(string value);
+    partial void OnMANUFACTURE_BUSINESS_AREAChanged();
+    #endregion
+		
+		public MANUFACTURE()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANUFACTURE_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int MANUFACTURE_ID
+		{
+			get
+			{
+				return this._MANUFACTURE_ID;
+			}
+			set
+			{
+				if ((this._MANUFACTURE_ID != value))
+				{
+					this.OnMANUFACTURE_IDChanging(value);
+					this.SendPropertyChanging();
+					this._MANUFACTURE_ID = value;
+					this.SendPropertyChanged("MANUFACTURE_ID");
+					this.OnMANUFACTURE_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANUFACTURE_NAME_EN", DbType="NVarChar(MAX)")]
+		public string MANUFACTURE_NAME_EN
+		{
+			get
+			{
+				return this._MANUFACTURE_NAME_EN;
+			}
+			set
+			{
+				if ((this._MANUFACTURE_NAME_EN != value))
+				{
+					this.OnMANUFACTURE_NAME_ENChanging(value);
+					this.SendPropertyChanging();
+					this._MANUFACTURE_NAME_EN = value;
+					this.SendPropertyChanged("MANUFACTURE_NAME_EN");
+					this.OnMANUFACTURE_NAME_ENChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANUFACTURE_NAME_AR", DbType="NVarChar(MAX)")]
+		public string MANUFACTURE_NAME_AR
+		{
+			get
+			{
+				return this._MANUFACTURE_NAME_AR;
+			}
+			set
+			{
+				if ((this._MANUFACTURE_NAME_AR != value))
+				{
+					this.OnMANUFACTURE_NAME_ARChanging(value);
+					this.SendPropertyChanging();
+					this._MANUFACTURE_NAME_AR = value;
+					this.SendPropertyChanged("MANUFACTURE_NAME_AR");
+					this.OnMANUFACTURE_NAME_ARChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANUFACTURE_BUSINESS_AREA", DbType="NVarChar(MAX)")]
+		public string MANUFACTURE_BUSINESS_AREA
+		{
+			get
+			{
+				return this._MANUFACTURE_BUSINESS_AREA;
+			}
+			set
+			{
+				if ((this._MANUFACTURE_BUSINESS_AREA != value))
+				{
+					this.OnMANUFACTURE_BUSINESS_AREAChanging(value);
+					this.SendPropertyChanging();
+					this._MANUFACTURE_BUSINESS_AREA = value;
+					this.SendPropertyChanged("MANUFACTURE_BUSINESS_AREA");
+					this.OnMANUFACTURE_BUSINESS_AREAChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.OFFER_FLYERS")]
 	public partial class OFFER_FLYER : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -613,7 +994,7 @@ namespace DataEntryDAL.DataAccessLogic
 		
 		private int _PROVIDER_ID;
 		
-		private int _FRAME_ID;
+		private System.Nullable<int> _FRAME_ID;
 		
 		private int _OFFER_TYPE_ID;
 		
@@ -624,6 +1005,10 @@ namespace DataEntryDAL.DataAccessLogic
 		private System.Nullable<int> _ADMIN_ID;
 		
 		private System.Nullable<bool> _FLYER_EXPIRED;
+		
+		private System.Nullable<System.DateTime> _DATE_FROM;
+		
+		private System.Nullable<System.DateTime> _DATE_TO;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -639,7 +1024,7 @@ namespace DataEntryDAL.DataAccessLogic
     partial void OnFLYER_NAME_ARChanged();
     partial void OnPROVIDER_IDChanging(int value);
     partial void OnPROVIDER_IDChanged();
-    partial void OnFRAME_IDChanging(int value);
+    partial void OnFRAME_IDChanging(System.Nullable<int> value);
     partial void OnFRAME_IDChanged();
     partial void OnOFFER_TYPE_IDChanging(int value);
     partial void OnOFFER_TYPE_IDChanged();
@@ -651,6 +1036,10 @@ namespace DataEntryDAL.DataAccessLogic
     partial void OnADMIN_IDChanged();
     partial void OnFLYER_EXPIREDChanging(System.Nullable<bool> value);
     partial void OnFLYER_EXPIREDChanged();
+    partial void OnDATE_FROMChanging(System.Nullable<System.DateTime> value);
+    partial void OnDATE_FROMChanged();
+    partial void OnDATE_TOChanging(System.Nullable<System.DateTime> value);
+    partial void OnDATE_TOChanged();
     #endregion
 		
 		public OFFER_FLYER()
@@ -758,8 +1147,8 @@ namespace DataEntryDAL.DataAccessLogic
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_ID", DbType="Int NOT NULL")]
-		public int FRAME_ID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_ID", DbType="Int")]
+		public System.Nullable<int> FRAME_ID
 		{
 			get
 			{
@@ -878,6 +1267,46 @@ namespace DataEntryDAL.DataAccessLogic
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATE_FROM", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DATE_FROM
+		{
+			get
+			{
+				return this._DATE_FROM;
+			}
+			set
+			{
+				if ((this._DATE_FROM != value))
+				{
+					this.OnDATE_FROMChanging(value);
+					this.SendPropertyChanging();
+					this._DATE_FROM = value;
+					this.SendPropertyChanged("DATE_FROM");
+					this.OnDATE_FROMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATE_TO", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DATE_TO
+		{
+			get
+			{
+				return this._DATE_TO;
+			}
+			set
+			{
+				if ((this._DATE_TO != value))
+				{
+					this.OnDATE_TOChanging(value);
+					this.SendPropertyChanging();
+					this._DATE_TO = value;
+					this.SendPropertyChanged("DATE_TO");
+					this.OnDATE_TOChanged();
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -899,283 +1328,599 @@ namespace DataEntryDAL.DataAccessLogic
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PRODUCT_SPECS")]
-	public partial class PRODUCT_SPEC : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.OFFER_TYPES")]
+	public partial class OFFER_TYPE : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _SPECS_ID;
+		private int _OFFER_TYPE_ID;
 		
-		private string _SPECS_ATTR_1;
+		private string _OFFER_TYPE_NAME_EN;
 		
-		private string _SPECS_ATTR_2;
+		private string _OFFER_TYPE_NAME_AR;
 		
-		private string _SPECS_ATTR_3;
+		private string _OFFER_TYPE_VALUE;
 		
-		private string _SPECS_ATTR_4;
+		private string _OFFER_TYPE_ATTR_1;
 		
-		private string _SPECS_ATTR_5;
+		private string _OFFER_TYPE_ATTR_2;
 		
-		private string _SPECS_ATTR_6;
+		private string _OFFER_TYPE_ATTR_3;
 		
-		private string _SPECS_ATTR_7;
+		private string _OFFER_TYPE_ATTR_4;
 		
-		private string _SPECS_ATTR_8;
-		
-		private string _SPECS_ATTR_9;
-		
-		private string _SPECS_ATTR_10;
+		private string _OFFER_TYPE_ATTR_5;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnSPECS_IDChanging(int value);
-    partial void OnSPECS_IDChanged();
-    partial void OnSPECS_ATTR_1Changing(string value);
-    partial void OnSPECS_ATTR_1Changed();
-    partial void OnSPECS_ATTR_2Changing(string value);
-    partial void OnSPECS_ATTR_2Changed();
-    partial void OnSPECS_ATTR_3Changing(string value);
-    partial void OnSPECS_ATTR_3Changed();
-    partial void OnSPECS_ATTR_4Changing(string value);
-    partial void OnSPECS_ATTR_4Changed();
-    partial void OnSPECS_ATTR_5Changing(string value);
-    partial void OnSPECS_ATTR_5Changed();
-    partial void OnSPECS_ATTR_6Changing(string value);
-    partial void OnSPECS_ATTR_6Changed();
-    partial void OnSPECS_ATTR_7Changing(string value);
-    partial void OnSPECS_ATTR_7Changed();
-    partial void OnSPECS_ATTR_8Changing(string value);
-    partial void OnSPECS_ATTR_8Changed();
-    partial void OnSPECS_ATTR_9Changing(string value);
-    partial void OnSPECS_ATTR_9Changed();
-    partial void OnSPECS_ATTR_10Changing(string value);
-    partial void OnSPECS_ATTR_10Changed();
+    partial void OnOFFER_TYPE_IDChanging(int value);
+    partial void OnOFFER_TYPE_IDChanged();
+    partial void OnOFFER_TYPE_NAME_ENChanging(string value);
+    partial void OnOFFER_TYPE_NAME_ENChanged();
+    partial void OnOFFER_TYPE_NAME_ARChanging(string value);
+    partial void OnOFFER_TYPE_NAME_ARChanged();
+    partial void OnOFFER_TYPE_VALUEChanging(string value);
+    partial void OnOFFER_TYPE_VALUEChanged();
+    partial void OnOFFER_TYPE_ATTR_1Changing(string value);
+    partial void OnOFFER_TYPE_ATTR_1Changed();
+    partial void OnOFFER_TYPE_ATTR_2Changing(string value);
+    partial void OnOFFER_TYPE_ATTR_2Changed();
+    partial void OnOFFER_TYPE_ATTR_3Changing(string value);
+    partial void OnOFFER_TYPE_ATTR_3Changed();
+    partial void OnOFFER_TYPE_ATTR_4Changing(string value);
+    partial void OnOFFER_TYPE_ATTR_4Changed();
+    partial void OnOFFER_TYPE_ATTR_5Changing(string value);
+    partial void OnOFFER_TYPE_ATTR_5Changed();
     #endregion
 		
-		public PRODUCT_SPEC()
+		public OFFER_TYPE()
 		{
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPECS_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int SPECS_ID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int OFFER_TYPE_ID
 		{
 			get
 			{
-				return this._SPECS_ID;
+				return this._OFFER_TYPE_ID;
 			}
 			set
 			{
-				if ((this._SPECS_ID != value))
+				if ((this._OFFER_TYPE_ID != value))
 				{
-					this.OnSPECS_IDChanging(value);
+					this.OnOFFER_TYPE_IDChanging(value);
 					this.SendPropertyChanging();
-					this._SPECS_ID = value;
-					this.SendPropertyChanged("SPECS_ID");
-					this.OnSPECS_IDChanged();
+					this._OFFER_TYPE_ID = value;
+					this.SendPropertyChanged("OFFER_TYPE_ID");
+					this.OnOFFER_TYPE_IDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPECS_ATTR_1", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string SPECS_ATTR_1
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_NAME_EN", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string OFFER_TYPE_NAME_EN
 		{
 			get
 			{
-				return this._SPECS_ATTR_1;
+				return this._OFFER_TYPE_NAME_EN;
 			}
 			set
 			{
-				if ((this._SPECS_ATTR_1 != value))
+				if ((this._OFFER_TYPE_NAME_EN != value))
 				{
-					this.OnSPECS_ATTR_1Changing(value);
+					this.OnOFFER_TYPE_NAME_ENChanging(value);
 					this.SendPropertyChanging();
-					this._SPECS_ATTR_1 = value;
-					this.SendPropertyChanged("SPECS_ATTR_1");
-					this.OnSPECS_ATTR_1Changed();
+					this._OFFER_TYPE_NAME_EN = value;
+					this.SendPropertyChanged("OFFER_TYPE_NAME_EN");
+					this.OnOFFER_TYPE_NAME_ENChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPECS_ATTR_2", DbType="NVarChar(MAX)")]
-		public string SPECS_ATTR_2
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_NAME_AR", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string OFFER_TYPE_NAME_AR
 		{
 			get
 			{
-				return this._SPECS_ATTR_2;
+				return this._OFFER_TYPE_NAME_AR;
 			}
 			set
 			{
-				if ((this._SPECS_ATTR_2 != value))
+				if ((this._OFFER_TYPE_NAME_AR != value))
 				{
-					this.OnSPECS_ATTR_2Changing(value);
+					this.OnOFFER_TYPE_NAME_ARChanging(value);
 					this.SendPropertyChanging();
-					this._SPECS_ATTR_2 = value;
-					this.SendPropertyChanged("SPECS_ATTR_2");
-					this.OnSPECS_ATTR_2Changed();
+					this._OFFER_TYPE_NAME_AR = value;
+					this.SendPropertyChanged("OFFER_TYPE_NAME_AR");
+					this.OnOFFER_TYPE_NAME_ARChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPECS_ATTR_3", DbType="NVarChar(MAX)")]
-		public string SPECS_ATTR_3
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_VALUE", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string OFFER_TYPE_VALUE
 		{
 			get
 			{
-				return this._SPECS_ATTR_3;
+				return this._OFFER_TYPE_VALUE;
 			}
 			set
 			{
-				if ((this._SPECS_ATTR_3 != value))
+				if ((this._OFFER_TYPE_VALUE != value))
 				{
-					this.OnSPECS_ATTR_3Changing(value);
+					this.OnOFFER_TYPE_VALUEChanging(value);
 					this.SendPropertyChanging();
-					this._SPECS_ATTR_3 = value;
-					this.SendPropertyChanged("SPECS_ATTR_3");
-					this.OnSPECS_ATTR_3Changed();
+					this._OFFER_TYPE_VALUE = value;
+					this.SendPropertyChanged("OFFER_TYPE_VALUE");
+					this.OnOFFER_TYPE_VALUEChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPECS_ATTR_4", DbType="NVarChar(MAX)")]
-		public string SPECS_ATTR_4
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_ATTR_1", DbType="NVarChar(MAX)")]
+		public string OFFER_TYPE_ATTR_1
 		{
 			get
 			{
-				return this._SPECS_ATTR_4;
+				return this._OFFER_TYPE_ATTR_1;
 			}
 			set
 			{
-				if ((this._SPECS_ATTR_4 != value))
+				if ((this._OFFER_TYPE_ATTR_1 != value))
 				{
-					this.OnSPECS_ATTR_4Changing(value);
+					this.OnOFFER_TYPE_ATTR_1Changing(value);
 					this.SendPropertyChanging();
-					this._SPECS_ATTR_4 = value;
-					this.SendPropertyChanged("SPECS_ATTR_4");
-					this.OnSPECS_ATTR_4Changed();
+					this._OFFER_TYPE_ATTR_1 = value;
+					this.SendPropertyChanged("OFFER_TYPE_ATTR_1");
+					this.OnOFFER_TYPE_ATTR_1Changed();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPECS_ATTR_5", DbType="NVarChar(MAX)")]
-		public string SPECS_ATTR_5
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_ATTR_2", DbType="NVarChar(MAX)")]
+		public string OFFER_TYPE_ATTR_2
 		{
 			get
 			{
-				return this._SPECS_ATTR_5;
+				return this._OFFER_TYPE_ATTR_2;
 			}
 			set
 			{
-				if ((this._SPECS_ATTR_5 != value))
+				if ((this._OFFER_TYPE_ATTR_2 != value))
 				{
-					this.OnSPECS_ATTR_5Changing(value);
+					this.OnOFFER_TYPE_ATTR_2Changing(value);
 					this.SendPropertyChanging();
-					this._SPECS_ATTR_5 = value;
-					this.SendPropertyChanged("SPECS_ATTR_5");
-					this.OnSPECS_ATTR_5Changed();
+					this._OFFER_TYPE_ATTR_2 = value;
+					this.SendPropertyChanged("OFFER_TYPE_ATTR_2");
+					this.OnOFFER_TYPE_ATTR_2Changed();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPECS_ATTR_6", DbType="NVarChar(MAX)")]
-		public string SPECS_ATTR_6
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_ATTR_3", DbType="NVarChar(MAX)")]
+		public string OFFER_TYPE_ATTR_3
 		{
 			get
 			{
-				return this._SPECS_ATTR_6;
+				return this._OFFER_TYPE_ATTR_3;
 			}
 			set
 			{
-				if ((this._SPECS_ATTR_6 != value))
+				if ((this._OFFER_TYPE_ATTR_3 != value))
 				{
-					this.OnSPECS_ATTR_6Changing(value);
+					this.OnOFFER_TYPE_ATTR_3Changing(value);
 					this.SendPropertyChanging();
-					this._SPECS_ATTR_6 = value;
-					this.SendPropertyChanged("SPECS_ATTR_6");
-					this.OnSPECS_ATTR_6Changed();
+					this._OFFER_TYPE_ATTR_3 = value;
+					this.SendPropertyChanged("OFFER_TYPE_ATTR_3");
+					this.OnOFFER_TYPE_ATTR_3Changed();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPECS_ATTR_7", DbType="NVarChar(MAX)")]
-		public string SPECS_ATTR_7
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_ATTR_4", DbType="NVarChar(MAX)")]
+		public string OFFER_TYPE_ATTR_4
 		{
 			get
 			{
-				return this._SPECS_ATTR_7;
+				return this._OFFER_TYPE_ATTR_4;
 			}
 			set
 			{
-				if ((this._SPECS_ATTR_7 != value))
+				if ((this._OFFER_TYPE_ATTR_4 != value))
 				{
-					this.OnSPECS_ATTR_7Changing(value);
+					this.OnOFFER_TYPE_ATTR_4Changing(value);
 					this.SendPropertyChanging();
-					this._SPECS_ATTR_7 = value;
-					this.SendPropertyChanged("SPECS_ATTR_7");
-					this.OnSPECS_ATTR_7Changed();
+					this._OFFER_TYPE_ATTR_4 = value;
+					this.SendPropertyChanged("OFFER_TYPE_ATTR_4");
+					this.OnOFFER_TYPE_ATTR_4Changed();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPECS_ATTR_8", DbType="NVarChar(MAX)")]
-		public string SPECS_ATTR_8
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_ATTR_5", DbType="NVarChar(MAX)")]
+		public string OFFER_TYPE_ATTR_5
 		{
 			get
 			{
-				return this._SPECS_ATTR_8;
+				return this._OFFER_TYPE_ATTR_5;
 			}
 			set
 			{
-				if ((this._SPECS_ATTR_8 != value))
+				if ((this._OFFER_TYPE_ATTR_5 != value))
 				{
-					this.OnSPECS_ATTR_8Changing(value);
+					this.OnOFFER_TYPE_ATTR_5Changing(value);
 					this.SendPropertyChanging();
-					this._SPECS_ATTR_8 = value;
-					this.SendPropertyChanged("SPECS_ATTR_8");
-					this.OnSPECS_ATTR_8Changed();
+					this._OFFER_TYPE_ATTR_5 = value;
+					this.SendPropertyChanged("OFFER_TYPE_ATTR_5");
+					this.OnOFFER_TYPE_ATTR_5Changed();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPECS_ATTR_9", DbType="NVarChar(MAX)")]
-		public string SPECS_ATTR_9
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PROD_TYPE_SPECS")]
+	public partial class PROD_TYPE_SPEC : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _TYPE_SPECS_ID;
+		
+		private System.Nullable<int> _TEMPLATE_ID;
+		
+		private string _TEMPLATE_VALUE;
+		
+		private System.Nullable<int> _TYPE_ID;
+		
+		private System.Nullable<int> _PRODUCT_ID;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnTYPE_SPECS_IDChanging(int value);
+    partial void OnTYPE_SPECS_IDChanged();
+    partial void OnTEMPLATE_IDChanging(System.Nullable<int> value);
+    partial void OnTEMPLATE_IDChanged();
+    partial void OnTEMPLATE_VALUEChanging(string value);
+    partial void OnTEMPLATE_VALUEChanged();
+    partial void OnTYPE_IDChanging(System.Nullable<int> value);
+    partial void OnTYPE_IDChanged();
+    partial void OnPRODUCT_IDChanging(System.Nullable<int> value);
+    partial void OnPRODUCT_IDChanged();
+    #endregion
+		
+		public PROD_TYPE_SPEC()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TYPE_SPECS_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int TYPE_SPECS_ID
 		{
 			get
 			{
-				return this._SPECS_ATTR_9;
+				return this._TYPE_SPECS_ID;
 			}
 			set
 			{
-				if ((this._SPECS_ATTR_9 != value))
+				if ((this._TYPE_SPECS_ID != value))
 				{
-					this.OnSPECS_ATTR_9Changing(value);
+					this.OnTYPE_SPECS_IDChanging(value);
 					this.SendPropertyChanging();
-					this._SPECS_ATTR_9 = value;
-					this.SendPropertyChanged("SPECS_ATTR_9");
-					this.OnSPECS_ATTR_9Changed();
+					this._TYPE_SPECS_ID = value;
+					this.SendPropertyChanged("TYPE_SPECS_ID");
+					this.OnTYPE_SPECS_IDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPECS_ATTR_10", DbType="NVarChar(MAX)")]
-		public string SPECS_ATTR_10
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TEMPLATE_ID", DbType="Int")]
+		public System.Nullable<int> TEMPLATE_ID
 		{
 			get
 			{
-				return this._SPECS_ATTR_10;
+				return this._TEMPLATE_ID;
 			}
 			set
 			{
-				if ((this._SPECS_ATTR_10 != value))
+				if ((this._TEMPLATE_ID != value))
 				{
-					this.OnSPECS_ATTR_10Changing(value);
+					this.OnTEMPLATE_IDChanging(value);
 					this.SendPropertyChanging();
-					this._SPECS_ATTR_10 = value;
-					this.SendPropertyChanged("SPECS_ATTR_10");
-					this.OnSPECS_ATTR_10Changed();
+					this._TEMPLATE_ID = value;
+					this.SendPropertyChanged("TEMPLATE_ID");
+					this.OnTEMPLATE_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TEMPLATE_VALUE", DbType="NVarChar(MAX)")]
+		public string TEMPLATE_VALUE
+		{
+			get
+			{
+				return this._TEMPLATE_VALUE;
+			}
+			set
+			{
+				if ((this._TEMPLATE_VALUE != value))
+				{
+					this.OnTEMPLATE_VALUEChanging(value);
+					this.SendPropertyChanging();
+					this._TEMPLATE_VALUE = value;
+					this.SendPropertyChanged("TEMPLATE_VALUE");
+					this.OnTEMPLATE_VALUEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TYPE_ID", DbType="Int")]
+		public System.Nullable<int> TYPE_ID
+		{
+			get
+			{
+				return this._TYPE_ID;
+			}
+			set
+			{
+				if ((this._TYPE_ID != value))
+				{
+					this.OnTYPE_IDChanging(value);
+					this.SendPropertyChanging();
+					this._TYPE_ID = value;
+					this.SendPropertyChanged("TYPE_ID");
+					this.OnTYPE_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_ID", DbType="Int")]
+		public System.Nullable<int> PRODUCT_ID
+		{
+			get
+			{
+				return this._PRODUCT_ID;
+			}
+			set
+			{
+				if ((this._PRODUCT_ID != value))
+				{
+					this.OnPRODUCT_IDChanging(value);
+					this.SendPropertyChanging();
+					this._PRODUCT_ID = value;
+					this.SendPropertyChanged("PRODUCT_ID");
+					this.OnPRODUCT_IDChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PROD_TYPE_TEMPLATES")]
+	public partial class PROD_TYPE_TEMPLATE : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _TEMPLATE_ID;
+		
+		private string _TEMP_PRE_LABEL_EN;
+		
+		private string _TEMP_PRE_LABEL_AR;
+		
+		private string _TEMP_POST_LABEL_EN;
+		
+		private string _TEMP_POST_LABEL_AR;
+		
+		private System.Nullable<int> _TYPE_ID;
+		
+		private string _TEMP_INPUT_TYPE;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnTEMPLATE_IDChanging(int value);
+    partial void OnTEMPLATE_IDChanged();
+    partial void OnTEMP_PRE_LABEL_ENChanging(string value);
+    partial void OnTEMP_PRE_LABEL_ENChanged();
+    partial void OnTEMP_PRE_LABEL_ARChanging(string value);
+    partial void OnTEMP_PRE_LABEL_ARChanged();
+    partial void OnTEMP_POST_LABEL_ENChanging(string value);
+    partial void OnTEMP_POST_LABEL_ENChanged();
+    partial void OnTEMP_POST_LABEL_ARChanging(string value);
+    partial void OnTEMP_POST_LABEL_ARChanged();
+    partial void OnTYPE_IDChanging(System.Nullable<int> value);
+    partial void OnTYPE_IDChanged();
+    partial void OnTEMP_INPUT_TYPEChanging(string value);
+    partial void OnTEMP_INPUT_TYPEChanged();
+    #endregion
+		
+		public PROD_TYPE_TEMPLATE()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TEMPLATE_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int TEMPLATE_ID
+		{
+			get
+			{
+				return this._TEMPLATE_ID;
+			}
+			set
+			{
+				if ((this._TEMPLATE_ID != value))
+				{
+					this.OnTEMPLATE_IDChanging(value);
+					this.SendPropertyChanging();
+					this._TEMPLATE_ID = value;
+					this.SendPropertyChanged("TEMPLATE_ID");
+					this.OnTEMPLATE_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TEMP_PRE_LABEL_EN", DbType="NVarChar(50)")]
+		public string TEMP_PRE_LABEL_EN
+		{
+			get
+			{
+				return this._TEMP_PRE_LABEL_EN;
+			}
+			set
+			{
+				if ((this._TEMP_PRE_LABEL_EN != value))
+				{
+					this.OnTEMP_PRE_LABEL_ENChanging(value);
+					this.SendPropertyChanging();
+					this._TEMP_PRE_LABEL_EN = value;
+					this.SendPropertyChanged("TEMP_PRE_LABEL_EN");
+					this.OnTEMP_PRE_LABEL_ENChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TEMP_PRE_LABEL_AR", DbType="NVarChar(50)")]
+		public string TEMP_PRE_LABEL_AR
+		{
+			get
+			{
+				return this._TEMP_PRE_LABEL_AR;
+			}
+			set
+			{
+				if ((this._TEMP_PRE_LABEL_AR != value))
+				{
+					this.OnTEMP_PRE_LABEL_ARChanging(value);
+					this.SendPropertyChanging();
+					this._TEMP_PRE_LABEL_AR = value;
+					this.SendPropertyChanged("TEMP_PRE_LABEL_AR");
+					this.OnTEMP_PRE_LABEL_ARChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TEMP_POST_LABEL_EN", DbType="NVarChar(50)")]
+		public string TEMP_POST_LABEL_EN
+		{
+			get
+			{
+				return this._TEMP_POST_LABEL_EN;
+			}
+			set
+			{
+				if ((this._TEMP_POST_LABEL_EN != value))
+				{
+					this.OnTEMP_POST_LABEL_ENChanging(value);
+					this.SendPropertyChanging();
+					this._TEMP_POST_LABEL_EN = value;
+					this.SendPropertyChanged("TEMP_POST_LABEL_EN");
+					this.OnTEMP_POST_LABEL_ENChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TEMP_POST_LABEL_AR", DbType="NVarChar(50)")]
+		public string TEMP_POST_LABEL_AR
+		{
+			get
+			{
+				return this._TEMP_POST_LABEL_AR;
+			}
+			set
+			{
+				if ((this._TEMP_POST_LABEL_AR != value))
+				{
+					this.OnTEMP_POST_LABEL_ARChanging(value);
+					this.SendPropertyChanging();
+					this._TEMP_POST_LABEL_AR = value;
+					this.SendPropertyChanged("TEMP_POST_LABEL_AR");
+					this.OnTEMP_POST_LABEL_ARChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TYPE_ID", DbType="Int")]
+		public System.Nullable<int> TYPE_ID
+		{
+			get
+			{
+				return this._TYPE_ID;
+			}
+			set
+			{
+				if ((this._TYPE_ID != value))
+				{
+					this.OnTYPE_IDChanging(value);
+					this.SendPropertyChanging();
+					this._TYPE_ID = value;
+					this.SendPropertyChanged("TYPE_ID");
+					this.OnTYPE_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TEMP_INPUT_TYPE", DbType="NVarChar(50)")]
+		public string TEMP_INPUT_TYPE
+		{
+			get
+			{
+				return this._TEMP_INPUT_TYPE;
+			}
+			set
+			{
+				if ((this._TEMP_INPUT_TYPE != value))
+				{
+					this.OnTEMP_INPUT_TYPEChanging(value);
+					this.SendPropertyChanging();
+					this._TEMP_INPUT_TYPE = value;
+					this.SendPropertyChanged("TEMP_INPUT_TYPE");
+					this.OnTEMP_INPUT_TYPEChanged();
 				}
 			}
 		}
@@ -1215,8 +1960,6 @@ namespace DataEntryDAL.DataAccessLogic
 		
 		private int _CATEGORY_ID;
 		
-		private string _TYPE_SPECS;
-		
 		private string _TYPE_ATTR_1;
 		
 		private string _TYPE_ATTR_2;
@@ -1249,8 +1992,6 @@ namespace DataEntryDAL.DataAccessLogic
     partial void OnTYPE_NAME_ARChanged();
     partial void OnCATEGORY_IDChanging(int value);
     partial void OnCATEGORY_IDChanged();
-    partial void OnTYPE_SPECSChanging(string value);
-    partial void OnTYPE_SPECSChanged();
     partial void OnTYPE_ATTR_1Changing(string value);
     partial void OnTYPE_ATTR_1Changed();
     partial void OnTYPE_ATTR_2Changing(string value);
@@ -1354,26 +2095,6 @@ namespace DataEntryDAL.DataAccessLogic
 					this._CATEGORY_ID = value;
 					this.SendPropertyChanged("CATEGORY_ID");
 					this.OnCATEGORY_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TYPE_SPECS", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string TYPE_SPECS
-		{
-			get
-			{
-				return this._TYPE_SPECS;
-			}
-			set
-			{
-				if ((this._TYPE_SPECS != value))
-				{
-					this.OnTYPE_SPECSChanging(value);
-					this.SendPropertyChanging();
-					this._TYPE_SPECS = value;
-					this.SendPropertyChanged("TYPE_SPECS");
-					this.OnTYPE_SPECSChanged();
 				}
 			}
 		}
@@ -1574,500 +2295,6 @@ namespace DataEntryDAL.DataAccessLogic
 					this._TYPE_ATTR_10 = value;
 					this.SendPropertyChanged("TYPE_ATTR_10");
 					this.OnTYPE_ATTR_10Changed();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PRODUCTS")]
-	public partial class PRODUCT : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _PRODUCT_ID;
-		
-		private int _FLYER_ID;
-		
-		private string _PRODUCT_NAME_EN;
-		
-		private string _PRODUCT_NAME_AR;
-		
-		private int _TYPE_ID;
-		
-		private string _PRODUCT_IMAGE;
-		
-		private int _SPECS_ID;
-		
-		private int _PROVIDER_ID;
-		
-		private string _PRODUCT_TAGS;
-		
-		private string _PRODUCT_ATTR_1;
-		
-		private string _PRODUCT_ATTR_2;
-		
-		private string _PRODUCT_ATTR_3;
-		
-		private string _PRODUCT_ATTR_4;
-		
-		private string _PRODUCT_ATTR_5;
-		
-		private string _PRODUCT_ATTR_6;
-		
-		private string _PRODUCT_ATTR_7;
-		
-		private string _PRODUCT_ATTR_8;
-		
-		private string _PRODUCT_ATTR_9;
-		
-		private string _PRODUCT_ATTR_10;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnPRODUCT_IDChanging(int value);
-    partial void OnPRODUCT_IDChanged();
-    partial void OnFLYER_IDChanging(int value);
-    partial void OnFLYER_IDChanged();
-    partial void OnPRODUCT_NAME_ENChanging(string value);
-    partial void OnPRODUCT_NAME_ENChanged();
-    partial void OnPRODUCT_NAME_ARChanging(string value);
-    partial void OnPRODUCT_NAME_ARChanged();
-    partial void OnTYPE_IDChanging(int value);
-    partial void OnTYPE_IDChanged();
-    partial void OnPRODUCT_IMAGEChanging(string value);
-    partial void OnPRODUCT_IMAGEChanged();
-    partial void OnSPECS_IDChanging(int value);
-    partial void OnSPECS_IDChanged();
-    partial void OnPROVIDER_IDChanging(int value);
-    partial void OnPROVIDER_IDChanged();
-    partial void OnPRODUCT_TAGSChanging(string value);
-    partial void OnPRODUCT_TAGSChanged();
-    partial void OnPRODUCT_ATTR_1Changing(string value);
-    partial void OnPRODUCT_ATTR_1Changed();
-    partial void OnPRODUCT_ATTR_2Changing(string value);
-    partial void OnPRODUCT_ATTR_2Changed();
-    partial void OnPRODUCT_ATTR_3Changing(string value);
-    partial void OnPRODUCT_ATTR_3Changed();
-    partial void OnPRODUCT_ATTR_4Changing(string value);
-    partial void OnPRODUCT_ATTR_4Changed();
-    partial void OnPRODUCT_ATTR_5Changing(string value);
-    partial void OnPRODUCT_ATTR_5Changed();
-    partial void OnPRODUCT_ATTR_6Changing(string value);
-    partial void OnPRODUCT_ATTR_6Changed();
-    partial void OnPRODUCT_ATTR_7Changing(string value);
-    partial void OnPRODUCT_ATTR_7Changed();
-    partial void OnPRODUCT_ATTR_8Changing(string value);
-    partial void OnPRODUCT_ATTR_8Changed();
-    partial void OnPRODUCT_ATTR_9Changing(string value);
-    partial void OnPRODUCT_ATTR_9Changed();
-    partial void OnPRODUCT_ATTR_10Changing(string value);
-    partial void OnPRODUCT_ATTR_10Changed();
-    #endregion
-		
-		public PRODUCT()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int PRODUCT_ID
-		{
-			get
-			{
-				return this._PRODUCT_ID;
-			}
-			set
-			{
-				if ((this._PRODUCT_ID != value))
-				{
-					this.OnPRODUCT_IDChanging(value);
-					this.SendPropertyChanging();
-					this._PRODUCT_ID = value;
-					this.SendPropertyChanged("PRODUCT_ID");
-					this.OnPRODUCT_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_ID", DbType="Int NOT NULL")]
-		public int FLYER_ID
-		{
-			get
-			{
-				return this._FLYER_ID;
-			}
-			set
-			{
-				if ((this._FLYER_ID != value))
-				{
-					this.OnFLYER_IDChanging(value);
-					this.SendPropertyChanging();
-					this._FLYER_ID = value;
-					this.SendPropertyChanged("FLYER_ID");
-					this.OnFLYER_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_NAME_EN", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string PRODUCT_NAME_EN
-		{
-			get
-			{
-				return this._PRODUCT_NAME_EN;
-			}
-			set
-			{
-				if ((this._PRODUCT_NAME_EN != value))
-				{
-					this.OnPRODUCT_NAME_ENChanging(value);
-					this.SendPropertyChanging();
-					this._PRODUCT_NAME_EN = value;
-					this.SendPropertyChanged("PRODUCT_NAME_EN");
-					this.OnPRODUCT_NAME_ENChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_NAME_AR", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string PRODUCT_NAME_AR
-		{
-			get
-			{
-				return this._PRODUCT_NAME_AR;
-			}
-			set
-			{
-				if ((this._PRODUCT_NAME_AR != value))
-				{
-					this.OnPRODUCT_NAME_ARChanging(value);
-					this.SendPropertyChanging();
-					this._PRODUCT_NAME_AR = value;
-					this.SendPropertyChanged("PRODUCT_NAME_AR");
-					this.OnPRODUCT_NAME_ARChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TYPE_ID", DbType="Int NOT NULL")]
-		public int TYPE_ID
-		{
-			get
-			{
-				return this._TYPE_ID;
-			}
-			set
-			{
-				if ((this._TYPE_ID != value))
-				{
-					this.OnTYPE_IDChanging(value);
-					this.SendPropertyChanging();
-					this._TYPE_ID = value;
-					this.SendPropertyChanged("TYPE_ID");
-					this.OnTYPE_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_IMAGE", DbType="NVarChar(MAX)")]
-		public string PRODUCT_IMAGE
-		{
-			get
-			{
-				return this._PRODUCT_IMAGE;
-			}
-			set
-			{
-				if ((this._PRODUCT_IMAGE != value))
-				{
-					this.OnPRODUCT_IMAGEChanging(value);
-					this.SendPropertyChanging();
-					this._PRODUCT_IMAGE = value;
-					this.SendPropertyChanged("PRODUCT_IMAGE");
-					this.OnPRODUCT_IMAGEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPECS_ID", DbType="Int NOT NULL")]
-		public int SPECS_ID
-		{
-			get
-			{
-				return this._SPECS_ID;
-			}
-			set
-			{
-				if ((this._SPECS_ID != value))
-				{
-					this.OnSPECS_IDChanging(value);
-					this.SendPropertyChanging();
-					this._SPECS_ID = value;
-					this.SendPropertyChanged("SPECS_ID");
-					this.OnSPECS_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_ID", DbType="Int NOT NULL")]
-		public int PROVIDER_ID
-		{
-			get
-			{
-				return this._PROVIDER_ID;
-			}
-			set
-			{
-				if ((this._PROVIDER_ID != value))
-				{
-					this.OnPROVIDER_IDChanging(value);
-					this.SendPropertyChanging();
-					this._PROVIDER_ID = value;
-					this.SendPropertyChanged("PROVIDER_ID");
-					this.OnPROVIDER_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_TAGS", DbType="NText", UpdateCheck=UpdateCheck.Never)]
-		public string PRODUCT_TAGS
-		{
-			get
-			{
-				return this._PRODUCT_TAGS;
-			}
-			set
-			{
-				if ((this._PRODUCT_TAGS != value))
-				{
-					this.OnPRODUCT_TAGSChanging(value);
-					this.SendPropertyChanging();
-					this._PRODUCT_TAGS = value;
-					this.SendPropertyChanged("PRODUCT_TAGS");
-					this.OnPRODUCT_TAGSChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_ATTR_1", DbType="NVarChar(MAX)")]
-		public string PRODUCT_ATTR_1
-		{
-			get
-			{
-				return this._PRODUCT_ATTR_1;
-			}
-			set
-			{
-				if ((this._PRODUCT_ATTR_1 != value))
-				{
-					this.OnPRODUCT_ATTR_1Changing(value);
-					this.SendPropertyChanging();
-					this._PRODUCT_ATTR_1 = value;
-					this.SendPropertyChanged("PRODUCT_ATTR_1");
-					this.OnPRODUCT_ATTR_1Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_ATTR_2", DbType="NVarChar(MAX)")]
-		public string PRODUCT_ATTR_2
-		{
-			get
-			{
-				return this._PRODUCT_ATTR_2;
-			}
-			set
-			{
-				if ((this._PRODUCT_ATTR_2 != value))
-				{
-					this.OnPRODUCT_ATTR_2Changing(value);
-					this.SendPropertyChanging();
-					this._PRODUCT_ATTR_2 = value;
-					this.SendPropertyChanged("PRODUCT_ATTR_2");
-					this.OnPRODUCT_ATTR_2Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_ATTR_3", DbType="NVarChar(MAX)")]
-		public string PRODUCT_ATTR_3
-		{
-			get
-			{
-				return this._PRODUCT_ATTR_3;
-			}
-			set
-			{
-				if ((this._PRODUCT_ATTR_3 != value))
-				{
-					this.OnPRODUCT_ATTR_3Changing(value);
-					this.SendPropertyChanging();
-					this._PRODUCT_ATTR_3 = value;
-					this.SendPropertyChanged("PRODUCT_ATTR_3");
-					this.OnPRODUCT_ATTR_3Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_ATTR_4", DbType="NVarChar(MAX)")]
-		public string PRODUCT_ATTR_4
-		{
-			get
-			{
-				return this._PRODUCT_ATTR_4;
-			}
-			set
-			{
-				if ((this._PRODUCT_ATTR_4 != value))
-				{
-					this.OnPRODUCT_ATTR_4Changing(value);
-					this.SendPropertyChanging();
-					this._PRODUCT_ATTR_4 = value;
-					this.SendPropertyChanged("PRODUCT_ATTR_4");
-					this.OnPRODUCT_ATTR_4Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_ATTR_5", DbType="NVarChar(MAX)")]
-		public string PRODUCT_ATTR_5
-		{
-			get
-			{
-				return this._PRODUCT_ATTR_5;
-			}
-			set
-			{
-				if ((this._PRODUCT_ATTR_5 != value))
-				{
-					this.OnPRODUCT_ATTR_5Changing(value);
-					this.SendPropertyChanging();
-					this._PRODUCT_ATTR_5 = value;
-					this.SendPropertyChanged("PRODUCT_ATTR_5");
-					this.OnPRODUCT_ATTR_5Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_ATTR_6", DbType="NVarChar(MAX)")]
-		public string PRODUCT_ATTR_6
-		{
-			get
-			{
-				return this._PRODUCT_ATTR_6;
-			}
-			set
-			{
-				if ((this._PRODUCT_ATTR_6 != value))
-				{
-					this.OnPRODUCT_ATTR_6Changing(value);
-					this.SendPropertyChanging();
-					this._PRODUCT_ATTR_6 = value;
-					this.SendPropertyChanged("PRODUCT_ATTR_6");
-					this.OnPRODUCT_ATTR_6Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_ATTR_7", DbType="NVarChar(MAX)")]
-		public string PRODUCT_ATTR_7
-		{
-			get
-			{
-				return this._PRODUCT_ATTR_7;
-			}
-			set
-			{
-				if ((this._PRODUCT_ATTR_7 != value))
-				{
-					this.OnPRODUCT_ATTR_7Changing(value);
-					this.SendPropertyChanging();
-					this._PRODUCT_ATTR_7 = value;
-					this.SendPropertyChanged("PRODUCT_ATTR_7");
-					this.OnPRODUCT_ATTR_7Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_ATTR_8", DbType="NVarChar(MAX)")]
-		public string PRODUCT_ATTR_8
-		{
-			get
-			{
-				return this._PRODUCT_ATTR_8;
-			}
-			set
-			{
-				if ((this._PRODUCT_ATTR_8 != value))
-				{
-					this.OnPRODUCT_ATTR_8Changing(value);
-					this.SendPropertyChanging();
-					this._PRODUCT_ATTR_8 = value;
-					this.SendPropertyChanged("PRODUCT_ATTR_8");
-					this.OnPRODUCT_ATTR_8Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_ATTR_9", DbType="NVarChar(MAX)")]
-		public string PRODUCT_ATTR_9
-		{
-			get
-			{
-				return this._PRODUCT_ATTR_9;
-			}
-			set
-			{
-				if ((this._PRODUCT_ATTR_9 != value))
-				{
-					this.OnPRODUCT_ATTR_9Changing(value);
-					this.SendPropertyChanging();
-					this._PRODUCT_ATTR_9 = value;
-					this.SendPropertyChanged("PRODUCT_ATTR_9");
-					this.OnPRODUCT_ATTR_9Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_ATTR_10", DbType="NVarChar(MAX)")]
-		public string PRODUCT_ATTR_10
-		{
-			get
-			{
-				return this._PRODUCT_ATTR_10;
-			}
-			set
-			{
-				if ((this._PRODUCT_ATTR_10 != value))
-				{
-					this.OnPRODUCT_ATTR_10Changing(value);
-					this.SendPropertyChanging();
-					this._PRODUCT_ATTR_10 = value;
-					this.SendPropertyChanged("PRODUCT_ATTR_10");
-					this.OnPRODUCT_ATTR_10Changed();
 				}
 			}
 		}
@@ -2487,6 +2714,10 @@ namespace DataEntryDAL.DataAccessLogic
 		
 		private string _PROVIDER_COORDINATOR;
 		
+		private System.Nullable<bool> _PROVIDER_TYPE;
+		
+		private System.Nullable<int> _PARENT_ID;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -2505,6 +2736,10 @@ namespace DataEntryDAL.DataAccessLogic
     partial void OnPROVIDER_CONTACTSChanged();
     partial void OnPROVIDER_COORDINATORChanging(string value);
     partial void OnPROVIDER_COORDINATORChanged();
+    partial void OnPROVIDER_TYPEChanging(System.Nullable<bool> value);
+    partial void OnPROVIDER_TYPEChanged();
+    partial void OnPARENT_IDChanging(System.Nullable<int> value);
+    partial void OnPARENT_IDChanged();
     #endregion
 		
 		public PROVIDER()
@@ -2652,256 +2887,42 @@ namespace DataEntryDAL.DataAccessLogic
 			}
 		}
 		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.OFFER_TYPES")]
-	public partial class OFFER_TYPE : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _OFFER_TYPE_ID;
-		
-		private string _OFFER_TYPE_NAME_EN;
-		
-		private string _OFFER_TYPE_NAME_AR;
-		
-		private string _OFFER_TYPE_VALUE;
-		
-		private string _OFFER_TYPE_ATTR_1;
-		
-		private string _OFFER_TYPE_ATTR_2;
-		
-		private string _OFFER_TYPE_ATTR_3;
-		
-		private string _OFFER_TYPE_ATTR_4;
-		
-		private string _OFFER_TYPE_ATTR_5;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnOFFER_TYPE_IDChanging(int value);
-    partial void OnOFFER_TYPE_IDChanged();
-    partial void OnOFFER_TYPE_NAME_ENChanging(string value);
-    partial void OnOFFER_TYPE_NAME_ENChanged();
-    partial void OnOFFER_TYPE_NAME_ARChanging(string value);
-    partial void OnOFFER_TYPE_NAME_ARChanged();
-    partial void OnOFFER_TYPE_VALUEChanging(string value);
-    partial void OnOFFER_TYPE_VALUEChanged();
-    partial void OnOFFER_TYPE_ATTR_1Changing(string value);
-    partial void OnOFFER_TYPE_ATTR_1Changed();
-    partial void OnOFFER_TYPE_ATTR_2Changing(string value);
-    partial void OnOFFER_TYPE_ATTR_2Changed();
-    partial void OnOFFER_TYPE_ATTR_3Changing(string value);
-    partial void OnOFFER_TYPE_ATTR_3Changed();
-    partial void OnOFFER_TYPE_ATTR_4Changing(string value);
-    partial void OnOFFER_TYPE_ATTR_4Changed();
-    partial void OnOFFER_TYPE_ATTR_5Changing(string value);
-    partial void OnOFFER_TYPE_ATTR_5Changed();
-    #endregion
-		
-		public OFFER_TYPE()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int OFFER_TYPE_ID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_TYPE", DbType="Bit")]
+		public System.Nullable<bool> PROVIDER_TYPE
 		{
 			get
 			{
-				return this._OFFER_TYPE_ID;
+				return this._PROVIDER_TYPE;
 			}
 			set
 			{
-				if ((this._OFFER_TYPE_ID != value))
+				if ((this._PROVIDER_TYPE != value))
 				{
-					this.OnOFFER_TYPE_IDChanging(value);
+					this.OnPROVIDER_TYPEChanging(value);
 					this.SendPropertyChanging();
-					this._OFFER_TYPE_ID = value;
-					this.SendPropertyChanged("OFFER_TYPE_ID");
-					this.OnOFFER_TYPE_IDChanged();
+					this._PROVIDER_TYPE = value;
+					this.SendPropertyChanged("PROVIDER_TYPE");
+					this.OnPROVIDER_TYPEChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_NAME_EN", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string OFFER_TYPE_NAME_EN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PARENT_ID", DbType="Int")]
+		public System.Nullable<int> PARENT_ID
 		{
 			get
 			{
-				return this._OFFER_TYPE_NAME_EN;
+				return this._PARENT_ID;
 			}
 			set
 			{
-				if ((this._OFFER_TYPE_NAME_EN != value))
+				if ((this._PARENT_ID != value))
 				{
-					this.OnOFFER_TYPE_NAME_ENChanging(value);
+					this.OnPARENT_IDChanging(value);
 					this.SendPropertyChanging();
-					this._OFFER_TYPE_NAME_EN = value;
-					this.SendPropertyChanged("OFFER_TYPE_NAME_EN");
-					this.OnOFFER_TYPE_NAME_ENChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_NAME_AR", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string OFFER_TYPE_NAME_AR
-		{
-			get
-			{
-				return this._OFFER_TYPE_NAME_AR;
-			}
-			set
-			{
-				if ((this._OFFER_TYPE_NAME_AR != value))
-				{
-					this.OnOFFER_TYPE_NAME_ARChanging(value);
-					this.SendPropertyChanging();
-					this._OFFER_TYPE_NAME_AR = value;
-					this.SendPropertyChanged("OFFER_TYPE_NAME_AR");
-					this.OnOFFER_TYPE_NAME_ARChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_VALUE", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string OFFER_TYPE_VALUE
-		{
-			get
-			{
-				return this._OFFER_TYPE_VALUE;
-			}
-			set
-			{
-				if ((this._OFFER_TYPE_VALUE != value))
-				{
-					this.OnOFFER_TYPE_VALUEChanging(value);
-					this.SendPropertyChanging();
-					this._OFFER_TYPE_VALUE = value;
-					this.SendPropertyChanged("OFFER_TYPE_VALUE");
-					this.OnOFFER_TYPE_VALUEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_ATTR_1", DbType="NVarChar(MAX)")]
-		public string OFFER_TYPE_ATTR_1
-		{
-			get
-			{
-				return this._OFFER_TYPE_ATTR_1;
-			}
-			set
-			{
-				if ((this._OFFER_TYPE_ATTR_1 != value))
-				{
-					this.OnOFFER_TYPE_ATTR_1Changing(value);
-					this.SendPropertyChanging();
-					this._OFFER_TYPE_ATTR_1 = value;
-					this.SendPropertyChanged("OFFER_TYPE_ATTR_1");
-					this.OnOFFER_TYPE_ATTR_1Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_ATTR_2", DbType="NVarChar(MAX)")]
-		public string OFFER_TYPE_ATTR_2
-		{
-			get
-			{
-				return this._OFFER_TYPE_ATTR_2;
-			}
-			set
-			{
-				if ((this._OFFER_TYPE_ATTR_2 != value))
-				{
-					this.OnOFFER_TYPE_ATTR_2Changing(value);
-					this.SendPropertyChanging();
-					this._OFFER_TYPE_ATTR_2 = value;
-					this.SendPropertyChanged("OFFER_TYPE_ATTR_2");
-					this.OnOFFER_TYPE_ATTR_2Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_ATTR_3", DbType="NVarChar(MAX)")]
-		public string OFFER_TYPE_ATTR_3
-		{
-			get
-			{
-				return this._OFFER_TYPE_ATTR_3;
-			}
-			set
-			{
-				if ((this._OFFER_TYPE_ATTR_3 != value))
-				{
-					this.OnOFFER_TYPE_ATTR_3Changing(value);
-					this.SendPropertyChanging();
-					this._OFFER_TYPE_ATTR_3 = value;
-					this.SendPropertyChanged("OFFER_TYPE_ATTR_3");
-					this.OnOFFER_TYPE_ATTR_3Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_ATTR_4", DbType="NVarChar(MAX)")]
-		public string OFFER_TYPE_ATTR_4
-		{
-			get
-			{
-				return this._OFFER_TYPE_ATTR_4;
-			}
-			set
-			{
-				if ((this._OFFER_TYPE_ATTR_4 != value))
-				{
-					this.OnOFFER_TYPE_ATTR_4Changing(value);
-					this.SendPropertyChanging();
-					this._OFFER_TYPE_ATTR_4 = value;
-					this.SendPropertyChanged("OFFER_TYPE_ATTR_4");
-					this.OnOFFER_TYPE_ATTR_4Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_ATTR_5", DbType="NVarChar(MAX)")]
-		public string OFFER_TYPE_ATTR_5
-		{
-			get
-			{
-				return this._OFFER_TYPE_ATTR_5;
-			}
-			set
-			{
-				if ((this._OFFER_TYPE_ATTR_5 != value))
-				{
-					this.OnOFFER_TYPE_ATTR_5Changing(value);
-					this.SendPropertyChanging();
-					this._OFFER_TYPE_ATTR_5 = value;
-					this.SendPropertyChanged("OFFER_TYPE_ATTR_5");
-					this.OnOFFER_TYPE_ATTR_5Changed();
+					this._PARENT_ID = value;
+					this.SendPropertyChanged("PARENT_ID");
+					this.OnPARENT_IDChanged();
 				}
 			}
 		}
@@ -3061,163 +3082,91 @@ namespace DataEntryDAL.DataAccessLogic
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TIME_FRAMES")]
-	public partial class TIME_FRAME : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PROD_OFF_TYP")]
+	public partial class PROD_OFF_TYP : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _FRAME_ID;
+		private int _PROD_OFF_TYPE_ID;
 		
-		private System.Nullable<int> _FRAME_TYPE_ID;
+		private string _PROD_OFF_TYPE_NAME_EN;
 		
-		private string _FRAME_NAME_EN;
-		
-		private string _FRAME_NAME_AR;
-		
-		private System.Nullable<System.DateTime> _FRAME_DATE_FROM;
-		
-		private System.Nullable<System.DateTime> _FRAME_DATE_TO;
+		private string _PROD_OFF_TYPE_NAME_AR;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnFRAME_IDChanging(int value);
-    partial void OnFRAME_IDChanged();
-    partial void OnFRAME_TYPE_IDChanging(System.Nullable<int> value);
-    partial void OnFRAME_TYPE_IDChanged();
-    partial void OnFRAME_NAME_ENChanging(string value);
-    partial void OnFRAME_NAME_ENChanged();
-    partial void OnFRAME_NAME_ARChanging(string value);
-    partial void OnFRAME_NAME_ARChanged();
-    partial void OnFRAME_DATE_FROMChanging(System.Nullable<System.DateTime> value);
-    partial void OnFRAME_DATE_FROMChanged();
-    partial void OnFRAME_DATE_TOChanging(System.Nullable<System.DateTime> value);
-    partial void OnFRAME_DATE_TOChanged();
+    partial void OnPROD_OFF_TYPE_IDChanging(int value);
+    partial void OnPROD_OFF_TYPE_IDChanged();
+    partial void OnPROD_OFF_TYPE_NAME_ENChanging(string value);
+    partial void OnPROD_OFF_TYPE_NAME_ENChanged();
+    partial void OnPROD_OFF_TYPE_NAME_ARChanging(string value);
+    partial void OnPROD_OFF_TYPE_NAME_ARChanged();
     #endregion
 		
-		public TIME_FRAME()
+		public PROD_OFF_TYP()
 		{
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int FRAME_ID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROD_OFF_TYPE_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int PROD_OFF_TYPE_ID
 		{
 			get
 			{
-				return this._FRAME_ID;
+				return this._PROD_OFF_TYPE_ID;
 			}
 			set
 			{
-				if ((this._FRAME_ID != value))
+				if ((this._PROD_OFF_TYPE_ID != value))
 				{
-					this.OnFRAME_IDChanging(value);
+					this.OnPROD_OFF_TYPE_IDChanging(value);
 					this.SendPropertyChanging();
-					this._FRAME_ID = value;
-					this.SendPropertyChanged("FRAME_ID");
-					this.OnFRAME_IDChanged();
+					this._PROD_OFF_TYPE_ID = value;
+					this.SendPropertyChanged("PROD_OFF_TYPE_ID");
+					this.OnPROD_OFF_TYPE_IDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_TYPE_ID", DbType="Int")]
-		public System.Nullable<int> FRAME_TYPE_ID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROD_OFF_TYPE_NAME_EN", DbType="NVarChar(MAX)")]
+		public string PROD_OFF_TYPE_NAME_EN
 		{
 			get
 			{
-				return this._FRAME_TYPE_ID;
+				return this._PROD_OFF_TYPE_NAME_EN;
 			}
 			set
 			{
-				if ((this._FRAME_TYPE_ID != value))
+				if ((this._PROD_OFF_TYPE_NAME_EN != value))
 				{
-					this.OnFRAME_TYPE_IDChanging(value);
+					this.OnPROD_OFF_TYPE_NAME_ENChanging(value);
 					this.SendPropertyChanging();
-					this._FRAME_TYPE_ID = value;
-					this.SendPropertyChanged("FRAME_TYPE_ID");
-					this.OnFRAME_TYPE_IDChanged();
+					this._PROD_OFF_TYPE_NAME_EN = value;
+					this.SendPropertyChanged("PROD_OFF_TYPE_NAME_EN");
+					this.OnPROD_OFF_TYPE_NAME_ENChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_NAME_EN", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string FRAME_NAME_EN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROD_OFF_TYPE_NAME_AR", DbType="NVarChar(MAX)")]
+		public string PROD_OFF_TYPE_NAME_AR
 		{
 			get
 			{
-				return this._FRAME_NAME_EN;
+				return this._PROD_OFF_TYPE_NAME_AR;
 			}
 			set
 			{
-				if ((this._FRAME_NAME_EN != value))
+				if ((this._PROD_OFF_TYPE_NAME_AR != value))
 				{
-					this.OnFRAME_NAME_ENChanging(value);
+					this.OnPROD_OFF_TYPE_NAME_ARChanging(value);
 					this.SendPropertyChanging();
-					this._FRAME_NAME_EN = value;
-					this.SendPropertyChanged("FRAME_NAME_EN");
-					this.OnFRAME_NAME_ENChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_NAME_AR", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string FRAME_NAME_AR
-		{
-			get
-			{
-				return this._FRAME_NAME_AR;
-			}
-			set
-			{
-				if ((this._FRAME_NAME_AR != value))
-				{
-					this.OnFRAME_NAME_ARChanging(value);
-					this.SendPropertyChanging();
-					this._FRAME_NAME_AR = value;
-					this.SendPropertyChanged("FRAME_NAME_AR");
-					this.OnFRAME_NAME_ARChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_DATE_FROM", DbType="DateTime")]
-		public System.Nullable<System.DateTime> FRAME_DATE_FROM
-		{
-			get
-			{
-				return this._FRAME_DATE_FROM;
-			}
-			set
-			{
-				if ((this._FRAME_DATE_FROM != value))
-				{
-					this.OnFRAME_DATE_FROMChanging(value);
-					this.SendPropertyChanging();
-					this._FRAME_DATE_FROM = value;
-					this.SendPropertyChanged("FRAME_DATE_FROM");
-					this.OnFRAME_DATE_FROMChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_DATE_TO", DbType="DateTime")]
-		public System.Nullable<System.DateTime> FRAME_DATE_TO
-		{
-			get
-			{
-				return this._FRAME_DATE_TO;
-			}
-			set
-			{
-				if ((this._FRAME_DATE_TO != value))
-				{
-					this.OnFRAME_DATE_TOChanging(value);
-					this.SendPropertyChanging();
-					this._FRAME_DATE_TO = value;
-					this.SendPropertyChanged("FRAME_DATE_TO");
-					this.OnFRAME_DATE_TOChanged();
+					this._PROD_OFF_TYPE_NAME_AR = value;
+					this.SendPropertyChanged("PROD_OFF_TYPE_NAME_AR");
+					this.OnPROD_OFF_TYPE_NAME_ARChanged();
 				}
 			}
 		}
@@ -3243,41 +3192,463 @@ namespace DataEntryDAL.DataAccessLogic
 		}
 	}
 	
-	public partial class GET_ALL_FLYERS_PROCDResult
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PROD_OFF_TYP_ATTR")]
+	public partial class PROD_OFF_TYP_ATTR : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _PROD_OFF_TYP_ATTR_ID;
+		
+		private System.Nullable<int> _PROD_OFF_TYPE_ID;
+		
+		private string _PROD_OFF_TYP_ATTR_1;
+		
+		private string _PROD_OFF_TYP_ATTR_2;
+		
+		private string _PROD_OFF_TYP_ATTR_3;
+		
+		private string _PROD_OFF_TYP_ATTR_4;
+		
+		private string _PROD_OFF_TYP_ATTR_5;
+		
+		private string _PROD_OFF_TYP_ATTR_6;
+		
+		private string _PROD_OFF_TYP_ATTR_7;
+		
+		private string _PROD_OFF_TYP_ATTR_8;
+		
+		private string _PROD_OFF_TYP_ATTR_9;
+		
+		private string _PROD_OFF_TYP_ATTR_10;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPROD_OFF_TYP_ATTR_IDChanging(int value);
+    partial void OnPROD_OFF_TYP_ATTR_IDChanged();
+    partial void OnPROD_OFF_TYPE_IDChanging(System.Nullable<int> value);
+    partial void OnPROD_OFF_TYPE_IDChanged();
+    partial void OnPROD_OFF_TYP_ATTR_1Changing(string value);
+    partial void OnPROD_OFF_TYP_ATTR_1Changed();
+    partial void OnPROD_OFF_TYP_ATTR_2Changing(string value);
+    partial void OnPROD_OFF_TYP_ATTR_2Changed();
+    partial void OnPROD_OFF_TYP_ATTR_3Changing(string value);
+    partial void OnPROD_OFF_TYP_ATTR_3Changed();
+    partial void OnPROD_OFF_TYP_ATTR_4Changing(string value);
+    partial void OnPROD_OFF_TYP_ATTR_4Changed();
+    partial void OnPROD_OFF_TYP_ATTR_5Changing(string value);
+    partial void OnPROD_OFF_TYP_ATTR_5Changed();
+    partial void OnPROD_OFF_TYP_ATTR_6Changing(string value);
+    partial void OnPROD_OFF_TYP_ATTR_6Changed();
+    partial void OnPROD_OFF_TYP_ATTR_7Changing(string value);
+    partial void OnPROD_OFF_TYP_ATTR_7Changed();
+    partial void OnPROD_OFF_TYP_ATTR_8Changing(string value);
+    partial void OnPROD_OFF_TYP_ATTR_8Changed();
+    partial void OnPROD_OFF_TYP_ATTR_9Changing(string value);
+    partial void OnPROD_OFF_TYP_ATTR_9Changed();
+    partial void OnPROD_OFF_TYP_ATTR_10Changing(string value);
+    partial void OnPROD_OFF_TYP_ATTR_10Changed();
+    #endregion
+		
+		public PROD_OFF_TYP_ATTR()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROD_OFF_TYP_ATTR_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int PROD_OFF_TYP_ATTR_ID
+		{
+			get
+			{
+				return this._PROD_OFF_TYP_ATTR_ID;
+			}
+			set
+			{
+				if ((this._PROD_OFF_TYP_ATTR_ID != value))
+				{
+					this.OnPROD_OFF_TYP_ATTR_IDChanging(value);
+					this.SendPropertyChanging();
+					this._PROD_OFF_TYP_ATTR_ID = value;
+					this.SendPropertyChanged("PROD_OFF_TYP_ATTR_ID");
+					this.OnPROD_OFF_TYP_ATTR_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROD_OFF_TYPE_ID", DbType="Int")]
+		public System.Nullable<int> PROD_OFF_TYPE_ID
+		{
+			get
+			{
+				return this._PROD_OFF_TYPE_ID;
+			}
+			set
+			{
+				if ((this._PROD_OFF_TYPE_ID != value))
+				{
+					this.OnPROD_OFF_TYPE_IDChanging(value);
+					this.SendPropertyChanging();
+					this._PROD_OFF_TYPE_ID = value;
+					this.SendPropertyChanged("PROD_OFF_TYPE_ID");
+					this.OnPROD_OFF_TYPE_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROD_OFF_TYP_ATTR_1", DbType="NVarChar(MAX)")]
+		public string PROD_OFF_TYP_ATTR_1
+		{
+			get
+			{
+				return this._PROD_OFF_TYP_ATTR_1;
+			}
+			set
+			{
+				if ((this._PROD_OFF_TYP_ATTR_1 != value))
+				{
+					this.OnPROD_OFF_TYP_ATTR_1Changing(value);
+					this.SendPropertyChanging();
+					this._PROD_OFF_TYP_ATTR_1 = value;
+					this.SendPropertyChanged("PROD_OFF_TYP_ATTR_1");
+					this.OnPROD_OFF_TYP_ATTR_1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROD_OFF_TYP_ATTR_2", DbType="NVarChar(MAX)")]
+		public string PROD_OFF_TYP_ATTR_2
+		{
+			get
+			{
+				return this._PROD_OFF_TYP_ATTR_2;
+			}
+			set
+			{
+				if ((this._PROD_OFF_TYP_ATTR_2 != value))
+				{
+					this.OnPROD_OFF_TYP_ATTR_2Changing(value);
+					this.SendPropertyChanging();
+					this._PROD_OFF_TYP_ATTR_2 = value;
+					this.SendPropertyChanged("PROD_OFF_TYP_ATTR_2");
+					this.OnPROD_OFF_TYP_ATTR_2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROD_OFF_TYP_ATTR_3", DbType="NVarChar(MAX)")]
+		public string PROD_OFF_TYP_ATTR_3
+		{
+			get
+			{
+				return this._PROD_OFF_TYP_ATTR_3;
+			}
+			set
+			{
+				if ((this._PROD_OFF_TYP_ATTR_3 != value))
+				{
+					this.OnPROD_OFF_TYP_ATTR_3Changing(value);
+					this.SendPropertyChanging();
+					this._PROD_OFF_TYP_ATTR_3 = value;
+					this.SendPropertyChanged("PROD_OFF_TYP_ATTR_3");
+					this.OnPROD_OFF_TYP_ATTR_3Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROD_OFF_TYP_ATTR_4", DbType="NVarChar(MAX)")]
+		public string PROD_OFF_TYP_ATTR_4
+		{
+			get
+			{
+				return this._PROD_OFF_TYP_ATTR_4;
+			}
+			set
+			{
+				if ((this._PROD_OFF_TYP_ATTR_4 != value))
+				{
+					this.OnPROD_OFF_TYP_ATTR_4Changing(value);
+					this.SendPropertyChanging();
+					this._PROD_OFF_TYP_ATTR_4 = value;
+					this.SendPropertyChanged("PROD_OFF_TYP_ATTR_4");
+					this.OnPROD_OFF_TYP_ATTR_4Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROD_OFF_TYP_ATTR_5", DbType="NVarChar(MAX)")]
+		public string PROD_OFF_TYP_ATTR_5
+		{
+			get
+			{
+				return this._PROD_OFF_TYP_ATTR_5;
+			}
+			set
+			{
+				if ((this._PROD_OFF_TYP_ATTR_5 != value))
+				{
+					this.OnPROD_OFF_TYP_ATTR_5Changing(value);
+					this.SendPropertyChanging();
+					this._PROD_OFF_TYP_ATTR_5 = value;
+					this.SendPropertyChanged("PROD_OFF_TYP_ATTR_5");
+					this.OnPROD_OFF_TYP_ATTR_5Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROD_OFF_TYP_ATTR_6", DbType="NVarChar(MAX)")]
+		public string PROD_OFF_TYP_ATTR_6
+		{
+			get
+			{
+				return this._PROD_OFF_TYP_ATTR_6;
+			}
+			set
+			{
+				if ((this._PROD_OFF_TYP_ATTR_6 != value))
+				{
+					this.OnPROD_OFF_TYP_ATTR_6Changing(value);
+					this.SendPropertyChanging();
+					this._PROD_OFF_TYP_ATTR_6 = value;
+					this.SendPropertyChanged("PROD_OFF_TYP_ATTR_6");
+					this.OnPROD_OFF_TYP_ATTR_6Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROD_OFF_TYP_ATTR_7", DbType="NVarChar(MAX)")]
+		public string PROD_OFF_TYP_ATTR_7
+		{
+			get
+			{
+				return this._PROD_OFF_TYP_ATTR_7;
+			}
+			set
+			{
+				if ((this._PROD_OFF_TYP_ATTR_7 != value))
+				{
+					this.OnPROD_OFF_TYP_ATTR_7Changing(value);
+					this.SendPropertyChanging();
+					this._PROD_OFF_TYP_ATTR_7 = value;
+					this.SendPropertyChanged("PROD_OFF_TYP_ATTR_7");
+					this.OnPROD_OFF_TYP_ATTR_7Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROD_OFF_TYP_ATTR_8", DbType="NVarChar(MAX)")]
+		public string PROD_OFF_TYP_ATTR_8
+		{
+			get
+			{
+				return this._PROD_OFF_TYP_ATTR_8;
+			}
+			set
+			{
+				if ((this._PROD_OFF_TYP_ATTR_8 != value))
+				{
+					this.OnPROD_OFF_TYP_ATTR_8Changing(value);
+					this.SendPropertyChanging();
+					this._PROD_OFF_TYP_ATTR_8 = value;
+					this.SendPropertyChanged("PROD_OFF_TYP_ATTR_8");
+					this.OnPROD_OFF_TYP_ATTR_8Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROD_OFF_TYP_ATTR_9", DbType="NVarChar(MAX)")]
+		public string PROD_OFF_TYP_ATTR_9
+		{
+			get
+			{
+				return this._PROD_OFF_TYP_ATTR_9;
+			}
+			set
+			{
+				if ((this._PROD_OFF_TYP_ATTR_9 != value))
+				{
+					this.OnPROD_OFF_TYP_ATTR_9Changing(value);
+					this.SendPropertyChanging();
+					this._PROD_OFF_TYP_ATTR_9 = value;
+					this.SendPropertyChanged("PROD_OFF_TYP_ATTR_9");
+					this.OnPROD_OFF_TYP_ATTR_9Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROD_OFF_TYP_ATTR_10", DbType="NVarChar(MAX)")]
+		public string PROD_OFF_TYP_ATTR_10
+		{
+			get
+			{
+				return this._PROD_OFF_TYP_ATTR_10;
+			}
+			set
+			{
+				if ((this._PROD_OFF_TYP_ATTR_10 != value))
+				{
+					this.OnPROD_OFF_TYP_ATTR_10Changing(value);
+					this.SendPropertyChanging();
+					this._PROD_OFF_TYP_ATTR_10 = value;
+					this.SendPropertyChanged("PROD_OFF_TYP_ATTR_10");
+					this.OnPROD_OFF_TYP_ATTR_10Changed();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PRODUCTS")]
+	public partial class PRODUCT : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _PRODUCT_ID;
 		
 		private int _FLYER_ID;
 		
-		private string _PROVIDER_NAME_EN;
+		private string _PRODUCT_NAME_EN;
 		
-		private string _PROVIDER_NAME_AR;
+		private string _PRODUCT_NAME_AR;
 		
-		private string _FRAME_NAME_EN;
+		private int _TYPE_ID;
 		
-		private string _FRAME_NAME_AR;
+		private string _PRODUCT_IMAGE;
 		
-		private string _OFFER_TYPE_NAME_EN;
+		private string _PRODUCT_PRICE;
 		
-		private string _OFFER_TYPE_NAME_AR;
+		private System.Nullable<int> _LOCATION_ID;
 		
-		private string _LOCATION_CITY;
+		private System.Nullable<int> _MANUFACTURE_ID;
 		
-		private string _LOCATION_DISTRICT;
+		private string _PRODUCT_TAGS;
 		
-		private string _FLYER_NAME_EN;
+		private System.Nullable<System.DateTime> _DATE_FROM;
 		
-		private string _FLYER_NAME_AR;
+		private System.Nullable<System.DateTime> _DATE_TO;
 		
-		private string _FLYER_IMAGE_URL;
+		private System.Nullable<int> _PROD_OFF_TYP_ATTR_ID;
 		
-		private System.Nullable<bool> _FLYER_APPROVED;
+		private System.Nullable<int> _Parent_ID;
 		
-		private System.Nullable<System.DateTime> _FRAME_DATE_FROM;
+		private string _PRODUCT_ATTR_1;
 		
-		private System.Nullable<System.DateTime> _FRAME_DATE_TO;
+		private string _PRODUCT_ATTR_2;
 		
-		public GET_ALL_FLYERS_PROCDResult()
+		private string _PRODUCT_ATTR_3;
+		
+		private string _PRODUCT_ATTR_4;
+		
+		private string _PRODUCT_ATTR_5;
+		
+		private string _PRODUCT_ATTR_6;
+		
+		private string _PRODUCT_ATTR_7;
+		
+		private string _PRODUCT_ATTR_8;
+		
+		private string _PRODUCT_ATTR_9;
+		
+		private string _PRODUCT_ATTR_10;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPRODUCT_IDChanging(int value);
+    partial void OnPRODUCT_IDChanged();
+    partial void OnFLYER_IDChanging(int value);
+    partial void OnFLYER_IDChanged();
+    partial void OnPRODUCT_NAME_ENChanging(string value);
+    partial void OnPRODUCT_NAME_ENChanged();
+    partial void OnPRODUCT_NAME_ARChanging(string value);
+    partial void OnPRODUCT_NAME_ARChanged();
+    partial void OnTYPE_IDChanging(int value);
+    partial void OnTYPE_IDChanged();
+    partial void OnPRODUCT_IMAGEChanging(string value);
+    partial void OnPRODUCT_IMAGEChanged();
+    partial void OnPRODUCT_PRICEChanging(string value);
+    partial void OnPRODUCT_PRICEChanged();
+    partial void OnLOCATION_IDChanging(System.Nullable<int> value);
+    partial void OnLOCATION_IDChanged();
+    partial void OnMANUFACTURE_IDChanging(System.Nullable<int> value);
+    partial void OnMANUFACTURE_IDChanged();
+    partial void OnPRODUCT_TAGSChanging(string value);
+    partial void OnPRODUCT_TAGSChanged();
+    partial void OnDATE_FROMChanging(System.Nullable<System.DateTime> value);
+    partial void OnDATE_FROMChanged();
+    partial void OnDATE_TOChanging(System.Nullable<System.DateTime> value);
+    partial void OnDATE_TOChanged();
+    partial void OnPROD_OFF_TYP_ATTR_IDChanging(System.Nullable<int> value);
+    partial void OnPROD_OFF_TYP_ATTR_IDChanged();
+    partial void OnParent_IDChanging(System.Nullable<int> value);
+    partial void OnParent_IDChanged();
+    partial void OnPRODUCT_ATTR_1Changing(string value);
+    partial void OnPRODUCT_ATTR_1Changed();
+    partial void OnPRODUCT_ATTR_2Changing(string value);
+    partial void OnPRODUCT_ATTR_2Changed();
+    partial void OnPRODUCT_ATTR_3Changing(string value);
+    partial void OnPRODUCT_ATTR_3Changed();
+    partial void OnPRODUCT_ATTR_4Changing(string value);
+    partial void OnPRODUCT_ATTR_4Changed();
+    partial void OnPRODUCT_ATTR_5Changing(string value);
+    partial void OnPRODUCT_ATTR_5Changed();
+    partial void OnPRODUCT_ATTR_6Changing(string value);
+    partial void OnPRODUCT_ATTR_6Changed();
+    partial void OnPRODUCT_ATTR_7Changing(string value);
+    partial void OnPRODUCT_ATTR_7Changed();
+    partial void OnPRODUCT_ATTR_8Changing(string value);
+    partial void OnPRODUCT_ATTR_8Changed();
+    partial void OnPRODUCT_ATTR_9Changing(string value);
+    partial void OnPRODUCT_ATTR_9Changed();
+    partial void OnPRODUCT_ATTR_10Changing(string value);
+    partial void OnPRODUCT_ATTR_10Changed();
+    #endregion
+		
+		public PRODUCT()
 		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int PRODUCT_ID
+		{
+			get
+			{
+				return this._PRODUCT_ID;
+			}
+			set
+			{
+				if ((this._PRODUCT_ID != value))
+				{
+					this.OnPRODUCT_IDChanging(value);
+					this.SendPropertyChanging();
+					this._PRODUCT_ID = value;
+					this.SendPropertyChanged("PRODUCT_ID");
+					this.OnPRODUCT_IDChanged();
+				}
+			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_ID", DbType="Int NOT NULL")]
@@ -3291,232 +3662,472 @@ namespace DataEntryDAL.DataAccessLogic
 			{
 				if ((this._FLYER_ID != value))
 				{
+					this.OnFLYER_IDChanging(value);
+					this.SendPropertyChanging();
 					this._FLYER_ID = value;
+					this.SendPropertyChanged("FLYER_ID");
+					this.OnFLYER_IDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_NAME_EN", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string PROVIDER_NAME_EN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_NAME_EN", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string PRODUCT_NAME_EN
 		{
 			get
 			{
-				return this._PROVIDER_NAME_EN;
+				return this._PRODUCT_NAME_EN;
 			}
 			set
 			{
-				if ((this._PROVIDER_NAME_EN != value))
+				if ((this._PRODUCT_NAME_EN != value))
 				{
-					this._PROVIDER_NAME_EN = value;
+					this.OnPRODUCT_NAME_ENChanging(value);
+					this.SendPropertyChanging();
+					this._PRODUCT_NAME_EN = value;
+					this.SendPropertyChanged("PRODUCT_NAME_EN");
+					this.OnPRODUCT_NAME_ENChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_NAME_AR", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string PROVIDER_NAME_AR
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_NAME_AR", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string PRODUCT_NAME_AR
 		{
 			get
 			{
-				return this._PROVIDER_NAME_AR;
+				return this._PRODUCT_NAME_AR;
 			}
 			set
 			{
-				if ((this._PROVIDER_NAME_AR != value))
+				if ((this._PRODUCT_NAME_AR != value))
 				{
-					this._PROVIDER_NAME_AR = value;
+					this.OnPRODUCT_NAME_ARChanging(value);
+					this.SendPropertyChanging();
+					this._PRODUCT_NAME_AR = value;
+					this.SendPropertyChanged("PRODUCT_NAME_AR");
+					this.OnPRODUCT_NAME_ARChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_NAME_EN", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string FRAME_NAME_EN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TYPE_ID", DbType="Int NOT NULL")]
+		public int TYPE_ID
 		{
 			get
 			{
-				return this._FRAME_NAME_EN;
+				return this._TYPE_ID;
 			}
 			set
 			{
-				if ((this._FRAME_NAME_EN != value))
+				if ((this._TYPE_ID != value))
 				{
-					this._FRAME_NAME_EN = value;
+					this.OnTYPE_IDChanging(value);
+					this.SendPropertyChanging();
+					this._TYPE_ID = value;
+					this.SendPropertyChanged("TYPE_ID");
+					this.OnTYPE_IDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_NAME_AR", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string FRAME_NAME_AR
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_IMAGE", DbType="NVarChar(MAX)")]
+		public string PRODUCT_IMAGE
 		{
 			get
 			{
-				return this._FRAME_NAME_AR;
+				return this._PRODUCT_IMAGE;
 			}
 			set
 			{
-				if ((this._FRAME_NAME_AR != value))
+				if ((this._PRODUCT_IMAGE != value))
 				{
-					this._FRAME_NAME_AR = value;
+					this.OnPRODUCT_IMAGEChanging(value);
+					this.SendPropertyChanging();
+					this._PRODUCT_IMAGE = value;
+					this.SendPropertyChanged("PRODUCT_IMAGE");
+					this.OnPRODUCT_IMAGEChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_NAME_EN", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string OFFER_TYPE_NAME_EN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_PRICE", DbType="NVarChar(50)")]
+		public string PRODUCT_PRICE
 		{
 			get
 			{
-				return this._OFFER_TYPE_NAME_EN;
+				return this._PRODUCT_PRICE;
 			}
 			set
 			{
-				if ((this._OFFER_TYPE_NAME_EN != value))
+				if ((this._PRODUCT_PRICE != value))
 				{
-					this._OFFER_TYPE_NAME_EN = value;
+					this.OnPRODUCT_PRICEChanging(value);
+					this.SendPropertyChanging();
+					this._PRODUCT_PRICE = value;
+					this.SendPropertyChanged("PRODUCT_PRICE");
+					this.OnPRODUCT_PRICEChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_NAME_AR", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string OFFER_TYPE_NAME_AR
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_ID", DbType="Int")]
+		public System.Nullable<int> LOCATION_ID
 		{
 			get
 			{
-				return this._OFFER_TYPE_NAME_AR;
+				return this._LOCATION_ID;
 			}
 			set
 			{
-				if ((this._OFFER_TYPE_NAME_AR != value))
+				if ((this._LOCATION_ID != value))
 				{
-					this._OFFER_TYPE_NAME_AR = value;
+					this.OnLOCATION_IDChanging(value);
+					this.SendPropertyChanging();
+					this._LOCATION_ID = value;
+					this.SendPropertyChanged("LOCATION_ID");
+					this.OnLOCATION_IDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_CITY", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string LOCATION_CITY
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANUFACTURE_ID", DbType="Int")]
+		public System.Nullable<int> MANUFACTURE_ID
 		{
 			get
 			{
-				return this._LOCATION_CITY;
+				return this._MANUFACTURE_ID;
 			}
 			set
 			{
-				if ((this._LOCATION_CITY != value))
+				if ((this._MANUFACTURE_ID != value))
 				{
-					this._LOCATION_CITY = value;
+					this.OnMANUFACTURE_IDChanging(value);
+					this.SendPropertyChanging();
+					this._MANUFACTURE_ID = value;
+					this.SendPropertyChanged("MANUFACTURE_ID");
+					this.OnMANUFACTURE_IDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_DISTRICT", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string LOCATION_DISTRICT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_TAGS", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string PRODUCT_TAGS
 		{
 			get
 			{
-				return this._LOCATION_DISTRICT;
+				return this._PRODUCT_TAGS;
 			}
 			set
 			{
-				if ((this._LOCATION_DISTRICT != value))
+				if ((this._PRODUCT_TAGS != value))
 				{
-					this._LOCATION_DISTRICT = value;
+					this.OnPRODUCT_TAGSChanging(value);
+					this.SendPropertyChanging();
+					this._PRODUCT_TAGS = value;
+					this.SendPropertyChanged("PRODUCT_TAGS");
+					this.OnPRODUCT_TAGSChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_NAME_EN", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string FLYER_NAME_EN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATE_FROM", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DATE_FROM
 		{
 			get
 			{
-				return this._FLYER_NAME_EN;
+				return this._DATE_FROM;
 			}
 			set
 			{
-				if ((this._FLYER_NAME_EN != value))
+				if ((this._DATE_FROM != value))
 				{
-					this._FLYER_NAME_EN = value;
+					this.OnDATE_FROMChanging(value);
+					this.SendPropertyChanging();
+					this._DATE_FROM = value;
+					this.SendPropertyChanged("DATE_FROM");
+					this.OnDATE_FROMChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_NAME_AR", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string FLYER_NAME_AR
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATE_TO", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DATE_TO
 		{
 			get
 			{
-				return this._FLYER_NAME_AR;
+				return this._DATE_TO;
 			}
 			set
 			{
-				if ((this._FLYER_NAME_AR != value))
+				if ((this._DATE_TO != value))
 				{
-					this._FLYER_NAME_AR = value;
+					this.OnDATE_TOChanging(value);
+					this.SendPropertyChanging();
+					this._DATE_TO = value;
+					this.SendPropertyChanged("DATE_TO");
+					this.OnDATE_TOChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_IMAGE_URL", DbType="NVarChar(MAX)")]
-		public string FLYER_IMAGE_URL
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROD_OFF_TYP_ATTR_ID", DbType="Int")]
+		public System.Nullable<int> PROD_OFF_TYP_ATTR_ID
 		{
 			get
 			{
-				return this._FLYER_IMAGE_URL;
+				return this._PROD_OFF_TYP_ATTR_ID;
 			}
 			set
 			{
-				if ((this._FLYER_IMAGE_URL != value))
+				if ((this._PROD_OFF_TYP_ATTR_ID != value))
 				{
-					this._FLYER_IMAGE_URL = value;
+					this.OnPROD_OFF_TYP_ATTR_IDChanging(value);
+					this.SendPropertyChanging();
+					this._PROD_OFF_TYP_ATTR_ID = value;
+					this.SendPropertyChanged("PROD_OFF_TYP_ATTR_ID");
+					this.OnPROD_OFF_TYP_ATTR_IDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_APPROVED", DbType="Bit")]
-		public System.Nullable<bool> FLYER_APPROVED
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Parent_ID", DbType="Int")]
+		public System.Nullable<int> Parent_ID
 		{
 			get
 			{
-				return this._FLYER_APPROVED;
+				return this._Parent_ID;
 			}
 			set
 			{
-				if ((this._FLYER_APPROVED != value))
+				if ((this._Parent_ID != value))
 				{
-					this._FLYER_APPROVED = value;
+					this.OnParent_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Parent_ID = value;
+					this.SendPropertyChanged("Parent_ID");
+					this.OnParent_IDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_DATE_FROM", DbType="DateTime")]
-		public System.Nullable<System.DateTime> FRAME_DATE_FROM
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_ATTR_1", DbType="NVarChar(MAX)")]
+		public string PRODUCT_ATTR_1
 		{
 			get
 			{
-				return this._FRAME_DATE_FROM;
+				return this._PRODUCT_ATTR_1;
 			}
 			set
 			{
-				if ((this._FRAME_DATE_FROM != value))
+				if ((this._PRODUCT_ATTR_1 != value))
 				{
-					this._FRAME_DATE_FROM = value;
+					this.OnPRODUCT_ATTR_1Changing(value);
+					this.SendPropertyChanging();
+					this._PRODUCT_ATTR_1 = value;
+					this.SendPropertyChanged("PRODUCT_ATTR_1");
+					this.OnPRODUCT_ATTR_1Changed();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_DATE_TO", DbType="DateTime")]
-		public System.Nullable<System.DateTime> FRAME_DATE_TO
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_ATTR_2", DbType="NVarChar(MAX)")]
+		public string PRODUCT_ATTR_2
 		{
 			get
 			{
-				return this._FRAME_DATE_TO;
+				return this._PRODUCT_ATTR_2;
 			}
 			set
 			{
-				if ((this._FRAME_DATE_TO != value))
+				if ((this._PRODUCT_ATTR_2 != value))
 				{
-					this._FRAME_DATE_TO = value;
+					this.OnPRODUCT_ATTR_2Changing(value);
+					this.SendPropertyChanging();
+					this._PRODUCT_ATTR_2 = value;
+					this.SendPropertyChanged("PRODUCT_ATTR_2");
+					this.OnPRODUCT_ATTR_2Changed();
 				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_ATTR_3", DbType="NVarChar(MAX)")]
+		public string PRODUCT_ATTR_3
+		{
+			get
+			{
+				return this._PRODUCT_ATTR_3;
+			}
+			set
+			{
+				if ((this._PRODUCT_ATTR_3 != value))
+				{
+					this.OnPRODUCT_ATTR_3Changing(value);
+					this.SendPropertyChanging();
+					this._PRODUCT_ATTR_3 = value;
+					this.SendPropertyChanged("PRODUCT_ATTR_3");
+					this.OnPRODUCT_ATTR_3Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_ATTR_4", DbType="NVarChar(MAX)")]
+		public string PRODUCT_ATTR_4
+		{
+			get
+			{
+				return this._PRODUCT_ATTR_4;
+			}
+			set
+			{
+				if ((this._PRODUCT_ATTR_4 != value))
+				{
+					this.OnPRODUCT_ATTR_4Changing(value);
+					this.SendPropertyChanging();
+					this._PRODUCT_ATTR_4 = value;
+					this.SendPropertyChanged("PRODUCT_ATTR_4");
+					this.OnPRODUCT_ATTR_4Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_ATTR_5", DbType="NVarChar(MAX)")]
+		public string PRODUCT_ATTR_5
+		{
+			get
+			{
+				return this._PRODUCT_ATTR_5;
+			}
+			set
+			{
+				if ((this._PRODUCT_ATTR_5 != value))
+				{
+					this.OnPRODUCT_ATTR_5Changing(value);
+					this.SendPropertyChanging();
+					this._PRODUCT_ATTR_5 = value;
+					this.SendPropertyChanged("PRODUCT_ATTR_5");
+					this.OnPRODUCT_ATTR_5Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_ATTR_6", DbType="NVarChar(MAX)")]
+		public string PRODUCT_ATTR_6
+		{
+			get
+			{
+				return this._PRODUCT_ATTR_6;
+			}
+			set
+			{
+				if ((this._PRODUCT_ATTR_6 != value))
+				{
+					this.OnPRODUCT_ATTR_6Changing(value);
+					this.SendPropertyChanging();
+					this._PRODUCT_ATTR_6 = value;
+					this.SendPropertyChanged("PRODUCT_ATTR_6");
+					this.OnPRODUCT_ATTR_6Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_ATTR_7", DbType="NVarChar(MAX)")]
+		public string PRODUCT_ATTR_7
+		{
+			get
+			{
+				return this._PRODUCT_ATTR_7;
+			}
+			set
+			{
+				if ((this._PRODUCT_ATTR_7 != value))
+				{
+					this.OnPRODUCT_ATTR_7Changing(value);
+					this.SendPropertyChanging();
+					this._PRODUCT_ATTR_7 = value;
+					this.SendPropertyChanged("PRODUCT_ATTR_7");
+					this.OnPRODUCT_ATTR_7Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_ATTR_8", DbType="NVarChar(MAX)")]
+		public string PRODUCT_ATTR_8
+		{
+			get
+			{
+				return this._PRODUCT_ATTR_8;
+			}
+			set
+			{
+				if ((this._PRODUCT_ATTR_8 != value))
+				{
+					this.OnPRODUCT_ATTR_8Changing(value);
+					this.SendPropertyChanging();
+					this._PRODUCT_ATTR_8 = value;
+					this.SendPropertyChanged("PRODUCT_ATTR_8");
+					this.OnPRODUCT_ATTR_8Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_ATTR_9", DbType="NVarChar(MAX)")]
+		public string PRODUCT_ATTR_9
+		{
+			get
+			{
+				return this._PRODUCT_ATTR_9;
+			}
+			set
+			{
+				if ((this._PRODUCT_ATTR_9 != value))
+				{
+					this.OnPRODUCT_ATTR_9Changing(value);
+					this.SendPropertyChanging();
+					this._PRODUCT_ATTR_9 = value;
+					this.SendPropertyChanged("PRODUCT_ATTR_9");
+					this.OnPRODUCT_ATTR_9Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_ATTR_10", DbType="NVarChar(MAX)")]
+		public string PRODUCT_ATTR_10
+		{
+			get
+			{
+				return this._PRODUCT_ATTR_10;
+			}
+			set
+			{
+				if ((this._PRODUCT_ATTR_10 != value))
+				{
+					this.OnPRODUCT_ATTR_10Changing(value);
+					this.SendPropertyChanging();
+					this._PRODUCT_ATTR_10 = value;
+					this.SendPropertyChanged("PRODUCT_ATTR_10");
+					this.OnPRODUCT_ATTR_10Changed();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -3529,10 +4140,6 @@ namespace DataEntryDAL.DataAccessLogic
 		private string _PROVIDER_NAME_EN;
 		
 		private string _PROVIDER_NAME_AR;
-		
-		private string _FRAME_NAME_EN;
-		
-		private string _FRAME_NAME_AR;
 		
 		private string _OFFER_TYPE_NAME_EN;
 		
@@ -3550,9 +4157,9 @@ namespace DataEntryDAL.DataAccessLogic
 		
 		private System.Nullable<bool> _FLYER_APPROVED;
 		
-		private System.Nullable<System.DateTime> _FRAME_DATE_FROM;
+		private System.Nullable<System.DateTime> _DATE_FROM;
 		
-		private System.Nullable<System.DateTime> _FRAME_DATE_TO;
+		private System.Nullable<System.DateTime> _DATE_TO;
 		
 		public GET_REJECTED_FLYERSResult()
 		{
@@ -3606,34 +4213,244 @@ namespace DataEntryDAL.DataAccessLogic
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_NAME_EN", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string FRAME_NAME_EN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_NAME_EN", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string OFFER_TYPE_NAME_EN
 		{
 			get
 			{
-				return this._FRAME_NAME_EN;
+				return this._OFFER_TYPE_NAME_EN;
 			}
 			set
 			{
-				if ((this._FRAME_NAME_EN != value))
+				if ((this._OFFER_TYPE_NAME_EN != value))
 				{
-					this._FRAME_NAME_EN = value;
+					this._OFFER_TYPE_NAME_EN = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_NAME_AR", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string FRAME_NAME_AR
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_NAME_AR", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string OFFER_TYPE_NAME_AR
 		{
 			get
 			{
-				return this._FRAME_NAME_AR;
+				return this._OFFER_TYPE_NAME_AR;
 			}
 			set
 			{
-				if ((this._FRAME_NAME_AR != value))
+				if ((this._OFFER_TYPE_NAME_AR != value))
 				{
-					this._FRAME_NAME_AR = value;
+					this._OFFER_TYPE_NAME_AR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_CITY", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string LOCATION_CITY
+		{
+			get
+			{
+				return this._LOCATION_CITY;
+			}
+			set
+			{
+				if ((this._LOCATION_CITY != value))
+				{
+					this._LOCATION_CITY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_DISTRICT", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string LOCATION_DISTRICT
+		{
+			get
+			{
+				return this._LOCATION_DISTRICT;
+			}
+			set
+			{
+				if ((this._LOCATION_DISTRICT != value))
+				{
+					this._LOCATION_DISTRICT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_NAME_EN", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string FLYER_NAME_EN
+		{
+			get
+			{
+				return this._FLYER_NAME_EN;
+			}
+			set
+			{
+				if ((this._FLYER_NAME_EN != value))
+				{
+					this._FLYER_NAME_EN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_NAME_AR", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string FLYER_NAME_AR
+		{
+			get
+			{
+				return this._FLYER_NAME_AR;
+			}
+			set
+			{
+				if ((this._FLYER_NAME_AR != value))
+				{
+					this._FLYER_NAME_AR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_IMAGE_URL", DbType="NVarChar(MAX)")]
+		public string FLYER_IMAGE_URL
+		{
+			get
+			{
+				return this._FLYER_IMAGE_URL;
+			}
+			set
+			{
+				if ((this._FLYER_IMAGE_URL != value))
+				{
+					this._FLYER_IMAGE_URL = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_APPROVED", DbType="Bit")]
+		public System.Nullable<bool> FLYER_APPROVED
+		{
+			get
+			{
+				return this._FLYER_APPROVED;
+			}
+			set
+			{
+				if ((this._FLYER_APPROVED != value))
+				{
+					this._FLYER_APPROVED = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATE_FROM", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DATE_FROM
+		{
+			get
+			{
+				return this._DATE_FROM;
+			}
+			set
+			{
+				if ((this._DATE_FROM != value))
+				{
+					this._DATE_FROM = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATE_TO", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DATE_TO
+		{
+			get
+			{
+				return this._DATE_TO;
+			}
+			set
+			{
+				if ((this._DATE_TO != value))
+				{
+					this._DATE_TO = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GET_ALL_FLYERS_PROCDResult
+	{
+		
+		private int _FLYER_ID;
+		
+		private string _PROVIDER_NAME_EN;
+		
+		private string _PROVIDER_NAME_AR;
+		
+		private string _OFFER_TYPE_NAME_EN;
+		
+		private string _OFFER_TYPE_NAME_AR;
+		
+		private string _LOCATION_CITY;
+		
+		private string _LOCATION_DISTRICT;
+		
+		private string _FLYER_NAME_EN;
+		
+		private string _FLYER_NAME_AR;
+		
+		private string _FLYER_IMAGE_URL;
+		
+		private System.Nullable<bool> _FLYER_APPROVED;
+		
+		private System.Nullable<System.DateTime> _DATE_FROM;
+		
+		private System.Nullable<System.DateTime> _DATE_TO;
+		
+		public GET_ALL_FLYERS_PROCDResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_ID", DbType="Int NOT NULL")]
+		public int FLYER_ID
+		{
+			get
+			{
+				return this._FLYER_ID;
+			}
+			set
+			{
+				if ((this._FLYER_ID != value))
+				{
+					this._FLYER_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_NAME_EN", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string PROVIDER_NAME_EN
+		{
+			get
+			{
+				return this._PROVIDER_NAME_EN;
+			}
+			set
+			{
+				if ((this._PROVIDER_NAME_EN != value))
+				{
+					this._PROVIDER_NAME_EN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_NAME_AR", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string PROVIDER_NAME_AR
+		{
+			get
+			{
+				return this._PROVIDER_NAME_AR;
+			}
+			set
+			{
+				if ((this._PROVIDER_NAME_AR != value))
+				{
+					this._PROVIDER_NAME_AR = value;
 				}
 			}
 		}
@@ -3766,34 +4583,34 @@ namespace DataEntryDAL.DataAccessLogic
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_DATE_FROM", DbType="DateTime")]
-		public System.Nullable<System.DateTime> FRAME_DATE_FROM
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATE_FROM", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DATE_FROM
 		{
 			get
 			{
-				return this._FRAME_DATE_FROM;
+				return this._DATE_FROM;
 			}
 			set
 			{
-				if ((this._FRAME_DATE_FROM != value))
+				if ((this._DATE_FROM != value))
 				{
-					this._FRAME_DATE_FROM = value;
+					this._DATE_FROM = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_DATE_TO", DbType="DateTime")]
-		public System.Nullable<System.DateTime> FRAME_DATE_TO
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATE_TO", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DATE_TO
 		{
 			get
 			{
-				return this._FRAME_DATE_TO;
+				return this._DATE_TO;
 			}
 			set
 			{
-				if ((this._FRAME_DATE_TO != value))
+				if ((this._DATE_TO != value))
 				{
-					this._FRAME_DATE_TO = value;
+					this._DATE_TO = value;
 				}
 			}
 		}
@@ -4211,12 +5028,142 @@ namespace DataEntryDAL.DataAccessLogic
 		}
 	}
 	
-	public partial class GET_FLYER_PRODUCTS_DATAResult
+	public partial class GET_ALL_TYPES_TEMPLATEResult
 	{
 		
-		private string _PRODUCT_NAME_EN;
+		private int _TEMPLATE_ID;
 		
-		private string _PRODUCT_NAME_AR;
+		private string _TEMP_PRE_LABEL_EN;
+		
+		private string _TEMP_PRE_LABEL_AR;
+		
+		private string _TEMP_POST_LABEL_EN;
+		
+		private string _TEMP_POST_LABEL_AR;
+		
+		private string _TEMP_INPUT_TYPE;
+		
+		private System.Nullable<int> _TYPE_ID;
+		
+		public GET_ALL_TYPES_TEMPLATEResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TEMPLATE_ID", DbType="Int NOT NULL")]
+		public int TEMPLATE_ID
+		{
+			get
+			{
+				return this._TEMPLATE_ID;
+			}
+			set
+			{
+				if ((this._TEMPLATE_ID != value))
+				{
+					this._TEMPLATE_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TEMP_PRE_LABEL_EN", DbType="NVarChar(50)")]
+		public string TEMP_PRE_LABEL_EN
+		{
+			get
+			{
+				return this._TEMP_PRE_LABEL_EN;
+			}
+			set
+			{
+				if ((this._TEMP_PRE_LABEL_EN != value))
+				{
+					this._TEMP_PRE_LABEL_EN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TEMP_PRE_LABEL_AR", DbType="NVarChar(50)")]
+		public string TEMP_PRE_LABEL_AR
+		{
+			get
+			{
+				return this._TEMP_PRE_LABEL_AR;
+			}
+			set
+			{
+				if ((this._TEMP_PRE_LABEL_AR != value))
+				{
+					this._TEMP_PRE_LABEL_AR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TEMP_POST_LABEL_EN", DbType="NVarChar(50)")]
+		public string TEMP_POST_LABEL_EN
+		{
+			get
+			{
+				return this._TEMP_POST_LABEL_EN;
+			}
+			set
+			{
+				if ((this._TEMP_POST_LABEL_EN != value))
+				{
+					this._TEMP_POST_LABEL_EN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TEMP_POST_LABEL_AR", DbType="NVarChar(50)")]
+		public string TEMP_POST_LABEL_AR
+		{
+			get
+			{
+				return this._TEMP_POST_LABEL_AR;
+			}
+			set
+			{
+				if ((this._TEMP_POST_LABEL_AR != value))
+				{
+					this._TEMP_POST_LABEL_AR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TEMP_INPUT_TYPE", DbType="NVarChar(50)")]
+		public string TEMP_INPUT_TYPE
+		{
+			get
+			{
+				return this._TEMP_INPUT_TYPE;
+			}
+			set
+			{
+				if ((this._TEMP_INPUT_TYPE != value))
+				{
+					this._TEMP_INPUT_TYPE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TYPE_ID", DbType="Int")]
+		public System.Nullable<int> TYPE_ID
+		{
+			get
+			{
+				return this._TYPE_ID;
+			}
+			set
+			{
+				if ((this._TYPE_ID != value))
+				{
+					this._TYPE_ID = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GET_ALL_TYPES_WITH_TEMPLATEResult
+	{
 		
 		private int _TYPE_ID;
 		
@@ -4226,82 +5173,40 @@ namespace DataEntryDAL.DataAccessLogic
 		
 		private int _CATEGORY_ID;
 		
-		private string _CATEGORY_NAME_EN;
+		private string _TYPE_ATTR_1;
 		
-		private string _CATEGORY_NAME_AR;
+		private string _TYPE_ATTR_2;
 		
-		private string _PRODUCT_IMAGE;
+		private string _TYPE_ATTR_3;
 		
-		private string _SPECS_ATTR_1;
+		private string _TYPE_ATTR_4;
 		
-		private string _SPECS_ATTR_2;
+		private string _TYPE_ATTR_5;
 		
-		private string _SPECS_ATTR_3;
+		private string _TYPE_ATTR_6;
 		
-		private string _SPECS_ATTR_4;
+		private string _TYPE_ATTR_7;
 		
-		private string _SPECS_ATTR_5;
+		private string _TYPE_ATTR_8;
 		
-		private string _PROVIDER_NAME_EN;
+		private string _TYPE_ATTR_9;
 		
-		private int _PROVIDER_ID;
+		private string _TYPE_ATTR_10;
 		
-		private string _PROVIDER_NAME_AR;
+		private int _TEMPLATE_ID;
 		
-		private string _PROVIDER_BUSINESS_AREA;
+		private string _TEMP_PRE_LABEL_EN;
 		
-		private string _PROVIDER_CONTACTS;
+		private string _TEMP_PRE_LABEL_AR;
 		
-		private string _PROVIDER_COORDINATOR;
+		private string _TEMP_POST_LABEL_EN;
 		
-		private string _LOCATION_COUNTRY;
+		private string _TEMP_POST_LABEL_AR;
 		
-		private string _LOCATION_REGION;
+		private string _TEMP_INPUT_TYPE;
 		
-		private string _LOCATION_CITY;
-		
-		private string _LOCATION_DISTRICT;
-		
-		private string _LOCATION_STREET;
-		
-		private string _LOCATION_COORDINATES;
-		
-		private string _PRODUCT_TAGS;
-		
-		public GET_FLYER_PRODUCTS_DATAResult()
+		public GET_ALL_TYPES_WITH_TEMPLATEResult()
 		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_NAME_EN", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string PRODUCT_NAME_EN
-		{
-			get
-			{
-				return this._PRODUCT_NAME_EN;
-			}
-			set
-			{
-				if ((this._PRODUCT_NAME_EN != value))
-				{
-					this._PRODUCT_NAME_EN = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_NAME_AR", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string PRODUCT_NAME_AR
-		{
-			get
-			{
-				return this._PRODUCT_NAME_AR;
-			}
-			set
-			{
-				if ((this._PRODUCT_NAME_AR != value))
-				{
-					this._PRODUCT_NAME_AR = value;
-				}
-			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TYPE_ID", DbType="Int NOT NULL")]
@@ -4368,338 +5273,258 @@ namespace DataEntryDAL.DataAccessLogic
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CATEGORY_NAME_EN", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string CATEGORY_NAME_EN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TYPE_ATTR_1", DbType="NVarChar(MAX)")]
+		public string TYPE_ATTR_1
 		{
 			get
 			{
-				return this._CATEGORY_NAME_EN;
+				return this._TYPE_ATTR_1;
 			}
 			set
 			{
-				if ((this._CATEGORY_NAME_EN != value))
+				if ((this._TYPE_ATTR_1 != value))
 				{
-					this._CATEGORY_NAME_EN = value;
+					this._TYPE_ATTR_1 = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CATEGORY_NAME_AR", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string CATEGORY_NAME_AR
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TYPE_ATTR_2", DbType="NVarChar(MAX)")]
+		public string TYPE_ATTR_2
 		{
 			get
 			{
-				return this._CATEGORY_NAME_AR;
+				return this._TYPE_ATTR_2;
 			}
 			set
 			{
-				if ((this._CATEGORY_NAME_AR != value))
+				if ((this._TYPE_ATTR_2 != value))
 				{
-					this._CATEGORY_NAME_AR = value;
+					this._TYPE_ATTR_2 = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_IMAGE", DbType="NVarChar(MAX)")]
-		public string PRODUCT_IMAGE
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TYPE_ATTR_3", DbType="NVarChar(MAX)")]
+		public string TYPE_ATTR_3
 		{
 			get
 			{
-				return this._PRODUCT_IMAGE;
+				return this._TYPE_ATTR_3;
 			}
 			set
 			{
-				if ((this._PRODUCT_IMAGE != value))
+				if ((this._TYPE_ATTR_3 != value))
 				{
-					this._PRODUCT_IMAGE = value;
+					this._TYPE_ATTR_3 = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPECS_ATTR_1", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string SPECS_ATTR_1
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TYPE_ATTR_4", DbType="NVarChar(MAX)")]
+		public string TYPE_ATTR_4
 		{
 			get
 			{
-				return this._SPECS_ATTR_1;
+				return this._TYPE_ATTR_4;
 			}
 			set
 			{
-				if ((this._SPECS_ATTR_1 != value))
+				if ((this._TYPE_ATTR_4 != value))
 				{
-					this._SPECS_ATTR_1 = value;
+					this._TYPE_ATTR_4 = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPECS_ATTR_2", DbType="NVarChar(MAX)")]
-		public string SPECS_ATTR_2
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TYPE_ATTR_5", DbType="NVarChar(MAX)")]
+		public string TYPE_ATTR_5
 		{
 			get
 			{
-				return this._SPECS_ATTR_2;
+				return this._TYPE_ATTR_5;
 			}
 			set
 			{
-				if ((this._SPECS_ATTR_2 != value))
+				if ((this._TYPE_ATTR_5 != value))
 				{
-					this._SPECS_ATTR_2 = value;
+					this._TYPE_ATTR_5 = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPECS_ATTR_3", DbType="NVarChar(MAX)")]
-		public string SPECS_ATTR_3
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TYPE_ATTR_6", DbType="NVarChar(MAX)")]
+		public string TYPE_ATTR_6
 		{
 			get
 			{
-				return this._SPECS_ATTR_3;
+				return this._TYPE_ATTR_6;
 			}
 			set
 			{
-				if ((this._SPECS_ATTR_3 != value))
+				if ((this._TYPE_ATTR_6 != value))
 				{
-					this._SPECS_ATTR_3 = value;
+					this._TYPE_ATTR_6 = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPECS_ATTR_4", DbType="NVarChar(MAX)")]
-		public string SPECS_ATTR_4
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TYPE_ATTR_7", DbType="NVarChar(MAX)")]
+		public string TYPE_ATTR_7
 		{
 			get
 			{
-				return this._SPECS_ATTR_4;
+				return this._TYPE_ATTR_7;
 			}
 			set
 			{
-				if ((this._SPECS_ATTR_4 != value))
+				if ((this._TYPE_ATTR_7 != value))
 				{
-					this._SPECS_ATTR_4 = value;
+					this._TYPE_ATTR_7 = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPECS_ATTR_5", DbType="NVarChar(MAX)")]
-		public string SPECS_ATTR_5
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TYPE_ATTR_8", DbType="NVarChar(MAX)")]
+		public string TYPE_ATTR_8
 		{
 			get
 			{
-				return this._SPECS_ATTR_5;
+				return this._TYPE_ATTR_8;
 			}
 			set
 			{
-				if ((this._SPECS_ATTR_5 != value))
+				if ((this._TYPE_ATTR_8 != value))
 				{
-					this._SPECS_ATTR_5 = value;
+					this._TYPE_ATTR_8 = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_NAME_EN", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string PROVIDER_NAME_EN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TYPE_ATTR_9", DbType="NVarChar(MAX)")]
+		public string TYPE_ATTR_9
 		{
 			get
 			{
-				return this._PROVIDER_NAME_EN;
+				return this._TYPE_ATTR_9;
 			}
 			set
 			{
-				if ((this._PROVIDER_NAME_EN != value))
+				if ((this._TYPE_ATTR_9 != value))
 				{
-					this._PROVIDER_NAME_EN = value;
+					this._TYPE_ATTR_9 = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_ID", DbType="Int NOT NULL")]
-		public int PROVIDER_ID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TYPE_ATTR_10", DbType="NVarChar(MAX)")]
+		public string TYPE_ATTR_10
 		{
 			get
 			{
-				return this._PROVIDER_ID;
+				return this._TYPE_ATTR_10;
 			}
 			set
 			{
-				if ((this._PROVIDER_ID != value))
+				if ((this._TYPE_ATTR_10 != value))
 				{
-					this._PROVIDER_ID = value;
+					this._TYPE_ATTR_10 = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_NAME_AR", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string PROVIDER_NAME_AR
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TEMPLATE_ID", DbType="Int NOT NULL")]
+		public int TEMPLATE_ID
 		{
 			get
 			{
-				return this._PROVIDER_NAME_AR;
+				return this._TEMPLATE_ID;
 			}
 			set
 			{
-				if ((this._PROVIDER_NAME_AR != value))
+				if ((this._TEMPLATE_ID != value))
 				{
-					this._PROVIDER_NAME_AR = value;
+					this._TEMPLATE_ID = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_BUSINESS_AREA", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string PROVIDER_BUSINESS_AREA
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TEMP_PRE_LABEL_EN", DbType="NVarChar(50)")]
+		public string TEMP_PRE_LABEL_EN
 		{
 			get
 			{
-				return this._PROVIDER_BUSINESS_AREA;
+				return this._TEMP_PRE_LABEL_EN;
 			}
 			set
 			{
-				if ((this._PROVIDER_BUSINESS_AREA != value))
+				if ((this._TEMP_PRE_LABEL_EN != value))
 				{
-					this._PROVIDER_BUSINESS_AREA = value;
+					this._TEMP_PRE_LABEL_EN = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_CONTACTS", DbType="NVarChar(MAX)")]
-		public string PROVIDER_CONTACTS
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TEMP_PRE_LABEL_AR", DbType="NVarChar(50)")]
+		public string TEMP_PRE_LABEL_AR
 		{
 			get
 			{
-				return this._PROVIDER_CONTACTS;
+				return this._TEMP_PRE_LABEL_AR;
 			}
 			set
 			{
-				if ((this._PROVIDER_CONTACTS != value))
+				if ((this._TEMP_PRE_LABEL_AR != value))
 				{
-					this._PROVIDER_CONTACTS = value;
+					this._TEMP_PRE_LABEL_AR = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_COORDINATOR", DbType="NVarChar(MAX)")]
-		public string PROVIDER_COORDINATOR
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TEMP_POST_LABEL_EN", DbType="NVarChar(50)")]
+		public string TEMP_POST_LABEL_EN
 		{
 			get
 			{
-				return this._PROVIDER_COORDINATOR;
+				return this._TEMP_POST_LABEL_EN;
 			}
 			set
 			{
-				if ((this._PROVIDER_COORDINATOR != value))
+				if ((this._TEMP_POST_LABEL_EN != value))
 				{
-					this._PROVIDER_COORDINATOR = value;
+					this._TEMP_POST_LABEL_EN = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_COUNTRY", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string LOCATION_COUNTRY
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TEMP_POST_LABEL_AR", DbType="NVarChar(50)")]
+		public string TEMP_POST_LABEL_AR
 		{
 			get
 			{
-				return this._LOCATION_COUNTRY;
+				return this._TEMP_POST_LABEL_AR;
 			}
 			set
 			{
-				if ((this._LOCATION_COUNTRY != value))
+				if ((this._TEMP_POST_LABEL_AR != value))
 				{
-					this._LOCATION_COUNTRY = value;
+					this._TEMP_POST_LABEL_AR = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_REGION", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string LOCATION_REGION
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TEMP_INPUT_TYPE", DbType="NVarChar(50)")]
+		public string TEMP_INPUT_TYPE
 		{
 			get
 			{
-				return this._LOCATION_REGION;
+				return this._TEMP_INPUT_TYPE;
 			}
 			set
 			{
-				if ((this._LOCATION_REGION != value))
+				if ((this._TEMP_INPUT_TYPE != value))
 				{
-					this._LOCATION_REGION = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_CITY", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string LOCATION_CITY
-		{
-			get
-			{
-				return this._LOCATION_CITY;
-			}
-			set
-			{
-				if ((this._LOCATION_CITY != value))
-				{
-					this._LOCATION_CITY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_DISTRICT", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string LOCATION_DISTRICT
-		{
-			get
-			{
-				return this._LOCATION_DISTRICT;
-			}
-			set
-			{
-				if ((this._LOCATION_DISTRICT != value))
-				{
-					this._LOCATION_DISTRICT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_STREET", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string LOCATION_STREET
-		{
-			get
-			{
-				return this._LOCATION_STREET;
-			}
-			set
-			{
-				if ((this._LOCATION_STREET != value))
-				{
-					this._LOCATION_STREET = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_COORDINATES", DbType="NVarChar(50)")]
-		public string LOCATION_COORDINATES
-		{
-			get
-			{
-				return this._LOCATION_COORDINATES;
-			}
-			set
-			{
-				if ((this._LOCATION_COORDINATES != value))
-				{
-					this._LOCATION_COORDINATES = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_TAGS", DbType="NText", UpdateCheck=UpdateCheck.Never)]
-		public string PRODUCT_TAGS
-		{
-			get
-			{
-				return this._PRODUCT_TAGS;
-			}
-			set
-			{
-				if ((this._PRODUCT_TAGS != value))
-				{
-					this._PRODUCT_TAGS = value;
+					this._TEMP_INPUT_TYPE = value;
 				}
 			}
 		}
@@ -5012,17 +5837,9 @@ namespace DataEntryDAL.DataAccessLogic
 		
 		private string _LOCATION_CITY;
 		
-		private int _FRAME_ID;
+		private System.Nullable<System.DateTime> _DATE_FROM;
 		
-		private System.Nullable<int> _FRAME_TYPE_ID;
-		
-		private string _FRAME_NAME_EN;
-		
-		private string _FRAME_NAME_AR;
-		
-		private System.Nullable<System.DateTime> _FRAME_DATE_FROM;
-		
-		private System.Nullable<System.DateTime> _FRAME_DATE_TO;
+		private System.Nullable<System.DateTime> _DATE_TO;
 		
 		private int _OFFER_TYPE_ID;
 		
@@ -5244,98 +6061,34 @@ namespace DataEntryDAL.DataAccessLogic
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_ID", DbType="Int NOT NULL")]
-		public int FRAME_ID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATE_FROM", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DATE_FROM
 		{
 			get
 			{
-				return this._FRAME_ID;
+				return this._DATE_FROM;
 			}
 			set
 			{
-				if ((this._FRAME_ID != value))
+				if ((this._DATE_FROM != value))
 				{
-					this._FRAME_ID = value;
+					this._DATE_FROM = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_TYPE_ID", DbType="Int")]
-		public System.Nullable<int> FRAME_TYPE_ID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATE_TO", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DATE_TO
 		{
 			get
 			{
-				return this._FRAME_TYPE_ID;
+				return this._DATE_TO;
 			}
 			set
 			{
-				if ((this._FRAME_TYPE_ID != value))
+				if ((this._DATE_TO != value))
 				{
-					this._FRAME_TYPE_ID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_NAME_EN", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string FRAME_NAME_EN
-		{
-			get
-			{
-				return this._FRAME_NAME_EN;
-			}
-			set
-			{
-				if ((this._FRAME_NAME_EN != value))
-				{
-					this._FRAME_NAME_EN = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_NAME_AR", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string FRAME_NAME_AR
-		{
-			get
-			{
-				return this._FRAME_NAME_AR;
-			}
-			set
-			{
-				if ((this._FRAME_NAME_AR != value))
-				{
-					this._FRAME_NAME_AR = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_DATE_FROM", DbType="DateTime")]
-		public System.Nullable<System.DateTime> FRAME_DATE_FROM
-		{
-			get
-			{
-				return this._FRAME_DATE_FROM;
-			}
-			set
-			{
-				if ((this._FRAME_DATE_FROM != value))
-				{
-					this._FRAME_DATE_FROM = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRAME_DATE_TO", DbType="DateTime")]
-		public System.Nullable<System.DateTime> FRAME_DATE_TO
-		{
-			get
-			{
-				return this._FRAME_DATE_TO;
-			}
-			set
-			{
-				if ((this._FRAME_DATE_TO != value))
-				{
-					this._FRAME_DATE_TO = value;
+					this._DATE_TO = value;
 				}
 			}
 		}
@@ -5400,6 +6153,508 @@ namespace DataEntryDAL.DataAccessLogic
 				if ((this._FLYER_IMAGE_URL != value))
 				{
 					this._FLYER_IMAGE_URL = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GET_ALL_BRANCHESResult
+	{
+		
+		private int _PROVIDER_ID;
+		
+		private string _PROVIDER_NAME_EN;
+		
+		private string _PROVIDER_NAME_AR;
+		
+		private string _PROVIDER_BUSINESS_AREA;
+		
+		private string _PROVIDER_CONTACTS;
+		
+		private string _PROVIDER_COORDINATOR;
+		
+		private int _LOCATION_ID;
+		
+		private string _LOCATION_COUNTRY;
+		
+		private string _LOCATION_REGION;
+		
+		private string _LOCATION_CITY;
+		
+		private string _LOCATION_DISTRICT;
+		
+		private string _LOCATION_STREET;
+		
+		private string _LOCATION_COORDINATES;
+		
+		public GET_ALL_BRANCHESResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_ID", DbType="Int NOT NULL")]
+		public int PROVIDER_ID
+		{
+			get
+			{
+				return this._PROVIDER_ID;
+			}
+			set
+			{
+				if ((this._PROVIDER_ID != value))
+				{
+					this._PROVIDER_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_NAME_EN", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string PROVIDER_NAME_EN
+		{
+			get
+			{
+				return this._PROVIDER_NAME_EN;
+			}
+			set
+			{
+				if ((this._PROVIDER_NAME_EN != value))
+				{
+					this._PROVIDER_NAME_EN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_NAME_AR", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string PROVIDER_NAME_AR
+		{
+			get
+			{
+				return this._PROVIDER_NAME_AR;
+			}
+			set
+			{
+				if ((this._PROVIDER_NAME_AR != value))
+				{
+					this._PROVIDER_NAME_AR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_BUSINESS_AREA", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string PROVIDER_BUSINESS_AREA
+		{
+			get
+			{
+				return this._PROVIDER_BUSINESS_AREA;
+			}
+			set
+			{
+				if ((this._PROVIDER_BUSINESS_AREA != value))
+				{
+					this._PROVIDER_BUSINESS_AREA = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_CONTACTS", DbType="NVarChar(MAX)")]
+		public string PROVIDER_CONTACTS
+		{
+			get
+			{
+				return this._PROVIDER_CONTACTS;
+			}
+			set
+			{
+				if ((this._PROVIDER_CONTACTS != value))
+				{
+					this._PROVIDER_CONTACTS = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_COORDINATOR", DbType="NVarChar(MAX)")]
+		public string PROVIDER_COORDINATOR
+		{
+			get
+			{
+				return this._PROVIDER_COORDINATOR;
+			}
+			set
+			{
+				if ((this._PROVIDER_COORDINATOR != value))
+				{
+					this._PROVIDER_COORDINATOR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_ID", DbType="Int NOT NULL")]
+		public int LOCATION_ID
+		{
+			get
+			{
+				return this._LOCATION_ID;
+			}
+			set
+			{
+				if ((this._LOCATION_ID != value))
+				{
+					this._LOCATION_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_COUNTRY", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string LOCATION_COUNTRY
+		{
+			get
+			{
+				return this._LOCATION_COUNTRY;
+			}
+			set
+			{
+				if ((this._LOCATION_COUNTRY != value))
+				{
+					this._LOCATION_COUNTRY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_REGION", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string LOCATION_REGION
+		{
+			get
+			{
+				return this._LOCATION_REGION;
+			}
+			set
+			{
+				if ((this._LOCATION_REGION != value))
+				{
+					this._LOCATION_REGION = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_CITY", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string LOCATION_CITY
+		{
+			get
+			{
+				return this._LOCATION_CITY;
+			}
+			set
+			{
+				if ((this._LOCATION_CITY != value))
+				{
+					this._LOCATION_CITY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_DISTRICT", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string LOCATION_DISTRICT
+		{
+			get
+			{
+				return this._LOCATION_DISTRICT;
+			}
+			set
+			{
+				if ((this._LOCATION_DISTRICT != value))
+				{
+					this._LOCATION_DISTRICT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_STREET", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string LOCATION_STREET
+		{
+			get
+			{
+				return this._LOCATION_STREET;
+			}
+			set
+			{
+				if ((this._LOCATION_STREET != value))
+				{
+					this._LOCATION_STREET = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_COORDINATES", DbType="NVarChar(50)")]
+		public string LOCATION_COORDINATES
+		{
+			get
+			{
+				return this._LOCATION_COORDINATES;
+			}
+			set
+			{
+				if ((this._LOCATION_COORDINATES != value))
+				{
+					this._LOCATION_COORDINATES = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GET_FLYER_PRODUCTS_DATAResult
+	{
+		
+		private string _PRODUCT_NAME_EN;
+		
+		private string _PRODUCT_NAME_AR;
+		
+		private int _TYPE_ID;
+		
+		private string _TYPE_NAME_EN;
+		
+		private string _TYPE_NAME_AR;
+		
+		private int _CATEGORY_ID;
+		
+		private string _CATEGORY_NAME_EN;
+		
+		private string _CATEGORY_NAME_AR;
+		
+		private string _PRODUCT_IMAGE;
+		
+		private int _MANUFACTURE_ID;
+		
+		private string _MANUFACTURE_NAME_EN;
+		
+		private string _MANUFACTURE_NAME_AR;
+		
+		private string _MANUFACTURE_BUSINESS_AREA;
+		
+		private string _PRODUCT_TAGS;
+		
+		public GET_FLYER_PRODUCTS_DATAResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_NAME_EN", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string PRODUCT_NAME_EN
+		{
+			get
+			{
+				return this._PRODUCT_NAME_EN;
+			}
+			set
+			{
+				if ((this._PRODUCT_NAME_EN != value))
+				{
+					this._PRODUCT_NAME_EN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_NAME_AR", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string PRODUCT_NAME_AR
+		{
+			get
+			{
+				return this._PRODUCT_NAME_AR;
+			}
+			set
+			{
+				if ((this._PRODUCT_NAME_AR != value))
+				{
+					this._PRODUCT_NAME_AR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TYPE_ID", DbType="Int NOT NULL")]
+		public int TYPE_ID
+		{
+			get
+			{
+				return this._TYPE_ID;
+			}
+			set
+			{
+				if ((this._TYPE_ID != value))
+				{
+					this._TYPE_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TYPE_NAME_EN", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string TYPE_NAME_EN
+		{
+			get
+			{
+				return this._TYPE_NAME_EN;
+			}
+			set
+			{
+				if ((this._TYPE_NAME_EN != value))
+				{
+					this._TYPE_NAME_EN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TYPE_NAME_AR", DbType="NChar(10) NOT NULL", CanBeNull=false)]
+		public string TYPE_NAME_AR
+		{
+			get
+			{
+				return this._TYPE_NAME_AR;
+			}
+			set
+			{
+				if ((this._TYPE_NAME_AR != value))
+				{
+					this._TYPE_NAME_AR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CATEGORY_ID", DbType="Int NOT NULL")]
+		public int CATEGORY_ID
+		{
+			get
+			{
+				return this._CATEGORY_ID;
+			}
+			set
+			{
+				if ((this._CATEGORY_ID != value))
+				{
+					this._CATEGORY_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CATEGORY_NAME_EN", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string CATEGORY_NAME_EN
+		{
+			get
+			{
+				return this._CATEGORY_NAME_EN;
+			}
+			set
+			{
+				if ((this._CATEGORY_NAME_EN != value))
+				{
+					this._CATEGORY_NAME_EN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CATEGORY_NAME_AR", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string CATEGORY_NAME_AR
+		{
+			get
+			{
+				return this._CATEGORY_NAME_AR;
+			}
+			set
+			{
+				if ((this._CATEGORY_NAME_AR != value))
+				{
+					this._CATEGORY_NAME_AR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_IMAGE", DbType="NVarChar(MAX)")]
+		public string PRODUCT_IMAGE
+		{
+			get
+			{
+				return this._PRODUCT_IMAGE;
+			}
+			set
+			{
+				if ((this._PRODUCT_IMAGE != value))
+				{
+					this._PRODUCT_IMAGE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANUFACTURE_ID", DbType="Int NOT NULL")]
+		public int MANUFACTURE_ID
+		{
+			get
+			{
+				return this._MANUFACTURE_ID;
+			}
+			set
+			{
+				if ((this._MANUFACTURE_ID != value))
+				{
+					this._MANUFACTURE_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANUFACTURE_NAME_EN", DbType="NVarChar(MAX)")]
+		public string MANUFACTURE_NAME_EN
+		{
+			get
+			{
+				return this._MANUFACTURE_NAME_EN;
+			}
+			set
+			{
+				if ((this._MANUFACTURE_NAME_EN != value))
+				{
+					this._MANUFACTURE_NAME_EN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANUFACTURE_NAME_AR", DbType="NVarChar(MAX)")]
+		public string MANUFACTURE_NAME_AR
+		{
+			get
+			{
+				return this._MANUFACTURE_NAME_AR;
+			}
+			set
+			{
+				if ((this._MANUFACTURE_NAME_AR != value))
+				{
+					this._MANUFACTURE_NAME_AR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANUFACTURE_BUSINESS_AREA", DbType="NVarChar(MAX)")]
+		public string MANUFACTURE_BUSINESS_AREA
+		{
+			get
+			{
+				return this._MANUFACTURE_BUSINESS_AREA;
+			}
+			set
+			{
+				if ((this._MANUFACTURE_BUSINESS_AREA != value))
+				{
+					this._MANUFACTURE_BUSINESS_AREA = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_TAGS", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string PRODUCT_TAGS
+		{
+			get
+			{
+				return this._PRODUCT_TAGS;
+			}
+			set
+			{
+				if ((this._PRODUCT_TAGS != value))
+				{
+					this._PRODUCT_TAGS = value;
 				}
 			}
 		}

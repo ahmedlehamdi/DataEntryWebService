@@ -122,30 +122,30 @@ namespace DataEntryWebService
         
         public string getAllTimeFrames()
         {
-            List<TIME_FRAMES_TYPE> frames = null;
-            ReturnObject <List<TIME_FRAMES_TYPE>> framesObj = null;
-            try
-            {
-                TimeFrameHandler handler = new TimeFrameHandler();
+            //List<TIME_FRAMES_TYPE> frames = null;
+            //ReturnObject <List<TIME_FRAMES_TYPE>> framesObj = null;
+            //try
+            //{
+            //    TimeFrameHandler handler = new TimeFrameHandler();
 
-                frames = handler.getAllTimeFrames();
-                framesObj = new ReturnObject<List<TIME_FRAMES_TYPE>>(ErrorConstants.SUCCESS, frames);
+            //    frames = handler.getAllTimeFrames();
+            //    framesObj = new ReturnObject<List<TIME_FRAMES_TYPE>>(ErrorConstants.SUCCESS, frames);
 
-                if (frames != null)
-                    return JsonConvert.SerializeObject(framesObj);
-                else
+            //    if (frames != null)
+            //        return JsonConvert.SerializeObject(framesObj);
+            //    else
                 {
                     return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_NO_TIME_FRAMES_FOUND, ErrorConstants.ERROR_NO_TIME_FRAMES_FOUND_MSG));
                 }
-            }
-            catch (Exception ex)
-            {
-                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
+            //}
             
         }
 
-        public string addNewFlyerBasicData(OFFER_FLYER flyer, TIME_FRAME frame, string action)
+        public string addNewFlyerBasicData(OFFER_FLYER flyer, string action)
         {
             
             ReturnObject<int> flyerObj = null;
@@ -153,7 +153,7 @@ namespace DataEntryWebService
             {
                 FlyersHandler handler = new FlyersHandler();
 
-                var flyerID = handler.AddNewFlyer(flyer, frame, action);
+                var flyerID = handler.AddNewFlyer(flyer, action);
                 if (flyerID != -1)
                 {
                     flyerObj = new ReturnObject<int>(ErrorConstants.SUCCESS, flyerID);
@@ -220,19 +220,43 @@ namespace DataEntryWebService
             }
         }
 
-        public string submitFlyerProduct(PRODUCT product, PRODUCT_SPEC specs)
+        public string getTypeAllSpecs(int typeID)
         {
-            ReturnObject<int> output = null;
+            List<PROD_TYPE_TEMPLATE> types = null;
+            ReturnObject<List<PROD_TYPE_TEMPLATE>> typesObj = null;
             try
             {
                 ProductsHandler handler = new ProductsHandler();
 
-                int productID = handler.AddFlyerProduct(product, specs);
-                output = new ReturnObject<int>(ErrorConstants.SUCCESS, productID);
+                types = handler.getAllTypeSpecs(typeID);
+                typesObj = new ReturnObject<List<PROD_TYPE_TEMPLATE>>(ErrorConstants.SUCCESS, types);
 
-                if (productID != -1)
-                    return JsonConvert.SerializeObject(output);
+                if (types != null)
+                    return JsonConvert.SerializeObject(typesObj);
                 else
+                {
+                    return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_FAILED_GET_TYPE_SPECS, ErrorConstants.ERROR_FAILED_GET_TYPE_SPECS_MSG));
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
+            }
+        }
+
+        public string submitFlyerProduct(PRODUCT product)
+        {
+            ReturnObject<int> output = null;
+            try
+            {
+                //ProductsHandler handler = new ProductsHandler();
+
+                //int productID = handler.AddFlyerProduct(product, specs);
+                //output = new ReturnObject<int>(ErrorConstants.SUCCESS, productID);
+
+                //if (productID != -1)
+                //    return JsonConvert.SerializeObject(output);
+                //else
                 {
                     return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_FAILED_TO_ADD_PRODUCT, ErrorConstants.ERROR_FAILED_TO_ADD_PRODUCT_MSG));
                 }
@@ -243,14 +267,14 @@ namespace DataEntryWebService
             }
         }
 
-        public string submitFlyerAllProducts(List<PRODUCT> products, List<PRODUCT_SPEC> specs)
+        public string submitFlyerAllProducts(List<PRODUCT> products, List<List<PROD_TYPE_SPEC>> allSpecs, List<PROD_OFF_TYP_ATTR> allOfferTypes)
         {
             ReturnObject<int> output = null;
             try
             {
                 ProductsHandler handler = new ProductsHandler();
 
-                int successIndicator = handler.AddFlyerAllProducts(products, specs);
+                int successIndicator = handler.AddFlyerProduct(products, allSpecs, allOfferTypes);
                 output = new ReturnObject<int>(ErrorConstants.SUCCESS, successIndicator);
 
                 if (successIndicator != -1)
@@ -426,5 +450,75 @@ namespace DataEntryWebService
                 return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
             }
         }
+
+        public string getAllProductManufactures()
+        {
+            ReturnObject<List<MANUFACTURE>> output = null;
+            try
+            {
+                ManufactuerHandler handler = new ManufactuerHandler();
+
+                List<MANUFACTURE> manufList = handler.getAllProductManufactures();
+                output = new ReturnObject<List<MANUFACTURE>>(ErrorConstants.SUCCESS, manufList);
+
+                if (manufList != null && manufList.Count > 0)
+                    return JsonConvert.SerializeObject(output);
+                else
+                {
+                    return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_FAILED_GET_PRODUCT_MANUFACTURES, ErrorConstants.ERROR_FAILED_GET_PRODUCT_MANUFACTURES_MSG));
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
+            }
+        }
+
+        public string getAllProductBranches(int parentID)
+        {
+            ReturnObject<List<GET_ALL_BRANCHESResult>> output = null;
+            try
+            {
+                ProvidersHandler handler = new ProvidersHandler();
+
+                List<GET_ALL_BRANCHESResult> branchesList = handler.getAllProductBranches(parentID);
+                output = new ReturnObject<List<GET_ALL_BRANCHESResult>>(ErrorConstants.SUCCESS, branchesList);
+
+                if (branchesList != null && branchesList.Count > 0)
+                    return JsonConvert.SerializeObject(output);
+                else
+                {
+                    return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_FAILED_GET_PRODUCT_BRANCHES, ErrorConstants.ERROR_FAILED_GET_PRODUCT_BRANCHES_MSG));
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
+            }
+        }
+
+        public string getAllProductOfferTypes()
+        {
+            ReturnObject<List<PROD_OFF_TYP>> output = null;
+            try
+            {
+                ProductsHandler handler = new ProductsHandler();
+
+                List<PROD_OFF_TYP> typesList = handler.RETRIEVE_ALL_PRODUCT_OFFER_TYPES();
+                output = new ReturnObject<List<PROD_OFF_TYP>>(ErrorConstants.SUCCESS, typesList);
+
+                if (typesList != null && typesList.Count > 0)
+                    return JsonConvert.SerializeObject(output);
+                else
+                {
+                    return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_FAILED_GET_PRODUCT_OFFER_TYPES, ErrorConstants.ERROR_FAILED_GET_PRODUCT_OFFER_TYPES_MSG));
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
+            }
+        }
+
     }
 }
