@@ -88,6 +88,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomDataOBJ\PRODUCT.cs" />
+    <Compile Include="CustomDataOBJ\PRODUCT_OFFER_TYPE_SPECS.cs" />
+    <Compile Include="CustomDataOBJ\PRODUCT_TYPE_SPECS.cs" />
     <Compile Include="DataAccessLogic\DataClasses.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

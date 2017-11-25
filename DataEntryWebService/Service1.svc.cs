@@ -520,5 +520,29 @@ namespace DataEntryWebService
             }
         }
 
+        public string submitAllProducts(string productsListSTR)
+        {
+             var list = JsonConvert.DeserializeObject<List<DataEntryDAL.CustomDataOBJ.PRODUCT>>(productsListSTR);
+            ReturnObject<int> output = null;
+            try
+            {
+                ProductsHandler handler = new ProductsHandler();
+
+                var  result = handler.INSERT_ALL_PRODUCTS(list);
+                output = new ReturnObject<int>(ErrorConstants.SUCCESS, result);
+
+                if (result != -1)
+                    return JsonConvert.SerializeObject(output);
+                else
+                {
+                    return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_FAILED_TO_ADD_FLYER_PRODUCTS, ErrorConstants.ERROR_FAILED_TO_ADD_FLYER_PRODUCTS_MSG));
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
+            }
+        }
+
     }
 }

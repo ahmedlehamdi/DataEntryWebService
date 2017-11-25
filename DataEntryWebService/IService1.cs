@@ -166,6 +166,13 @@ namespace DataEntryWebService
            UriTemplate = "getAllProductOfferTypes")]
         string getAllProductOfferTypes();
 
+        [OperationContract]
+        [WebInvoke(Method = "POST",
+           RequestFormat = WebMessageFormat.Json,
+           ResponseFormat = WebMessageFormat.Json,
+           UriTemplate = "submitAllProducts")]
+        string submitAllProducts(string productsListSTR);
+
         //[OperationContract]
         //CompositeType GetDataUsingDataContract(CompositeType composite);
 
