@@ -3538,7 +3538,7 @@ namespace DataEntryDAL.DataAccessLogic
 		
 		private string _PRODUCT_PRICE;
 		
-		private System.Nullable<int> _LOCATION_ID;
+		private System.Nullable<int> _BRANCH_ID;
 		
 		private System.Nullable<int> _MANUFACTURE_ID;
 		
@@ -3590,8 +3590,8 @@ namespace DataEntryDAL.DataAccessLogic
     partial void OnPRODUCT_IMAGEChanged();
     partial void OnPRODUCT_PRICEChanging(string value);
     partial void OnPRODUCT_PRICEChanged();
-    partial void OnLOCATION_IDChanging(System.Nullable<int> value);
-    partial void OnLOCATION_IDChanged();
+    partial void OnBRANCH_IDChanging(System.Nullable<int> value);
+    partial void OnBRANCH_IDChanged();
     partial void OnMANUFACTURE_IDChanging(System.Nullable<int> value);
     partial void OnMANUFACTURE_IDChanged();
     partial void OnPRODUCT_TAGSChanging(string value);
@@ -3771,22 +3771,22 @@ namespace DataEntryDAL.DataAccessLogic
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_ID", DbType="Int")]
-		public System.Nullable<int> LOCATION_ID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BRANCH_ID", DbType="Int")]
+		public System.Nullable<int> BRANCH_ID
 		{
 			get
 			{
-				return this._LOCATION_ID;
+				return this._BRANCH_ID;
 			}
 			set
 			{
-				if ((this._LOCATION_ID != value))
+				if ((this._BRANCH_ID != value))
 				{
-					this.OnLOCATION_IDChanging(value);
+					this.OnBRANCH_IDChanging(value);
 					this.SendPropertyChanging();
-					this._LOCATION_ID = value;
-					this.SendPropertyChanged("LOCATION_ID");
-					this.OnLOCATION_IDChanged();
+					this._BRANCH_ID = value;
+					this.SendPropertyChanged("BRANCH_ID");
+					this.OnBRANCH_IDChanged();
 				}
 			}
 		}

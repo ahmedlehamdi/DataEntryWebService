@@ -544,5 +544,29 @@ namespace DataEntryWebService
             }
         }
 
+        public string getAllProductsList(int flyerID, int parentID)
+        {
+            ReturnObject<List<DataEntryDAL.CustomDataOBJ.PRODUCT>> output = null;
+            try
+            {
+                ProductsHandler handler = new ProductsHandler();
+
+                var result = handler.getProductsList(flyerID, parentID);
+                output = new ReturnObject<List<DataEntryDAL.CustomDataOBJ.PRODUCT>>(ErrorConstants.SUCCESS, result);
+
+                if (result.Count > 0)
+                    return JsonConvert.SerializeObject(output);
+                else
+                {
+                    return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_FAILED_TO_ADD_FLYER_PRODUCTS, ErrorConstants.ERROR_FAILED_TO_ADD_FLYER_PRODUCTS_MSG));
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
+            }
+        }
+
+
     }
 }

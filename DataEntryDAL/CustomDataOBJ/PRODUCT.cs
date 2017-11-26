@@ -18,7 +18,7 @@ namespace DataEntryDAL.CustomDataOBJ
         public int MANUFACTURE_ID { get; set; }
                                                         public List<PRODUCT_TYPE_SPECS> TYPE_SPECS { get; set; }
         public string PRODUCT_IMAGE { get; set; }
-        public int LOCATION_ID { get; set; }
+        public int BRANCH_ID { get; set; }
         public string PRODUCT_TAGS { get; set; }
         public DateTime DATE_FROM { get; set; }
         public DateTime DATE_TO { get; set; }

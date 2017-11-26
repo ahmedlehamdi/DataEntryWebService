@@ -194,7 +194,7 @@ namespace DataEntryDAL.Handlers
                         product.FLYER_ID = prod.FLYER_ID;
                         product.Parent_ID = productParentID;
                         product.TYPE_ID = prod.TYPE_ID;
-                        product.LOCATION_ID = prod.LOCATION_ID;
+                        product.BRANCH_ID = prod.BRANCH_ID;
                         product.MANUFACTURE_ID = prod.MANUFACTURE_ID;
 
                         product.PRODUCT_IMAGE = prod.PRODUCT_IMAGE;
@@ -272,11 +272,11 @@ namespace DataEntryDAL.Handlers
                                     offerTypeAttr.PROD_OFF_TYP_ATTR_10 = prID.ToString();
                             }
                             offerTypeAttr.PROD_OFF_TYPE_ID = 5;
+                            productParentID = -1;
                         }
                         // CASE 2 : NON-BUNLDE
                         else
                         {
-                            productParentID = -1;
                             offerTypeAttr.PROD_OFF_TYPE_ID = prod.PROD_OFF_TYP_SPECS.PROD_OFF_TYPE_ID;
                             offerTypeAttr.PROD_OFF_TYP_ATTR_1 = prod.PROD_OFF_TYP_SPECS.PROD_OFF_TYP_ATTR_1;
                             offerTypeAttr.PROD_OFF_TYP_ATTR_2 = prod.PROD_OFF_TYP_SPECS.PROD_OFF_TYP_ATTR_2;
@@ -310,8 +310,111 @@ namespace DataEntryDAL.Handlers
             }
         }
 
+        public List<CustomDataOBJ.PRODUCT> getProductsList(int flyerID, int parentID)
+        {
+            try
+            {
+                using (DataClassesDataContext context = new DataClassesDataContext())
+                {
+                    var query =
+                               (from obj in context.GetTable<PRODUCT>()
+                               where obj.FLYER_ID == flyerID & obj.Parent_ID == parentID
+                                select obj);
+                    var productList = new List<CustomDataOBJ.PRODUCT>();
+
+                    foreach (var p in query)
+                    {
+                        CustomDataOBJ.PRODUCT product = new CustomDataOBJ.PRODUCT();
+
+                        product.PRODUCT_ID = p.PRODUCT_ID;
+                        product.FLYER_ID = p.FLYER_ID;
+                        product.Parent_ID = p.Parent_ID.GetValueOrDefault();
+                        product.PRODUCT_NAME_EN = p.PRODUCT_NAME_EN;
+                        product.PRODUCT_NAME_AR = p.PRODUCT_NAME_AR;
+                        product.PRODUCT_PRICE = int.Parse(p.PRODUCT_PRICE);
+                        product.TYPE_ID = p.TYPE_ID;
+
+                        //product.CATEGORY_ID = p.CATEGORY_ID;
+                        var catID = (from obj in context.GetTable<PRODUCT_TYPE>()
+                                     where obj.TYPE_ID == p.TYPE_ID
+                                     select obj).FirstOrDefault().CATEGORY_ID;
+                        product.CATEGORY_ID = catID;
+
+                        product.MANUFACTURE_ID = int.Parse(p.MANUFACTURE_ID.ToString());
+                        product.PRODUCT_IMAGE = p.PRODUCT_IMAGE;
+                        product.BRANCH_ID = p.BRANCH_ID.GetValueOrDefault();
+                        product.PRODUCT_TAGS = p.PRODUCT_TAGS;
+                        product.DATE_FROM = p.DATE_FROM.GetValueOrDefault();
+                        product.DATE_TO = p.DATE_TO.GetValueOrDefault();
+
+                        //product.PROD_OFF_TYPE_ID = p.PROD_OFF_TYPE_ID.GetValueOrDefault();
+                        var offerTypeID = (from obj in context.GetTable<PROD_OFF_TYP_ATTR>()
+                                     where obj.PROD_OFF_TYP_ATTR_ID == p.PROD_OFF_TYP_ATTR_ID
+                                           select obj).FirstOrDefault().PROD_OFF_TYPE_ID;
+                        product.PROD_OFF_TYPE_ID = offerTypeID.GetValueOrDefault();
+
+                        product.PROD_OFF_TYP_ATTR_ID = p.PROD_OFF_TYP_ATTR_ID.GetValueOrDefault();
+
+                        product.PRODUCT_ATTR_1 = p.PRODUCT_ATTR_1;
+                        product.PRODUCT_ATTR_2 = p.PRODUCT_ATTR_2;
+                        product.PRODUCT_ATTR_3 = p.PRODUCT_ATTR_3;
+                        product.PRODUCT_ATTR_4 = p.PRODUCT_ATTR_4;
+                        product.PRODUCT_ATTR_5 = p.PRODUCT_ATTR_5;
+
+                        ///// Product Type Specs
+                        List<CustomDataOBJ.PRODUCT_TYPE_SPECS> specs = new List<CustomDataOBJ.PRODUCT_TYPE_SPECS>();
+                        var prodSpecsList = (from obj in context.GetTable<PROD_TYPE_SPEC>()
+                                             where obj.PRODUCT_ID == p.PRODUCT_ID
+                                             select obj);
+                        foreach(var spec in prodSpecsList)
+                        {
+                            CustomDataOBJ.PRODUCT_TYPE_SPECS s = new CustomDataOBJ.PRODUCT_TYPE_SPECS();
+                            s.PRODUCT_ID = spec.PRODUCT_ID.GetValueOrDefault();
+                            s.TEMPLATE_ID = spec.TEMPLATE_ID.GetValueOrDefault();
+                            s.TEMPLATE_VALUE = spec.TEMPLATE_VALUE;
+                            s.TYPE_ID = spec.TYPE_ID.GetValueOrDefault();
+                            s.TYPE_SPECS_ID = spec.TYPE_SPECS_ID;
+                            specs.Add(s);
+                        }
+                        product.TYPE_SPECS = specs;
 
 
+                        //PRODUCT_OFFER_TYPE_SPECS
+                        CustomDataOBJ.PRODUCT_OFFER_TYPE_SPECS offerSpecs = new CustomDataOBJ.PRODUCT_OFFER_TYPE_SPECS();
+                        var prodOfferSpecs = (from obj in context.GetTable<PROD_OFF_TYP_ATTR>()
+                                             where obj.PROD_OFF_TYP_ATTR_ID == p.PROD_OFF_TYP_ATTR_ID
+                                              select obj).FirstOrDefault();
+                        offerSpecs.PROD_OFF_TYPE_ID = prodOfferSpecs.PROD_OFF_TYPE_ID.GetValueOrDefault();
+                        offerSpecs.PROD_OFF_TYP_ATTR_1 = prodOfferSpecs.PROD_OFF_TYP_ATTR_1;
+                        offerSpecs.PROD_OFF_TYP_ATTR_2 = prodOfferSpecs.PROD_OFF_TYP_ATTR_2;
+                        offerSpecs.PROD_OFF_TYP_ATTR_3 = prodOfferSpecs.PROD_OFF_TYP_ATTR_3;
+                        offerSpecs.PROD_OFF_TYP_ATTR_4 = prodOfferSpecs.PROD_OFF_TYP_ATTR_4;
+                        offerSpecs.PROD_OFF_TYP_ATTR_5 = prodOfferSpecs.PROD_OFF_TYP_ATTR_5;
+                        offerSpecs.PROD_OFF_TYP_ATTR_6 = prodOfferSpecs.PROD_OFF_TYP_ATTR_6;
+                        offerSpecs.PROD_OFF_TYP_ATTR_7 = prodOfferSpecs.PROD_OFF_TYP_ATTR_7;
+                        offerSpecs.PROD_OFF_TYP_ATTR_8 = prodOfferSpecs.PROD_OFF_TYP_ATTR_8;
+                        offerSpecs.PROD_OFF_TYP_ATTR_9 = prodOfferSpecs.PROD_OFF_TYP_ATTR_9;
+                        offerSpecs.PROD_OFF_TYP_ATTR_10 = prodOfferSpecs.PROD_OFF_TYP_ATTR_10;
+
+                        product.PROD_OFF_TYP_SPECS = offerSpecs;
+
+
+                        /// Bundle List 
+                        if(prodOfferSpecs.PROD_OFF_TYPE_ID == 5)
+                        {
+                            product.bundleList = getProductsList(p.FLYER_ID, p.PRODUCT_ID);
+                        }
+
+                        productList.Add(product);
+                    }
+
+                    return productList;
+                }
+            }catch(Exception e)
+            {
+                return null;
+            }
+        }
 
     }
 }
