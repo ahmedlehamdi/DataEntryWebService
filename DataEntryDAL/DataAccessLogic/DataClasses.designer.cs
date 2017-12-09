@@ -234,13 +234,6 @@ namespace DataEntryDAL.DataAccessLogic
 			return ((ISingleResult<GET_REJECTED_FLYERSResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GET_ALL_FLYERS_PROCD")]
-		public ISingleResult<GET_ALL_FLYERS_PROCDResult> GET_ALL_FLYERS_PROCD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="USER_ID", DbType="Int")] System.Nullable<int> uSER_ID)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), uSER_ID);
-			return ((ISingleResult<GET_ALL_FLYERS_PROCDResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GET_ALL_PROVIDERS")]
 		public ISingleResult<GET_ALL_PROVIDERSResult> GET_ALL_PROVIDERS()
 		{
@@ -295,6 +288,13 @@ namespace DataEntryDAL.DataAccessLogic
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), flyerID);
 			return ((ISingleResult<GET_FLYER_PRODUCTS_DATAResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GET_ALL_FLYERS_PROCD")]
+		public ISingleResult<GET_ALL_FLYERS_PROCDResult> GET_ALL_FLYERS_PROCD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="USER_ID", DbType="Int")] System.Nullable<int> uSER_ID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), uSER_ID);
+			return ((ISingleResult<GET_ALL_FLYERS_PROCDResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -4374,248 +4374,6 @@ namespace DataEntryDAL.DataAccessLogic
 		}
 	}
 	
-	public partial class GET_ALL_FLYERS_PROCDResult
-	{
-		
-		private int _FLYER_ID;
-		
-		private string _PROVIDER_NAME_EN;
-		
-		private string _PROVIDER_NAME_AR;
-		
-		private string _OFFER_TYPE_NAME_EN;
-		
-		private string _OFFER_TYPE_NAME_AR;
-		
-		private string _LOCATION_CITY;
-		
-		private string _LOCATION_DISTRICT;
-		
-		private string _FLYER_NAME_EN;
-		
-		private string _FLYER_NAME_AR;
-		
-		private string _FLYER_IMAGE_URL;
-		
-		private System.Nullable<bool> _FLYER_APPROVED;
-		
-		private System.Nullable<System.DateTime> _DATE_FROM;
-		
-		private System.Nullable<System.DateTime> _DATE_TO;
-		
-		public GET_ALL_FLYERS_PROCDResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_ID", DbType="Int NOT NULL")]
-		public int FLYER_ID
-		{
-			get
-			{
-				return this._FLYER_ID;
-			}
-			set
-			{
-				if ((this._FLYER_ID != value))
-				{
-					this._FLYER_ID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_NAME_EN", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string PROVIDER_NAME_EN
-		{
-			get
-			{
-				return this._PROVIDER_NAME_EN;
-			}
-			set
-			{
-				if ((this._PROVIDER_NAME_EN != value))
-				{
-					this._PROVIDER_NAME_EN = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_NAME_AR", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string PROVIDER_NAME_AR
-		{
-			get
-			{
-				return this._PROVIDER_NAME_AR;
-			}
-			set
-			{
-				if ((this._PROVIDER_NAME_AR != value))
-				{
-					this._PROVIDER_NAME_AR = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_NAME_EN", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string OFFER_TYPE_NAME_EN
-		{
-			get
-			{
-				return this._OFFER_TYPE_NAME_EN;
-			}
-			set
-			{
-				if ((this._OFFER_TYPE_NAME_EN != value))
-				{
-					this._OFFER_TYPE_NAME_EN = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_NAME_AR", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string OFFER_TYPE_NAME_AR
-		{
-			get
-			{
-				return this._OFFER_TYPE_NAME_AR;
-			}
-			set
-			{
-				if ((this._OFFER_TYPE_NAME_AR != value))
-				{
-					this._OFFER_TYPE_NAME_AR = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_CITY", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string LOCATION_CITY
-		{
-			get
-			{
-				return this._LOCATION_CITY;
-			}
-			set
-			{
-				if ((this._LOCATION_CITY != value))
-				{
-					this._LOCATION_CITY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_DISTRICT", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string LOCATION_DISTRICT
-		{
-			get
-			{
-				return this._LOCATION_DISTRICT;
-			}
-			set
-			{
-				if ((this._LOCATION_DISTRICT != value))
-				{
-					this._LOCATION_DISTRICT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_NAME_EN", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string FLYER_NAME_EN
-		{
-			get
-			{
-				return this._FLYER_NAME_EN;
-			}
-			set
-			{
-				if ((this._FLYER_NAME_EN != value))
-				{
-					this._FLYER_NAME_EN = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_NAME_AR", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string FLYER_NAME_AR
-		{
-			get
-			{
-				return this._FLYER_NAME_AR;
-			}
-			set
-			{
-				if ((this._FLYER_NAME_AR != value))
-				{
-					this._FLYER_NAME_AR = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_IMAGE_URL", DbType="NVarChar(MAX)")]
-		public string FLYER_IMAGE_URL
-		{
-			get
-			{
-				return this._FLYER_IMAGE_URL;
-			}
-			set
-			{
-				if ((this._FLYER_IMAGE_URL != value))
-				{
-					this._FLYER_IMAGE_URL = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_APPROVED", DbType="Bit")]
-		public System.Nullable<bool> FLYER_APPROVED
-		{
-			get
-			{
-				return this._FLYER_APPROVED;
-			}
-			set
-			{
-				if ((this._FLYER_APPROVED != value))
-				{
-					this._FLYER_APPROVED = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATE_FROM", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DATE_FROM
-		{
-			get
-			{
-				return this._DATE_FROM;
-			}
-			set
-			{
-				if ((this._DATE_FROM != value))
-				{
-					this._DATE_FROM = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATE_TO", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DATE_TO
-		{
-			get
-			{
-				return this._DATE_TO;
-			}
-			set
-			{
-				if ((this._DATE_TO != value))
-				{
-					this._DATE_TO = value;
-				}
-			}
-		}
-	}
-	
 	public partial class GET_ALL_PROVIDERSResult
 	{
 		
@@ -6655,6 +6413,284 @@ namespace DataEntryDAL.DataAccessLogic
 				if ((this._PRODUCT_TAGS != value))
 				{
 					this._PRODUCT_TAGS = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GET_ALL_FLYERS_PROCDResult
+	{
+		
+		private int _FLYER_ID;
+		
+		private int _PROVIDER_ID;
+		
+		private string _PROVIDER_NAME_EN;
+		
+		private string _PROVIDER_NAME_AR;
+		
+		private string _OFFER_TYPE_NAME_EN;
+		
+		private int _OFFER_TYPE_ID;
+		
+		private string _OFFER_TYPE_NAME_AR;
+		
+		private string _LOCATION_CITY;
+		
+		private string _LOCATION_DISTRICT;
+		
+		private string _FLYER_NAME_EN;
+		
+		private string _FLYER_NAME_AR;
+		
+		private string _FLYER_IMAGE_URL;
+		
+		private System.Nullable<bool> _FLYER_APPROVED;
+		
+		private System.Nullable<System.DateTime> _DATE_FROM;
+		
+		private System.Nullable<System.DateTime> _DATE_TO;
+		
+		public GET_ALL_FLYERS_PROCDResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_ID", DbType="Int NOT NULL")]
+		public int FLYER_ID
+		{
+			get
+			{
+				return this._FLYER_ID;
+			}
+			set
+			{
+				if ((this._FLYER_ID != value))
+				{
+					this._FLYER_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_ID", DbType="Int NOT NULL")]
+		public int PROVIDER_ID
+		{
+			get
+			{
+				return this._PROVIDER_ID;
+			}
+			set
+			{
+				if ((this._PROVIDER_ID != value))
+				{
+					this._PROVIDER_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_NAME_EN", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string PROVIDER_NAME_EN
+		{
+			get
+			{
+				return this._PROVIDER_NAME_EN;
+			}
+			set
+			{
+				if ((this._PROVIDER_NAME_EN != value))
+				{
+					this._PROVIDER_NAME_EN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVIDER_NAME_AR", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string PROVIDER_NAME_AR
+		{
+			get
+			{
+				return this._PROVIDER_NAME_AR;
+			}
+			set
+			{
+				if ((this._PROVIDER_NAME_AR != value))
+				{
+					this._PROVIDER_NAME_AR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_NAME_EN", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string OFFER_TYPE_NAME_EN
+		{
+			get
+			{
+				return this._OFFER_TYPE_NAME_EN;
+			}
+			set
+			{
+				if ((this._OFFER_TYPE_NAME_EN != value))
+				{
+					this._OFFER_TYPE_NAME_EN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_ID", DbType="Int NOT NULL")]
+		public int OFFER_TYPE_ID
+		{
+			get
+			{
+				return this._OFFER_TYPE_ID;
+			}
+			set
+			{
+				if ((this._OFFER_TYPE_ID != value))
+				{
+					this._OFFER_TYPE_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OFFER_TYPE_NAME_AR", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string OFFER_TYPE_NAME_AR
+		{
+			get
+			{
+				return this._OFFER_TYPE_NAME_AR;
+			}
+			set
+			{
+				if ((this._OFFER_TYPE_NAME_AR != value))
+				{
+					this._OFFER_TYPE_NAME_AR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_CITY", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string LOCATION_CITY
+		{
+			get
+			{
+				return this._LOCATION_CITY;
+			}
+			set
+			{
+				if ((this._LOCATION_CITY != value))
+				{
+					this._LOCATION_CITY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_DISTRICT", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string LOCATION_DISTRICT
+		{
+			get
+			{
+				return this._LOCATION_DISTRICT;
+			}
+			set
+			{
+				if ((this._LOCATION_DISTRICT != value))
+				{
+					this._LOCATION_DISTRICT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_NAME_EN", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string FLYER_NAME_EN
+		{
+			get
+			{
+				return this._FLYER_NAME_EN;
+			}
+			set
+			{
+				if ((this._FLYER_NAME_EN != value))
+				{
+					this._FLYER_NAME_EN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_NAME_AR", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string FLYER_NAME_AR
+		{
+			get
+			{
+				return this._FLYER_NAME_AR;
+			}
+			set
+			{
+				if ((this._FLYER_NAME_AR != value))
+				{
+					this._FLYER_NAME_AR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_IMAGE_URL", DbType="NVarChar(MAX)")]
+		public string FLYER_IMAGE_URL
+		{
+			get
+			{
+				return this._FLYER_IMAGE_URL;
+			}
+			set
+			{
+				if ((this._FLYER_IMAGE_URL != value))
+				{
+					this._FLYER_IMAGE_URL = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLYER_APPROVED", DbType="Bit")]
+		public System.Nullable<bool> FLYER_APPROVED
+		{
+			get
+			{
+				return this._FLYER_APPROVED;
+			}
+			set
+			{
+				if ((this._FLYER_APPROVED != value))
+				{
+					this._FLYER_APPROVED = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATE_FROM", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DATE_FROM
+		{
+			get
+			{
+				return this._DATE_FROM;
+			}
+			set
+			{
+				if ((this._DATE_FROM != value))
+				{
+					this._DATE_FROM = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATE_TO", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DATE_TO
+		{
+			get
+			{
+				return this._DATE_TO;
+			}
+			set
+			{
+				if ((this._DATE_TO != value))
+				{
+					this._DATE_TO = value;
 				}
 			}
 		}

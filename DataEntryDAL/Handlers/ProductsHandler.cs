@@ -331,18 +331,41 @@ namespace DataEntryDAL.Handlers
                         product.Parent_ID = p.Parent_ID.GetValueOrDefault();
                         product.PRODUCT_NAME_EN = p.PRODUCT_NAME_EN;
                         product.PRODUCT_NAME_AR = p.PRODUCT_NAME_AR;
-                        product.PRODUCT_PRICE = int.Parse(p.PRODUCT_PRICE);
+                        product.PRODUCT_PRICE = float.Parse(p.PRODUCT_PRICE);
                         product.TYPE_ID = p.TYPE_ID;
 
                         //product.CATEGORY_ID = p.CATEGORY_ID;
-                        var catID = (from obj in context.GetTable<PRODUCT_TYPE>()
+                        var type = (from obj in context.GetTable<PRODUCT_TYPE>()
                                      where obj.TYPE_ID == p.TYPE_ID
-                                     select obj).FirstOrDefault().CATEGORY_ID;
-                        product.CATEGORY_ID = catID;
+                                     select obj).FirstOrDefault();
+                        product.CATEGORY_ID = type.CATEGORY_ID;
+                        product.TYPE_NAME_EN = type.TYPE_NAME_EN;
+                        product.TYPE_NAME_AR = type.TYPE_NAME_AR;
+
+
+                        var cat = (from obj in context.GetTable<PRODUCTS_CATEGORy>()
+                                    where obj.CATEGORY_ID == type.CATEGORY_ID
+                                    select obj).FirstOrDefault();
+                        product.CATEGORY_NAME_EN = cat.CATEGORY_NAME_EN;
+                        product.CATEGORY_NAME_AR = cat.CATEGORY_NAME_AR;
+
 
                         product.MANUFACTURE_ID = int.Parse(p.MANUFACTURE_ID.ToString());
+                        var manu = (from obj in context.GetTable<MANUFACTURE>()
+                                   where obj.MANUFACTURE_ID == int.Parse(p.MANUFACTURE_ID.ToString())
+                                      select obj).FirstOrDefault();
+                        product.MANUFACTURE_NAME_EN = manu.MANUFACTURE_NAME_EN;
+                        product.MANUFACTURE_NAME_AR = manu.MANUFACTURE_NAME_AR;
+
+
                         product.PRODUCT_IMAGE = p.PRODUCT_IMAGE;
                         product.BRANCH_ID = p.BRANCH_ID.GetValueOrDefault();
+                        var branch = (from obj in context.GetTable<PROVIDER>()
+                                    where obj.PROVIDER_ID == p.BRANCH_ID.GetValueOrDefault()
+                                      select obj).FirstOrDefault();
+                        product.BRANCH_NAME_EN = branch.PROVIDER_NAME_EN;
+                        product.BRANCH_NAME_AR = branch.PROVIDER_NAME_AR;
+
                         product.PRODUCT_TAGS = p.PRODUCT_TAGS;
                         product.DATE_FROM = p.DATE_FROM.GetValueOrDefault();
                         product.DATE_TO = p.DATE_TO.GetValueOrDefault();
@@ -352,6 +375,12 @@ namespace DataEntryDAL.Handlers
                                      where obj.PROD_OFF_TYP_ATTR_ID == p.PROD_OFF_TYP_ATTR_ID
                                            select obj).FirstOrDefault().PROD_OFF_TYPE_ID;
                         product.PROD_OFF_TYPE_ID = offerTypeID.GetValueOrDefault();
+
+                        var offerTypeObj = (from obj in context.GetTable<PROD_OFF_TYP>()
+                                           where obj.PROD_OFF_TYPE_ID == offerTypeID
+                                           select obj).FirstOrDefault();
+                        product.PROD_OFF_TYPE_NAME_EN = offerTypeObj.PROD_OFF_TYPE_NAME_EN;
+                        product.PROD_OFF_TYPE_NAME_AR = offerTypeObj.PROD_OFF_TYPE_NAME_AR;
 
                         product.PROD_OFF_TYP_ATTR_ID = p.PROD_OFF_TYP_ATTR_ID.GetValueOrDefault();
 

@@ -522,10 +522,11 @@ namespace DataEntryWebService
 
         public string submitAllProducts(string productsListSTR)
         {
-             var list = JsonConvert.DeserializeObject<List<DataEntryDAL.CustomDataOBJ.PRODUCT>>(productsListSTR);
-            ReturnObject<int> output = null;
             try
             {
+                var list = JsonConvert.DeserializeObject<List<DataEntryDAL.CustomDataOBJ.PRODUCT>>(productsListSTR);
+                ReturnObject<int> output = null;
+
                 ProductsHandler handler = new ProductsHandler();
 
                 var  result = handler.INSERT_ALL_PRODUCTS(list);

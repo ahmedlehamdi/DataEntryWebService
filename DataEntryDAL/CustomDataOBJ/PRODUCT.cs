@@ -12,17 +12,27 @@ namespace DataEntryDAL.CustomDataOBJ
         public int Parent_ID { get; set; }
         public string PRODUCT_NAME_EN { get; set; }
         public string PRODUCT_NAME_AR { get; set; }
-        public int PRODUCT_PRICE { get; set; }
+        public float PRODUCT_PRICE { get; set; }
         public int TYPE_ID { get; set; }
+        public string TYPE_NAME_EN { get; set; }
+        public string TYPE_NAME_AR { get; set; }
         public int CATEGORY_ID { get; set; }
+        public string CATEGORY_NAME_EN { get; set; }
+        public string CATEGORY_NAME_AR { get; set; }
         public int MANUFACTURE_ID { get; set; }
-                                                        public List<PRODUCT_TYPE_SPECS> TYPE_SPECS { get; set; }
+        public string MANUFACTURE_NAME_EN { get; set; }
+        public string MANUFACTURE_NAME_AR { get; set; }
+        public List<PRODUCT_TYPE_SPECS> TYPE_SPECS { get; set; }
         public string PRODUCT_IMAGE { get; set; }
         public int BRANCH_ID { get; set; }
+        public string BRANCH_NAME_EN { get; set; }
+        public string BRANCH_NAME_AR { get; set; }
         public string PRODUCT_TAGS { get; set; }
         public DateTime DATE_FROM { get; set; }
         public DateTime DATE_TO { get; set; }
         public int PROD_OFF_TYPE_ID { get; set; }
+        public string PROD_OFF_TYPE_NAME_EN { get; set; }
+        public string PROD_OFF_TYPE_NAME_AR { get; set; }
         public int PROD_OFF_TYP_ATTR_ID { get; set; }
                                                         public PRODUCT_OFFER_TYPE_SPECS PROD_OFF_TYP_SPECS { get; set; }
                                                         public List<PRODUCT> bundleList { get; set; }
