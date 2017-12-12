@@ -244,52 +244,6 @@ namespace DataEntryWebService
             }
         }
 
-        public string submitFlyerProduct(PRODUCT product)
-        {
-            ReturnObject<int> output = null;
-            try
-            {
-                //ProductsHandler handler = new ProductsHandler();
-
-                //int productID = handler.AddFlyerProduct(product, specs);
-                //output = new ReturnObject<int>(ErrorConstants.SUCCESS, productID);
-
-                //if (productID != -1)
-                //    return JsonConvert.SerializeObject(output);
-                //else
-                {
-                    return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_FAILED_TO_ADD_PRODUCT, ErrorConstants.ERROR_FAILED_TO_ADD_PRODUCT_MSG));
-                }
-            }
-            catch (Exception ex)
-            {
-                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
-            }
-        }
-
-        public string submitFlyerAllProducts(List<PRODUCT> products, List<List<PROD_TYPE_SPEC>> allSpecs, List<PROD_OFF_TYP_ATTR> allOfferTypes)
-        {
-            ReturnObject<int> output = null;
-            try
-            {
-                ProductsHandler handler = new ProductsHandler();
-
-                int successIndicator = handler.AddFlyerProduct(products, allSpecs, allOfferTypes);
-                output = new ReturnObject<int>(ErrorConstants.SUCCESS, successIndicator);
-
-                if (successIndicator != -1)
-                    return JsonConvert.SerializeObject(output);
-                else
-                {
-                    return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_FAILED_TO_ADD_FLYER_PRODUCTS, ErrorConstants.ERROR_FAILED_TO_ADD_FLYER_PRODUCTS_MSG));
-                }
-            }
-            catch (Exception ex)
-            {
-                return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_EXCEPTION, ex.Message));
-            }
-        }
-
         public string getFlyerBasicData(int flyerID)
         {
             ReturnObject<GET_FLYER_BASIC_DATAResult> output = null;
@@ -555,11 +509,11 @@ namespace DataEntryWebService
                 var result = handler.getProductsList(flyerID, parentID);
                 output = new ReturnObject<List<DataEntryDAL.CustomDataOBJ.PRODUCT>>(ErrorConstants.SUCCESS, result);
 
-                if (result.Count > 0)
+                if (result != null && result.Count > 0)
                     return JsonConvert.SerializeObject(output);
                 else
                 {
-                    return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_FAILED_TO_ADD_FLYER_PRODUCTS, ErrorConstants.ERROR_FAILED_TO_ADD_FLYER_PRODUCTS_MSG));
+                    return JsonConvert.SerializeObject(new ReturnObject<string>(ErrorConstants.ERROR_FAILED_TO_GET_FLYER_PRODUCTS, ErrorConstants.ERROR_FAILED_TO_GET_FLYER_PRODUCTS_MSG));
                 }
             }
             catch (Exception ex)

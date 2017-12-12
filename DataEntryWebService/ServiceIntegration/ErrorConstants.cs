@@ -41,7 +41,7 @@ namespace DataEntryWebService.ServiceIntegration
         public readonly static string ERROR_FAILED_TO_GET_FLYER_DATA_MSG = "Failed to retrieve Flyer Basic Data";
 
         public readonly static int ERROR_FAILED_TO_GET_FLYER_PRODUCTS = 131313;
-        public readonly static string ERROR_FAILED_TO_GET_FLYER_PRODUCTS_MSG = "Failed to retrieve Flyer Products";
+        public readonly static string ERROR_FAILED_TO_GET_FLYER_PRODUCTS_MSG = "No Products Found";
 
         public readonly static int ERROR_FAILED_TO_ADD_FLYER = 141414;
         public readonly static string ERROR_FAILED_TO_ADD_FLYER_MSG = "Failed to Add Flyer";
@@ -53,7 +53,7 @@ namespace DataEntryWebService.ServiceIntegration
         public readonly static string ERROR_FAILED_TO_DELETE_FLYER_MSG = "Failed to Delete Flyer";
 
         public readonly static int ERROR_FAILED_TO_UPDATE_PASSWORD = 171717;
-        public readonly static string ERROR_FAILED_TO_UPDATE_PASSWORD_MSG = "Failed to Update User";
+        public readonly static string ERROR_FAILED_TO_UPDATE_PASSWORD_MSG = "Failed to Update User Password";
 
         public readonly static int ERROR_FAILED_TO_UPDATE_FLYER_STATUS = 181818;
         public readonly static string ERROR_FAILED_TO_UPDATE_FLYER_STATUS_MSG = "Failed to Update Flyer Status";
@@ -65,15 +65,15 @@ namespace DataEntryWebService.ServiceIntegration
         public readonly static string ERROR_FAILED_TO_ADD_USER_MSG = "Failed to Add New User";
 
         public readonly static int ERROR_FAILED_GET_PRODUCT_MANUFACTURES = 212121;
-        public readonly static string ERROR_FAILED_GET_PRODUCT_MANUFACTURES_MSG = "Failed to Get Product Manufactures";
+        public readonly static string ERROR_FAILED_GET_PRODUCT_MANUFACTURES_MSG = "No Manufactures Found";
 
         public readonly static int ERROR_FAILED_GET_PRODUCT_BRANCHES = 222222;
-        public readonly static string ERROR_FAILED_GET_PRODUCT_BRANCHES_MSG = "Failed to Get Product Branches";
+        public readonly static string ERROR_FAILED_GET_PRODUCT_BRANCHES_MSG = "No Branches Found";
 
         public readonly static int ERROR_FAILED_GET_TYPE_SPECS = 232323;
-        public readonly static string ERROR_FAILED_GET_TYPE_SPECS_MSG = "Failed to Get Product Branches";
+        public readonly static string ERROR_FAILED_GET_TYPE_SPECS_MSG = "No Type Specs Found";
 
         public readonly static int ERROR_FAILED_GET_PRODUCT_OFFER_TYPES = 242424;
-        public readonly static string ERROR_FAILED_GET_PRODUCT_OFFER_TYPES_MSG = "Failed to Get Product Offer Types List";
+        public readonly static string ERROR_FAILED_GET_PRODUCT_OFFER_TYPES_MSG = "No Offer Types Found";
     }
 }

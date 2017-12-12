@@ -77,20 +77,6 @@ namespace DataEntryWebService
         [WebInvoke(Method = "GET",
                 RequestFormat = WebMessageFormat.Json,
                 ResponseFormat = WebMessageFormat.Json,
-                UriTemplate = "submitFlyerProduct")]
-        string submitFlyerProduct(PRODUCT product);
-
-        [OperationContract]
-        [WebInvoke(Method = "GET",
-                RequestFormat = WebMessageFormat.Json,
-                ResponseFormat = WebMessageFormat.Json,
-                UriTemplate = "submitFlyerAllProducts")]
-        string submitFlyerAllProducts(List<PRODUCT> products, List<List<PROD_TYPE_SPEC>> allSpecs, List<PROD_OFF_TYP_ATTR> allOfferTypes);
-
-        [OperationContract]
-        [WebInvoke(Method = "GET",
-                RequestFormat = WebMessageFormat.Json,
-                ResponseFormat = WebMessageFormat.Json,
                 UriTemplate = "getFlyerBasicData")]
         string getFlyerBasicData(int flyerID);
 
