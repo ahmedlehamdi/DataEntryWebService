@@ -238,6 +238,18 @@ namespace DataEntryDAL.Handlers
 
                         context.SubmitChanges();
 
+                        var deleteProduct =
+                               from product in context.PRODUCTs
+                               where product.PRODUCT_ID == prod.PRODUCT_ID
+                               select product;
+
+                        foreach (var y in deleteProduct)
+                        {
+                            context.PRODUCTs.DeleteOnSubmit(y);
+                        }
+
+                        context.SubmitChanges();
+
                         var attrs =
                                from a in context.PROD_OFF_TYP_ATTRs
                                where a.PROD_OFF_TYP_ATTR_ID == prod.PROD_OFF_TYP_ATTR_ID
@@ -250,17 +262,7 @@ namespace DataEntryDAL.Handlers
 
                         context.SubmitChanges();
 
-                        var deleteProduct =
-                                from product in context.PRODUCTs
-                                where product.PRODUCT_ID == prod.PRODUCT_ID
-                                select product;
-
-                        foreach (var y in deleteProduct)
-                        {
-                            context.PRODUCTs.DeleteOnSubmit(y);
-                        }
-
-                        context.SubmitChanges();
+                       
                     }
                 }
             }
