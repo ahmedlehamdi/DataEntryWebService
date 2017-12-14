@@ -9,6 +9,7 @@ namespace DataEntryDAL.Handlers
     public class ProductsHandler
     {
         private int productParentID = -1;
+        private bool deleteFlag = true;
 
         public List<PRODUCTS_CATEGORy> getAllProductCategories()
         {
@@ -84,7 +85,11 @@ namespace DataEntryDAL.Handlers
                 using (DataClassesDataContext context = new DataClassesDataContext())
                 {
                     var prodID = -1;
-                    deleteProduct(productsList[0].FLYER_ID);
+                    if (deleteFlag)
+                    {
+                        deleteProduct(productsList[0].FLYER_ID);
+                        deleteFlag = false;
+                    }   
                     foreach (var prod in productsList)
                     {
                         var offerAttrID = 0;
@@ -207,8 +212,10 @@ namespace DataEntryDAL.Handlers
                     }
                     return prodID;
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
+                ExceptionUtility.LogException(ex, "Insert Product");
                 return -1;
             }
         }
